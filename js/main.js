@@ -191,3 +191,39 @@ function debounce(func, wait) {
         timeout = setTimeout(() => func.apply(context, args), wait);
     };
 }
+
+// Add detection for current page to highlight the right navigation item
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ...existing code...
+    
+    // Highlight current page in navigation
+    setTimeout(function() {
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('nav a');
+        
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href').split('#')[0];
+            if (linkPath === currentPath || 
+                (currentPath === 'index.html' && linkPath.includes('index.html')) ||
+                (currentPath === '' && linkPath.includes('index.html'))) {
+                link.style.backgroundColor = 'rgba(255,255,255,0.2)';
+                link.style.fontWeight = 'bold';
+            }
+        });
+        
+        // Add copy buttons to all code blocks that don't have them
+        const preElements = document.querySelectorAll('pre');
+        preElements.forEach(pre => {
+            if (!pre.querySelector('.copy-btn')) {
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-btn';
+                copyBtn.textContent = 'Copy';
+                copyBtn.onclick = function() { copyText(this); };
+                pre.appendChild(copyBtn);
+            }
+        });
+    }, 600);
+});
+
+// ...existing code...
