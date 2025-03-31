@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGYRecover - Seismic Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <header id="header-component"></header>
+    
+    <nav id="nav-component"></nav>
+    
+    <main>
+        <div class="main-container">
+            <div id="main-content">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Documentation Hub</a>
+                
+                <div class="program-section" id="segyrecover" data-tool-type="segyrecover">
+                    <div class="section-header">
+                        <h2>SEGYRecover</h2>
+                    </div>
+                    <div class="section-content active">
+                        <!-- Simplify badge displays -->
+                        <div class="tool-summary">
+                            <div class="badge-container">
+                                <span class="badge badge-python">Python</span>
+                                <span class="badge badge-windows">Windows</span>
+                                <span class="badge badge-version">1.0.0</span>
+                            </div>
+                            
+                            <p>A Python tool for digitizing scanned seismic sections and converting them to standard SEGY format.</p>
+                            
+                            <div class="quick-links">
+                                <a href="https://github.com/a-pertuz/segyrecover" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://github.com/a-pertuz/segyrecover/blob/main/TUTORIAL.md" target="_blank"><i class="fas fa-book-open"></i> Tutorial</a>
+                                <a href="troubleshooting.html" target="_blank"><i class="fas fa-wrench"></i> Troubleshooting</a>
+                            </div>
+                        </div>
+                        
+                        <h3 id="segyrecover-features">Features</h3>
+                        <ul class="feature-list">
+                            <li><strong>Digitization of seismic images</strong> - Convert paper/raster seismic sections into SEGY files compatible with modern interpretation software</li>
+                            <li><strong>User-friendly GUI</strong> - Simple interface for the entire digitization workflow</li>
+                            <li><strong>Perspective correction</strong> - Handles skewed or distorted scanned images</li>
+                            <li><strong>Automatic trace line detection</strong> - Identifies vertical trace lines using common image processing techniques</li>
+                            <li><strong>Timeline detection and removal</strong> - Detects and removes horizontal time markers while preserving data</li>
+                            <li><strong>Amplitude extraction</strong> - Converts pixel density to seismic amplitude values</li>
+                            <li><strong>Frequency filtering</strong> - Apply bandpass filters to clean up digitized data</li>
+                            <li><strong>Geospatial referencing</strong> - Associates traces with real-world coordinates</li>
+                        </ul>
+                        
+                        <div class="installation-guide" id="segyrecover-quickstart">
+                            <h3>Quick Start Guide</h3>
+                            
+                            <div class="step">
+                                <strong>Load an image</strong>: Click "Load Image" and select a seismic image file (supported formats: TIF, JPG, PNG)
+                            </div>
+                            
+                            <div class="step">
+                                <strong>Set parameters</strong>: Click "Parameters" to configure ROI points, acquisition parameters, and detection settings
+                            </div>
+                            
+                            <div class="step">
+                                <strong>Begin digitization</strong>: Select the region of interest by marking three corner points
+                            </div>
+                            
+                            <div class="step">
+                                <strong>Review detection</strong>: Check the baseline and timeline detection results
+                            </div>
+                            
+                            <div class="step">
+                                <strong>Complete processing</strong>: The application will extract amplitudes, process data, and create a SEGY file
+                            </div>
+                            
+                            <h4>File Structure</h4>
+                            <p>SEGYRecover uses the following folder structure:</p>
+                            <ul>
+                                <li><strong>IMAGES/</strong> - Store input seismic images</li>
+                                <li><strong>GEOMETRY/</strong> - Store .geometry files with trace coordinates</li>
+                                <li><strong>LOG/</strong> - Store log files</li>
+                                <li><strong>ROI/</strong> - Store region of interest points</li>
+                                <li><strong>PARAMETERS/</strong> - Store processing parameters</li>
+                                <li><strong>SEGY/</strong> - Store output SEGY files</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer id="footer-component"></footer>
+</body>
+</html>

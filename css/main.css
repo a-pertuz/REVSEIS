@@ -908,3 +908,17 @@ footer a {
     color: rgba(255, 255, 255, 0.9);
     text-decoration: underline;
 }
+
+/* Add styles to fix the text color in tool headers */
+
+/* Section headers text color fix for each tool */
+[data-tool-type="segyrecover"] .section-header h2,
+[data-tool-type="velrecover"] .section-header h2,
+[data-tool-type="inseis"] .section-header h2 {
+    color: white;
+}
+
+/* Make sure the project card headers have white text too for consistency */
+.project-card .project-header h3 {
+    color: white;
+}

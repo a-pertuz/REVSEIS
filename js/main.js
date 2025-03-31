@@ -226,39 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 600);
 });
 
-// Add this new code to handle dropdowns
-
-// Make dropdowns work for touch devices
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-        
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                const dropdown = this.parentElement;
-                dropdown.classList.toggle('active');
-                
-                // Close other open dropdowns
-                document.querySelectorAll('.dropdown.active').forEach(openDropdown => {
-                    if (openDropdown !== dropdown) {
-                        openDropdown.classList.remove('active');
-                    }
-                });
-            });
-        });
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown.active').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
-    }, 600);
-});
-
 // Simplify copy function
 function copyToClipboard(button) {
     const code = button.previousElementSibling.textContent;
