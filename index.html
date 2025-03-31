@@ -85,51 +85,90 @@
                 
                 <section id="prerequisites" class="installation-highlight">
                     <h2>Quick Installation Guide</h2>
-                    
-                    <div class="step-box">
-                        <h3><i class="fab fa-python"></i> Step 1: Install Python</h3>
-                        <p>Download Python from <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a> and select "Add Python to PATH" during installation.</p>
-                    </div>
-                    
-                    <div class="step-box">
-                        <h3><i class="fas fa-download"></i> Step 2: Install the Tools</h3>
-                        <div class="install-command-group">
-                            <div class="code-snippet">
-                                <code>pip install segyrecover velrecover inseis</code>
-                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <div class="installation-steps">
+                        <div class="step-box">
+                            <h3><i class="fab fa-python"></i> Step 1: Install Python</h3>
+                            <p>Download and install Python from <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a></p>
+                            <div class="important-note">
+                                <strong>Important:</strong> During installation, check "Add Python to PATH" ✓
                             </div>
-                            <small>Install all tools at once with a single command</small>
                         </div>
                         
-                        <p>Or install them individually:</p>
-                        <div class="install-tools-grid">
-                            <div class="code-snippet compact">
-                                <code>pip install segyrecover</code>
-                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                        <div class="step-box">
+                            <h3><i class="fas fa-download"></i> Step 2: Install the Tools</h3>
+                            <p>Open <strong>Command Prompt</strong> (search "cmd" in Windows Start menu) and run:</p>
+                            <div class="install-command-group">
+                                <div class="code-snippet">
+                                    <code>pip install segyrecover velrecover inseis</code>
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <small>Install all tools at once with a single command</small>
                             </div>
-                            <div class="code-snippet compact">
-                                <code>pip install velrecover</code>
-                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                            </div>
-                            <div class="code-snippet compact">
-                                <code>pip install inseis</code>
-                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                            
+                            <p>Or install them individually:</p>
+                            <div class="install-tools-grid">
+                                <div class="code-snippet compact">
+                                    <code>pip install segyrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-snippet compact">
+                                    <code>pip install velrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-snippet compact">
+                                    <code>pip install inseis</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="step-box">
-                        <h3><i class="fas fa-play"></i> Step 3: Launch</h3>
-                        <p>Run each tool by typing its name in Command Prompt:</p>
-                        <div class="launch-commands">
-                            <code>segyrecover</code>
-                            <code>velrecover</code>
-                            <code>inseis</code>
+                        
+                        <div class="step-box">
+                            <h3><i class="fab fa-windows"></i> Step 3: Install WSL (for InSeis only)</h3>
+                            <p>If you plan to use InSeis, you need to set up Windows Subsystem for Linux:</p>
+                            <ol class="numbered-steps">
+                                <li>Open Command Prompt <strong>as Administrator</strong> (right-click, select "Run as administrator")</li>
+                                <li>Run the following command:</li>
+                            </ol>
+                            <div class="code-snippet">
+                                <code>wsl --install</code>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>After installation completes, <strong>restart your computer</strong>.</p>
                         </div>
-                    </div>
-                    
-                    <div class="info-note">
-                        <p><strong>Note:</strong> InSeis requires WSL setup. <a href="#inseis">See details</a></p>
+                        
+                        <div class="step-box">
+                            <h3><i class="fas fa-terminal"></i> Step 4: Install Seismic Unix (for InSeis only)</h3>
+                            <p>After restarting and if WSL is properly installed:</p>
+                            <ol class="numbered-steps">
+                                <li>Open WSL (search for "wsl" or "ubuntu" in Windows Start menu)</li>
+                                <li>Copy and paste this entire command:</li>
+                            </ol>
+                            <div class="code-snippet">
+                                <code>bash -c "$(wget -qO- https://gist.githubusercontent.com/a-pertuz/2b341bc8af2a37cde820d829f2789d99/raw/install_seismic_unix.sh)"</code>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>This script will automatically install Seismic Unix. The process may take 10-15 minutes.</p>
+                        </div>
+                        
+                        <div class="step-box">
+                            <h3><i class="fas fa-play"></i> Step 5: Launch the Tools</h3>
+                            <p>Open Command Prompt and run any of these commands:</p>
+                            <div class="launch-commands">
+                                <div class="launch-item">
+                                    <code>segyrecover</code>
+                                    <small>Digitize scanned seismic sections</small>
+                                </div>
+                                <div class="launch-item">
+                                    <code>velrecover</code>
+                                    <small>Create velocity models</small>
+                                </div>
+                                <div class="launch-item">
+                                    <code>inseis</code>
+                                    <small>Process seismic data with SU</small>
+                                </div>
+                            </div>
+                            <p>On first run, each tool will guide you through selecting a data directory.</p>
+                        </div>
                     </div>
                 </section>
                 

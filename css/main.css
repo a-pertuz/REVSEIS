@@ -791,3 +791,120 @@ footer a {
         font-size: 1.2rem;
     }
 }
+
+/* Add these new styles for the improved installation guide */
+.numbered-steps {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+}
+
+.launch-commands {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.launch-item {
+    background-color: #f1f3f4;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.launch-item code {
+    background-color: transparent;
+    padding: 0;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.launch-item small {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    color: #555;
+}
+
+/* Add tool-specific color styling and standardize containers */
+
+/* Standardize on main-container */
+.content-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Tool-specific colors */
+[data-tool-type="segyrecover"] .section-header,
+.project-card:nth-child(1) .project-header {
+    background-color: var(--primary-color); /* Blue - already exists */
+}
+
+[data-tool-type="velrecover"] .section-header,
+.project-card:nth-child(2) .project-header {
+    background-color: #4CAF50; /* Green */
+}
+
+[data-tool-type="inseis"] .section-header,
+.project-card:nth-child(3) .project-header {
+    background-color: #9C27B0; /* Purple */
+}
+
+/* Match quick navigation link colors to tools */
+.quick-nav-link:nth-child(1) {
+    border-left: 3px solid var(--primary-color);
+}
+
+.quick-nav-link:nth-child(2) {
+    border-left: 3px solid #4CAF50;
+}
+
+.quick-nav-link:nth-child(3) {
+    border-left: 3px solid #9C27B0;
+}
+
+.quick-nav-link:nth-child(4) {
+    border-left: 3px solid #FF9800;
+}
+
+/* Enhanced footer styling */
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-divider {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.copyright, .contact {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+}
