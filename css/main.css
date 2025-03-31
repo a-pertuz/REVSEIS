@@ -1,17 +1,17 @@
-/* Updated Theme Colors - Dark */
+/* Updated Theme Colors - Light with Dark Accents */
 :root {
     --primary-color: #4b86b4; /* Blue for SEGYRecover */
     --secondary-color: #63a4ff; /* Lighter blue */
-    --accent-color: #1e1e2f; /* Dark background */
-    --bg-color: #121212; /* Very dark background */
-    --card-bg: #1f1f2e; /* Slightly lighter dark for cards */
-    --dark-text: #e0e0e0; /* Light gray for text */
-    --light-text: #b0b0b0; /* Medium gray for secondary text */
-    --border-color: #2a2a3c; /* Subtle border color */
-    --shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Slightly deeper shadow for hover */
-    --badge-bg: #2a2a3c; /* Background for badges */
-    --badge-text: #ffffff; /* Text color for badges */
+    --accent-color: #2e2e38; /* Dark gray for accents */
+    --bg-color: #f5f5f5; /* Light background */
+    --card-bg: #ffffff; /* White for cards */
+    --dark-text: #2d3748; /* Dark gray for text */
+    --light-text: #4a5568; /* Medium gray for secondary text */
+    --border-color: #e2e8f0; /* Light gray for borders */
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow for hover */
+    --badge-bg: #e2e8f0; /* Background for badges */
+    --badge-text: #2d3748; /* Text color for badges */
     --segyrecover-color: #4b86b4; /* Blue */
     --velrecover-color: #4CAF50; /* Green */
     --inseis-color: #9C27B0; /* Purple */
@@ -30,7 +30,7 @@ body {
 /* Header and Navigation */
 header {
     background-color: var(--accent-color);
-    color: var(--dark-text);
+    color: white;
     padding: 1.5rem 0;
     text-align: center;
     box-shadow: var(--shadow);
@@ -82,7 +82,7 @@ nav ul {
 }
 
 nav a {
-    color: var(--dark-text);
+    color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -92,7 +92,8 @@ nav a {
 }
 
 nav a:hover {
-    background-color: var(--card-bg);
+    background-color: var(--primary-color);
+    color: white;
 }
 
 nav a.active {
@@ -225,6 +226,7 @@ h3 {
     color: var(--badge-text);
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
+    border: 1px solid var(--border-color);
 }
 
 .badge-container {
@@ -236,15 +238,17 @@ h3 {
 
 .badge-python {
     background-color: #3776AB;
+    color: white;
 }
 
 .badge-windows {
     background-color: #0078D6;
+    color: white;
 }
 
 .badge-linux {
     background-color: #FCC624;
-    color: #000;
+    color: black;
 }
 
 /* Tool sections */
@@ -341,7 +345,7 @@ button:hover, .copy-btn:hover {
 /* Footer styling */
 footer {
     background-color: var(--accent-color);
-    color: var(--light-text);
+    color: white;
     padding: 2rem 0;
     margin-top: 3rem;
     text-align: center;
@@ -360,7 +364,7 @@ footer {
 }
 
 .footer-links a {
-    color: var(--dark-text);
+    color: white;
     text-decoration: none;
     margin: 0 0.75rem;
     transition: opacity 0.2s;
@@ -396,6 +400,7 @@ pre {
     font-family: 'Consolas', 'Monaco', monospace;
     overflow-x: auto;
     margin-bottom: 1.5rem;
+    position: relative;
 }
 
 pre code {
@@ -412,7 +417,9 @@ pre code {
     font-size: 0.8rem;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
-    margin-top: 0.5rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .copy-btn:hover {
