@@ -1,0 +1,101 @@
+<div class="program-section" id="inseis">
+    <!-- Breadcrumb navigation -->
+    <ul class="breadcrumb">
+        <li><a href="#overview">Home</a></li>
+        <li class="current">InSeis</li>
+    </ul>
+    
+    <div class="section-header">
+        <h2>InSeis: Seismic Unix Workflow Manager</h2>
+        <span class="section-toggle">▼</span>
+    </div>
+    <div class="section-content">
+        <div class="badge-container">
+            <span class="badge badge-python">Python</span>
+            <span class="badge badge-windows">Windows</span>
+            <span class="badge badge-linux">WSL</span>
+            <span class="badge badge-version">1.0.0</span>
+            <span class="badge badge-license">GPL-3.0</span>
+        </div>
+        
+        <p>InSeis is a graphical interface for creating and running Seismic Unix workflows on Windows through the Windows Subsystem for Linux (WSL). It bridges the gap between powerful Linux-based seismic processing and the Windows environment.</p>
+        
+        <div class="quick-links">
+            <a href="https://github.com/a-pertuz/inseis" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
+            <a href="#inseis-features"><i class="fas fa-list-check"></i> Features</a>
+            <a href="#troubleshooting"><i class="fas fa-wrench"></i> Troubleshooting</a>
+            <a href="#integration"><i class="fas fa-project-diagram"></i> Integration Guide</a>
+        </div>
+        
+        <h3 id="inseis-features">Features</h3>
+        <ul class="feature-list">
+            <li><strong>User-Friendly Interface</strong> - Easily create, edit, and run Seismic Unix workflows</li>
+            <li><strong>Workflow Management</strong> - Save, load, and manage your processing workflows</li>
+            <li><strong>Visualization</strong> - View seismic data directly in the application</li>
+            <li><strong>Process Library</strong> - Extensive library of pre-configured Seismic Unix processes</li>
+            <li><strong>Windows Integration</strong> - Use Seismic Unix on Windows through WSL</li>
+            <li><strong>File Format Conversion</strong> - Convert between SU and SEGY formats seamlessly</li>
+        </ul>
+        
+        <div class="installation-guide" id="inseis-installation">
+            <h3>Installation Prerequisites</h3>
+            
+            <h4>1. Install Windows Subsystem for Linux (WSL)</h4>
+            <p>Open Command Prompt as Administrator and run:</p>
+            <pre><code>wsl --install</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+            <p>After installation completes, restart your computer.</p>
+            
+            <h4>2. Install Seismic Unix in WSL</h4>
+            <p>Open WSL and run the installation script:</p>
+            <pre><code>bash -c "$(wget -qO- https://gist.githubusercontent.com/a-pertuz/2b341bc8af2a37cde820d829f2789d99/raw/install_seismic_unix.sh)"</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+            <p>This script automates the installation of Seismic Unix release 44R28 in Ubuntu.</p>
+            
+            <h4>3. Install InSeis</h4>
+            <p>Open Command Prompt and enter:</p>
+            <pre><code>pip install inseis</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+            <p>Alternatively, install from GitHub:</p>
+            <pre><code>pip install git+https://github.com/a-pertuz/inseis.git</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+        </div>
+        
+        <div class="installation-guide" id="inseis-quickstart">
+            <h3>Quick Start Guide</h3>
+            
+            <div class="step">
+                <strong>Launch InSeis</strong>: Open Command Prompt and type <code>inseis</code>
+            </div>
+            
+            <div class="step">
+                <strong>Create a workflow</strong>: The main interface displays available processes on the left and your current workflow on the right
+            </div>
+            
+            <div class="step">
+                <strong>Load data</strong>: Add a data loading process (e.g., "Load SU File") to your workflow
+            </div>
+            
+            <div class="step">
+                <strong>Add processing steps</strong>: Select processing operations from the available processes list
+            </div>
+            
+            <div class="step">
+                <strong>Run your workflow</strong>: Click "Run Workflow" to execute all steps in sequence
+            </div>
+            
+            <div class="info-note">
+                <p><strong>Important note</strong>: Seismic Unix uses <strong>SU</strong> files as its native format. If you need <strong>SEGY</strong> files for external applications, use the "Convert SU to SEGY" utility in the menu bar after processing.</p>
+            </div>
+            
+            <h4>Saving and Loading Workflows</h4>
+            <p>To save your workflow:</p>
+            <ol>
+                <li>Click "Workflows" > "Save Workflow..."</li>
+                <li>Enter a name and description</li>
+            </ol>
+            
+            <p>To load a workflow:</p>
+            <ol>
+                <li>Click "Workflows" > "Load Workflow..."</li>
+                <li>Select from your saved workflows</li>
+            </ol>
+        </div>
+    </div>
+</div>

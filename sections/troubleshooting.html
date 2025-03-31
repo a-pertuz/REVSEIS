@@ -1,0 +1,156 @@
+<section id="troubleshooting">
+    <!-- Breadcrumb navigation -->
+    <ul class="breadcrumb">
+        <li><a href="#overview">Home</a></li>
+        <li class="current">Troubleshooting</li>
+    </ul>
+    
+    <h2>Troubleshooting Guide</h2>
+    
+    <p>This section addresses common issues you might encounter when using SEGYRecover, VELRecover, and InSeis.</p>
+    
+    <h3>SEGYRecover Issues</h3>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Poor timeline detection or timeline artifacts in resulting SEGY</div>
+        <div class="solution">
+            <ol>
+                <li>Adjust the HLT (Timeline Thickness) parameter to match the actual thickness of timelines in your image</li>
+                <li>Try increasing the HE (Horizontal Erode) parameter for better isolation of timelines</li>
+                <li>Check the frequency spectrum for spikes, which often indicate timeline residuals</li>
+                <li>Try applying a stronger bandpass filter (adjust F1-F4 parameters)</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Missing or incorrect trace detection</div>
+        <div class="solution">
+            <ol>
+                <li>Adjust the TLT (Traceline Thickness) parameter to match your image's trace width</li>
+                <li>Modify BDB and BDE parameters to focus on cleaner parts of the image</li>
+                <li>Increase BFT to filter out false detections</li>
+                <li>If baselines are too sparse, try decreasing BFT to allow more detections</li>
+                <li>For high-contrast images, try adjusting the threshold settings in the Parameters dialog</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Coordinate/CDP assignment issues</div>
+        <div class="solution">
+            <ol>
+                <li>Verify your geometry file is correctly formatted (CDP X Y format)</li>
+                <li>Ensure your geometry file has the same base name as your image with a .geometry extension</li>
+                <li>Check that CDP numbers match those in your ROI point settings</li>
+                <li>Verify the CDP direction (increasing or decreasing from left to right) is set correctly</li>
+            </ol>
+        </div>
+    </div>
+    
+    <h3>VELRecover Issues</h3>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Interpolation artifacts or unrealistic velocity values</div>
+        <div class="solution">
+            <ol>
+                <li>Check your input velocity picks for outliers or errors</li>
+                <li>Try applying a higher Gaussian blur value (20-50) to smooth the model</li>
+                <li>Ensure you have sufficient velocity picks to constrain the interpolation</li>
+                <li>Add additional control points in areas with extreme gradients</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Error loading velocity data file</div>
+        <div class="solution">
+            <ol>
+                <li>Verify your file contains exactly 3 columns: CDP, TWT(ms), Velocity(m/s)</li>
+                <li>Check for headers, comments, or other extraneous text in the file</li>
+                <li>Ensure values are numeric and properly formatted (no text, symbols, etc.)</li>
+                <li>Check if you're using the correct column separator (tab, comma, space)</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Misalignment between velocity model and seismic data</div>
+        <div class="solution">
+            <ol>
+                <li>Verify the CDP range in your velocity file matches the SEGY file</li>
+                <li>Check that TWT values are in milliseconds (not seconds)</li>
+                <li>Ensure the SEGY file has proper trace headers with correct CDP values</li>
+                <li>Try exporting the velocity model with explicit CDP coordinates</li>
+            </ol>
+        </div>
+    </div>
+    
+    <h3>InSeis Issues</h3>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">WSL connection errors</div>
+        <div class="solution">
+            <ol>
+                <li>Verify WSL is installed and running (type <code>wsl</code> in Command Prompt)</li>
+                <li>Try restarting WSL: <code>wsl --shutdown</code> then launch WSL again</li>
+                <li>Check if Ubuntu is properly installed in WSL</li>
+                <li>Verify you have administrative rights on your Windows account</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Seismic Unix commands not found</div>
+        <div class="solution">
+            <ol>
+                <li>Verify Seismic Unix was installed correctly using the provided script</li>
+                <li>Check your CWPROOT path in InSeis configuration</li>
+                <li>Try reinstalling Seismic Unix using the provided script</li>
+                <li>In WSL, verify the environment variables with <code>echo $CWPROOT</code></li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">File access or permission issues</div>
+        <div class="solution">
+            <ol>
+                <li>Don't use spaces or special characters in file paths</li>
+                <li>Use forward slashes (/) instead of backslashes (\) in paths</li>
+                <li>Check that the folders have appropriate read/write permissions</li>
+                <li>Try running InSeis as administrator</li>
+                <li>For WSL file system issues, try placing files in the WSL filesystem directly</li>
+            </ol>
+        </div>
+    </div>
+    
+    <h3>General Troubleshooting Tips</h3>
+    
+    <div class="troubleshooting-item">
+        <div class="problem">Installation failures</div>
+        <div class="solution">
+            <ol>
+                <li>Ensure you're using Python 3.8 or higher</li>
+                <li>Try upgrading pip: <code>python -m pip install --upgrade pip</code></li>
+                <li>Install required dependencies manually before installing the main package</li>
+                <li>If using virtual environments, ensure they are properly activated</li>
+                <li>On Windows, try running the command prompt as administrator</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="info-note">
+        <p><strong>Tip:</strong> All tools generate log files during operation. These logs contain valuable information for troubleshooting. Check the LOG folder in each tool's data directory.</p>
+    </div>
+    
+    <h3>Getting Additional Support</h3>
+    
+    <p>If you continue experiencing issues after trying the solutions above, you can get additional support by:</p>
+    
+    <ul>
+        <li>Opening an issue on the appropriate GitHub repository</li>
+        <li>Emailing the developer at apertuz@ucm.es</li>
+        <li>Including relevant log files and a detailed description of the issue</li>
+    </ul>
+</section>

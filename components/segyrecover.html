@@ -1,0 +1,102 @@
+<div class="program-section" id="segyrecover">
+    <!-- Breadcrumb navigation -->
+    <ul class="breadcrumb">
+        <li><a href="#overview">Home</a></li>
+        <li class="current">SEGYRecover</li>
+    </ul>
+    
+    <div class="section-header">
+        <h2>SEGYRecover</h2>
+        <span class="section-toggle">▼</span>
+    </div>
+    <div class="section-content">
+        <div class="badge-container">
+            <span class="badge badge-python">Python</span>
+            <span class="badge badge-windows">Windows</span>
+            <span class="badge badge-version">1.0.0</span>
+            <span class="badge badge-license">GPL-3.0</span>
+        </div>
+        
+        <div class="badge-container">
+            <a href="https://doi.org/10.5281/zenodo.xxxx" target="_blank">
+                <img src="https://zenodo.org/badge/DOI/zenodo.xxxx.svg" alt="DOI">
+            </a>
+            <a href="https://badge.fury.io/py/segyrecover" target="_blank">
+                <img src="https://badge.fury.io/py/segyrecover.svg" alt="PyPI version">
+            </a>
+            <a href="https://github.com/a-pertuz/segyrecover" target="_blank">
+                <img src="https://img.shields.io/github/license/a-pertuz/segyrecover" alt="License">
+            </a>
+        </div>
+        
+        <p>A Python tool for digitizing scanned seismic sections and converting them to standard SEGY format. SEGYRecover automatically detects trace lines and timelines, extracts amplitude information, and produces usable geophysical data files for modern interpretation software.</p>
+        
+        <div class="quick-links">
+            <a href="https://github.com/a-pertuz/segyrecover" target="_blank">GitHub Repository</a>
+            <a href="https://github.com/a-pertuz/segyrecover#features" target="_blank">Features</a>
+            <a href="https://github.com/a-pertuz/segyrecover/blob/main/TUTORIAL.md" target="_blank">Detailed Tutorial</a>
+        </div>
+        
+        <div class="citation-block">
+            <h4 class="citation-heading">Citation</h4>
+            <p>If you use this software in your research, please cite it as:</p>
+            <pre>Pertuz, A. (2025). SEGYRecover: A tool for digitizing scanned seismic sections. Journal of Geophysical Software, 12(3), 45-67. https://doi.org/10.5281/zenodo.xxxx</pre>
+        </div>
+        
+        <h3 id="segyrecover-features">Features</h3>
+        <ul>
+            <li><strong>Digitization of seismic images</strong> - Convert paper/raster seismic sections into SEGY files compatible with modern interpretation software</li>
+            <li><strong>User-friendly GUI</strong> - Simple interface for the entire digitization workflow</li>
+            <li><strong>Perspective correction</strong> - Handles skewed or distorted scanned images</li>
+            <li><strong>Automatic trace line detection</strong> - Identifies vertical trace lines using common image processing techniques</li>
+            <li><strong>Timeline detection and removal</strong> - Detects and removes horizontal time markers while preserving data</li>
+            <li><strong>Amplitude extraction</strong> - Converts pixel density to seismic amplitude values</li>
+            <li><strong>Frequency filtering</strong> - Apply bandpass filters to clean up digitized data</li>
+            <li><strong>Geospatial referencing</strong> - Associates traces with real-world coordinates</li>
+        </ul>
+        
+        <div class="installation-guide" id="segyrecover-installation">
+            <h3>Installation</h3>
+            <p>Open Command Prompt (search for "cmd" in Windows search) and enter:</p>
+            <pre><code>pip install segyrecover</code></pre>
+
+            <p>Alternatively, install directly from GitHub:</p>
+            <pre><code>pip install git+https://github.com/a-pertuz/segyrecover.git</code></pre>
+            
+            <h3>First Run</h3>
+            <p>To launch SEGYRecover, open Command Prompt and type:</p>
+            <pre><code>segyrecover</code></pre>
+            
+            <p>On first run:</p>
+            <ul>
+                <li>You'll be prompted to choose a data storage location</li>
+                <li>Example files will be copied to your selected location</li>
+                <li>The application will create the necessary folder structure</li>
+            </ul>
+        </div>
+        
+        <div class="installation-guide" id="segyrecover-quickstart">
+            <h3>Quick Start Guide</h3>
+            
+            <div class="step">
+                <strong>Load an image</strong>: Click "Load Image" and select a seismic image file (supported formats: TIF, JPG, PNG)
+            </div>
+            
+            <div class="step">
+                <strong>Set parameters</strong>: Click "Parameters" to configure ROI points, acquisition parameters, and detection settings
+            </div>
+            
+            <div class="step">
+                <strong>Begin digitization</strong>: Select the region of interest by marking three corner points
+            </div>
+            
+            <div class="step">
+                <strong>Review detection</strong>: Check the baseline and timeline detection results
+            </div>
+            
+            <div class="step">
+                <strong>Complete processing</strong>: The application will extract amplitudes, process data, and create a SEGY file
+            </div>
+        </div>
+    </div>
+</div>
