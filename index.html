@@ -14,21 +14,22 @@
     <nav id="nav-component"></nav>
     
     <main>
-        <div class="content-container">
-            <!-- Table of Contents -->
-            <div id="toc-component" class="toc-container"></div>
-            
+        <div class="main-container">
             <!-- Main Content -->
             <div id="main-content">
                 <section id="overview">
-                    <!-- Breadcrumb navigation -->
-                    <ul class="breadcrumb">
-                        <li><a href="#overview">Home</a></li>
-                        <li class="current">Overview</li>
-                    </ul>
-                    
                     <h2>Overview</h2>
                     <p>This documentation hub provides installation guides and essential information for three specialized seismic data processing tools. Each tool addresses a specific need in seismic data workflows:</p>
+                    
+                    <div class="quick-links-box">
+                        <p><strong>Looking for more information?</strong> Check out our:</p>
+                        <div class="quick-nav-links">
+                            <a href="integration.html" class="quick-nav-link"><i class="fas fa-project-diagram"></i> Integration Guide</a>
+                            <a href="faq.html" class="quick-nav-link"><i class="fas fa-question-circle"></i> FAQ</a>
+                            <a href="troubleshooting.html" class="quick-nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
+                            <a href="references.html" class="quick-nav-link"><i class="fas fa-book"></i> References</a>
+                        </div>
+                    </div>
                     
                     <div class="project-cards-container">
                         <div class="project-card">
@@ -80,51 +81,55 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="additional-resources">
-                        <h3>Additional Resources</h3>
-                        <div class="resource-links">
-                            <a href="integration.html" class="resource-link">
-                                <i class="fas fa-project-diagram"></i>
-                                <span>Integration Guide</span>
-                                <p>Learn how to use all three tools together in a complete workflow</p>
-                            </a>
-                            <a href="faq.html" class="resource-link">
-                                <i class="fas fa-question-circle"></i>
-                                <span>FAQ</span>
-                                <p>Answers to frequently asked questions about the tools</p>
-                            </a>
-                            <a href="troubleshooting.html" class="resource-link">
-                                <i class="fas fa-wrench"></i>
-                                <span>Troubleshooting</span>
-                                <p>Solutions to common issues and problems</p>
-                            </a>
-                            <a href="references.html" class="resource-link">
-                                <i class="fas fa-book"></i>
-                                <span>References</span>
-                                <p>Academic papers and citations</p>
-                            </a>
-                        </div>
-                    </div>
                 </section>
                 
-                <section id="prerequisites">
-                    <!-- Breadcrumb navigation -->
-                    <ul class="breadcrumb">
-                        <li><a href="#overview">Home</a></li>
-                        <li class="current">Prerequisites</li>
-                    </ul>
+                <section id="prerequisites" class="installation-highlight">
+                    <h2>Quick Installation Guide</h2>
                     
-                    <h2>Common Prerequisites</h2>
+                    <div class="step-box">
+                        <h3><i class="fab fa-python"></i> Step 1: Install Python</h3>
+                        <p>Download Python from <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a> and select "Add Python to PATH" during installation.</p>
+                    </div>
                     
-                    <div class="prerequisites">
-                        <h3><i class="fab fa-python"></i> Installing Python (Required for all tools)</h3>
-                        <div class="step">Download Python from <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a></div>
-                        <div class="step">During installation, <strong>check "Add Python to PATH"</strong></div>
-                        <div class="step">Click "Install Now" and wait for installation to complete</div>
-                        <div class="step">Verify installation by opening Command Prompt and typing: <code>python --version</code></div>
+                    <div class="step-box">
+                        <h3><i class="fas fa-download"></i> Step 2: Install the Tools</h3>
+                        <div class="install-command-group">
+                            <div class="code-snippet">
+                                <code>pip install segyrecover velrecover inseis</code>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <small>Install all tools at once with a single command</small>
+                        </div>
                         
-                        <p><strong>Note:</strong> Python 3.12 or higher is recommended for all tools.</p>
+                        <p>Or install them individually:</p>
+                        <div class="install-tools-grid">
+                            <div class="code-snippet compact">
+                                <code>pip install segyrecover</code>
+                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-snippet compact">
+                                <code>pip install velrecover</code>
+                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-snippet compact">
+                                <code>pip install inseis</code>
+                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-box">
+                        <h3><i class="fas fa-play"></i> Step 3: Launch</h3>
+                        <p>Run each tool by typing its name in Command Prompt:</p>
+                        <div class="launch-commands">
+                            <code>segyrecover</code>
+                            <code>velrecover</code>
+                            <code>inseis</code>
+                        </div>
+                    </div>
+                    
+                    <div class="info-note">
+                        <p><strong>Note:</strong> InSeis requires WSL setup. <a href="#inseis">See details</a></p>
                     </div>
                 </section>
                 
@@ -137,5 +142,19 @@
     </main>
     
     <footer id="footer-component"></footer>
+    
+    <script>
+        function copyToClipboard(button) {
+            const code = button.previousElementSibling.textContent;
+            navigator.clipboard.writeText(code)
+                .then(() => {
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 1500);
+                });
+        }
+    </script>
 </body>
 </html>

@@ -78,13 +78,16 @@ nav a:hover {
 }
 
 section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
     scroll-margin-top: 4rem;
 }
 
 h2 {
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--primary-color);
     color: var(--primary-color);
 }
 
@@ -110,87 +113,94 @@ h3 {
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     min-width: 250px;
+    transition: none;form 0.2s, box-shadow 0.2s;
 }
 
 @media (max-width: 900px) {
-    .project-card {
-        flex: 0 0 100%;
+    .project-card {slateY(-3px);
+        flex: 0 0 100%;px rgba(0,0,0,0.15);
     }
 }
-
-.project-header {
+@media (max-width: 900px) {
+.project-header { {
     background-color: var(--primary-color);
     color: white;
     padding: 0.75rem;
 }
-
-.project-header h3 {
-    margin: 0;
-    color: white;
+.project-header {
+.project-header h3 {: var(--primary-color);
+    margin: 0;te;
+    color: white;rem;
 }
 
-.project-body {
+.project-body { h3 {
     padding: 1rem;
+}   color: white;
 }
-
 /* Installation guide styling */
 .installation-guide {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 1.5rem;
+    padding: 1.5rem;e styling */
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
+}   border: 1px solid #ddd;
+    border-radius: 5px;
 /* Code formatting */
-code {
-    background-color: #eaeaea;
+code {rgin-bottom: 1.5rem;
+    background-color: #eaeaea;(0,0,0,0.1);
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-family: monospace;
     color: #333;
-}
-
-pre {
+}   background-color: #eaeaea;
+    padding: 0.2rem 0.4rem;
+pre {order-radius: 3px;
     background-color: #eaeaea;
     padding: 1rem;
     border-radius: 5px;
     overflow-x: auto;
     border: 1px solid #d0d0d0;
-    white-space: pre-wrap;
+    white-space: pre-wrap;aea;
     word-break: break-word;
-}
-
-pre code {
+}   border-radius: 5px;
+    overflow-x: auto;
+pre code {: 1px solid #d0d0d0;
     background-color: transparent;
-    color: #333;
+    color: #333;break-word;
 }
 
 img, pre, code, table {
-    max-width: 100%;
+    max-width: 100%;: transparent;
+}   color: #333;
 }
-
 /* Badges */
-.badge {
+.badge {, code, table {
     display: inline-block;
     padding: 0.25em 0.6em;
     font-size: 75%;
     font-weight: 700;
     line-height: 1;
-    text-align: center;
-    white-space: nowrap;
+    text-align: center;ck;
+    white-space: nowrap;;
     vertical-align: baseline;
     border-radius: 0.25rem;
     margin-right: 0.5rem;
-}
-
-.badge-python {
+}   text-align: center;
+    white-space: nowrap;
+.badge-python {ign: baseline;
     background-color: #3776AB;
-    color: white;
+    color: white; 0.3rem;
+}   margin-bottom: 0.3rem;
 }
-
 .badge-windows {
+    background-color: #0078D6;
+    color: white;lor: #3776AB;
+}   color: white;
+}
+.badge-linux {
+    background-color: #FCC624;
     background-color: #0078D6;
     color: white;
 }
@@ -227,7 +237,7 @@ img, pre, code, table {
 }
 
 .section-content {
-    padding: 0 1rem 1rem;
+    padding: 1rem 1.5rem 1.5rem;
     display: none;
 }
 
@@ -282,15 +292,22 @@ img, pre, code, table {
     flex-wrap: wrap;
     gap: 1rem;
     margin: 1rem 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 0.7rem;
+    display: inline-flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .quick-links a {
-    background-color: #f0f0f0;
+    background-color: var(--light-bg);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     text-decoration: none;
     color: #333;
     display: inline-block;
+    font-size: 0.9rem;
 }
 
 .quick-links a:hover {
@@ -310,47 +327,182 @@ footer a {
     color: #fff;
 }
 
-/* Table of Contents */
-#toc-container {
-    position: sticky;
-    top: 80px;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
+/* Remove TOC and simplify layout */
+
+/* Remove layout for TOC */
+.content-container {
+    display: block;
+}
+
+/* Update main container */
+.main-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Style project cards without hover effects */
+.project-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Remove breadcrumb navigation */
+.breadcrumb {
+    display: none;
+}
+
+/* Style section headers more prominently */
+h2 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Quick navigation links in overview */
+.quick-links-box {
+    background-color: var(--light-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0 2rem 0;
+    text-align: center;
+}
+
+.quick-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.quick-nav-link {
+    display: inline-flex;
+    align-items: center;
     background-color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.quick-nav-link i {
+    margin-right: 0.5rem;
+}
+
+/* Installation highlight section */
+.installation-highlight {
+    background-color: var(--light-bg);
+    padding: 1rem 1.5rem 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.installation-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.step-box {
+    background-color: white;
+    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    border: 1px solid #ddd;
 }
 
-#toc-container h3 {
+.step-box h3 {
     margin-top: 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #ddd;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-#toc {
-    list-style-type: none;
+.step-box h3 i {
+    width: 24px;
+}
+
+.important-note {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 0.8rem;
+    margin: 1rem 0;
+}
+
+.code-snippet {
+    background-color: #f1f3f4;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.code-snippet code {
+    background-color: transparent;
     padding: 0;
+}
+
+.code-snippet .copy-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.code-snippet .copy-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.code-snippet.compact {
     margin: 0;
 }
 
-#toc li {
-    margin-bottom: 0.5rem;
+.copy-btn.small {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
 }
 
-#toc a {
-    color: var(--primary-color);
-    text-decoration: none;
-    display: block;
-    padding: 0.3rem 0;
+.launch-commands {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
 }
 
-#toc a:hover {
-    background-color: var(--light-bg);
-    padding-left: 0.5rem;
+.launch-commands code {
+    background-color: #f1f3f4;
+    padding: 0.4rem 0.8rem;
     border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+/* Remove extra whitespace in other pages */
+#main-content {
+    padding: 0;
+}
+
+/* Add more space between sections */
+section {
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
 }
 
 /* Breadcrumb navigation */
@@ -418,7 +570,7 @@ footer a {
 
 /* Layout structure */
 .content-container {
-    display: flex;
+    display: block;
     gap: 2rem;
     position: relative;
 }
@@ -431,6 +583,7 @@ footer a {
 
 #main-content {
     flex: 1;
+    padding: 0;
 }
 
 /* Table of Contents */
@@ -525,7 +678,7 @@ footer a {
 .feature-list li {
     position: relative;
     padding-left: 1.8rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
 }
 
 .feature-list li::before {
@@ -717,43 +870,201 @@ footer a {
 .resource-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}    }        font-size: 1.2rem;    h3 {        }        font-size: 1.5rem;    h2 {        }        padding: 1rem;    .step-box {@media (max-width: 768px) {/* Improve mobile design */}    margin-bottom: 0.4rem;.feature-list li {}    padding: 1rem 1.5rem 1.5rem;.section-content {/* Simplify spacing */}    font-family: 'Consolas', 'Monaco', monospace;    border-radius: 4px;    padding: 0.4rem 0.8rem;    background-color: #f1f3f4;.launch-commands code {}    }        gap: 0.5rem;        flex-direction: column;    .launch-commands {@media (max-width: 768px) {}    margin-top: 0.5rem;    flex-wrap: wrap;    gap: 1rem;    display: flex;.launch-commands {}    padding: 0.15rem 0.4rem;    font-size: 0.7rem;.copy-btn.small {}    margin: 0;.code-snippet.compact {}    }        grid-template-columns: 1fr;    .install-tools-grid {@media (max-width: 768px) {}    margin: 0.5rem 0 1rem;    gap: 0.5rem;    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));    display: grid;.install-tools-grid {}    margin: 1rem 0;.install-command-group {}    padding: 1rem 1.5rem 1.5rem;.installation-highlight {/* Simplified installation boxes */}    margin-bottom: 1.5rem;    border-radius: 8px;    padding: 1rem;    background-color: var(--light-bg);.tool-summary {/* Tool summary box *//* Add these new styles to improve visual clarity */}    opacity: 0.8;    font-size: 0.9rem;    margin: 0;.resource-link p {}    margin-bottom: 0.5rem;    font-weight: 500;    font-size: 1.1rem;.resource-link span {}    margin-bottom: 0.5rem;    color: var(--primary-color);    font-size: 1.5rem;.resource-link i {}    box-shadow: 0 5px 15px rgba(0,0,0,0.1);    transform: translateY(-3px);.resource-link:hover {}    flex-direction: column;    display: flex;    transition: transform 0.2s, box-shadow 0.2s;    color: var(--dark-text);    text-decoration: none;    box-shadow: var(--shadow);    border-radius: 8px;    background-color: white;    padding: 1rem;    min-width: 250px;    flex: 1 1 calc(50% - 1rem);.resource-link {}    margin-top: 1rem;    gap: 1rem;/* Add these new nav styles */
+
+.nav-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.resource-link {
-    flex: 1 1 calc(50% - 1rem);
-    min-width: 250px;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 0 0 4px 4px;
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
     text-decoration: none;
-    color: var(--dark-text);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
+    display: block;
+    text-align: left;
 }
 
-.resource-link:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
-.resource-link i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+nav a i {
+    margin-right: 6px;
 }
 
-.resource-link span {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+@media (max-width: 768px) {
+    .nav-text {
+        display: none;
+    }
+    
+    nav a i {
+        margin-right: 0;
+        font-size: 1.2rem;
+    }
+    
+    nav ul {
+        gap: 0.5rem;
+    }
 }
 
-.resource-link p {
-    margin: 0;
-    font-size: 0.9rem;
+/* Header styling */
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+header h1 {
+    margin-bottom: 0.2rem;
+}
+
+header p {
+    margin-top: 0;
     opacity: 0.8;
 }
