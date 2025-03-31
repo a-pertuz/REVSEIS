@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Repositories</title>
+    <title>Seismic Tools - Documentation Hub</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f4f4f9;
             color: #333;
+            line-height: 1.6;
         }
         header {
             background-color: #333;
@@ -20,47 +21,542 @@
         }
         main {
             padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .repo-list {
+        
+        /* Modified styles */
+        :root {
+            --primary-color: #4b86b4; /* Changed from green to light blue */
+            --secondary-color: #63a4ff;
+            --accent-color: #adcbe3;
+            --light-bg: #f2f9ff;
+            --dark-text: #2d3033;
+        }
+        
+        nav {
+            background-color: #444;
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
             list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             padding: 0;
+            margin: 0;
         }
-        .repo-list li {
-            margin: 1rem 0;
-            padding: 1rem;
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            background-color: #555;
+            border-radius: 3px;
+        }
+        section {
+            margin-bottom: 2.5rem;
+            scroll-margin-top: 4rem;
+        }
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        h3 {
+            color: var(--dark-text);
+        }
+        .installation-guide {
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .repo-list a {
-            text-decoration: none;
-            color: #0073e6;
+        code {
+            background-color: #eaeaea;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #333; /* Improved contrast */
         }
-        .repo-list a:hover {
-            text-decoration: underline;
+        pre {
+            background-color: #eaeaea;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #d0d0d0; /* Added border for better definition */
+        }
+        pre code {
+            background-color: transparent;
+            color: #333;
+        }
+        
+        /* More compact project cards */
+        .project-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+        
+        .project-card {
+            flex: 0 0 calc(33% - 1rem);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-width: 250px;
+        }
+        
+        @media (max-width: 900px) {
+            .project-card {
+                flex: 0 0 100%;
+            }
+        }
+        
+        .project-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem;
+        }
+        
+        .project-header h3 {
+            margin: 0;
+            color: white;
+        }
+        
+        .project-body {
+            padding: 1rem;
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.6em;
+            font-size: 75%;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            margin-right: 0.5rem;
+        }
+        .badge-python {
+            background-color: #3776AB;
+            color: white;
+        }
+        .badge-windows {
+            background-color: #0078D6;
+            color: white;
+        }
+        .badge-linux {
+            background-color: #FCC624;
+            color: black;
+        }
+        
+        /* Dropdowns for sections */
+        .program-section {
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-header h2 {
+            margin: 0;
+            border: none;
+        }
+        
+        .section-header:hover {
+            background-color: #e0e9e4;
+        }
+        
+        .section-content {
+            padding: 0 1rem 1rem;
+            display: none;
+        }
+        
+        .section-content.active {
+            display: block;
+        }
+        
+        .section-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .section-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        .prerequisites {
+            background-color: var(--light-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        footer a {
+            color: #fff;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My GitHub Page</h1>
-        <p>Explore my repositories below:</p>
+        <h1>Seismic Data Processing Tools</h1>
+        <p>Installation guides and documentation for open-source seismic analysis software</p>
     </header>
-    <main>
-        <ul class="repo-list">
-            <li>
-                <h2><a href="https://github.com/your-username/repo1" target="_blank">Repository 1</a></h2>
-                <p>A brief description of Repository 1.</p>
-            </li>
-            <li>
-                <h2><a href="https://github.com/your-username/repo2" target="_blank">Repository 2</a></h2>
-                <p>A brief description of Repository 2.</p>
-            </li>
-            <li>
-                <h2><a href="https://github.com/your-username/repo3" target="_blank">Repository 3</a></h2>
-                <p>A brief description of Repository 3.</p>
-            </li>
+    
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#segyrecover">SEGYRecover</a></li>
+            <li><a href="#velrecover">VELRecover</a></li>
+            <li><a href="#inseis">InSeis</a></li>
         </ul>
+    </nav>
+    
+    <main>
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>This documentation hub provides installation guides and essential information for three specialized seismic data processing tools. Each tool addresses a specific need in seismic data workflows:</p>
+            
+            <div class="project-cards-container">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>SEGYRecover</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><span class="badge badge-python">Python</span> <span class="badge badge-windows">Windows</span></p>
+                        <p>A tool for digitizing scanned seismic sections and converting them to standard SEGY format.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>VELRecover</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><span class="badge badge-python">Python</span> <span class="badge badge-windows">Windows</span></p>
+                        <p>A tool for interpolating 2D seismic velocity data from sparse velocity analysis found in seismic sections.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>InSeis</h3>
+                    </div>
+                    <div class="project-body">
+                        <p><span class="badge badge-python">Python</span> <span class="badge badge-windows">Windows</span> <span class="badge badge-linux">WSL</span></p>
+                        <p>A graphical interface for creating and running Seismic Unix workflows on Windows through WSL.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="prerequisites">
+            <h2>Common Prerequisites</h2>
+            
+            <div class="prerequisites">
+                <h3>Installing Python (Required for all tools)</h3>
+                <div class="step">Download Python from <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a></div>
+                <div class="step">During installation, <strong>check "Add Python to PATH"</strong></div>
+                <div class="step">Click "Install Now" and wait for installation to complete</div>
+                <div class="step">Verify installation by opening Command Prompt and typing: <code>python --version</code></div>
+                
+                <p><strong>Note:</strong> Python 3.12 or higher is recommended for all tools.</p>
+            </div>
+        </section>
+        
+        <!-- Program sections with dropdowns -->
+        <div class="program-section" id="segyrecover">
+            <div class="section-header">
+                <h2>SEGYRecover</h2>
+                <span class="section-toggle">▼</span>
+            </div>
+            <div class="section-content">
+                <p>A Python tool for digitizing scanned seismic sections and converting them to standard SEGY format.</p>
+                
+                <div class="quick-links">
+                    <a href="https://github.com/a-pertuz/segyrecover" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/a-pertuz/segyrecover#features" target="_blank">Features</a>
+                    <a href="https://github.com/a-pertuz/segyrecover/blob/main/TUTORIAL.md" target="_blank">Detailed Tutorial</a>
+                </div>
+                
+                <div class="installation-guide">
+                    <h3>Installation</h3>
+                    <p>Open Command Prompt (search for "cmd" in Windows search) and enter:</p>
+                    <pre><code>pip install segyrecover</code></pre>
+
+                    <p>Alternatively, install directly from GitHub:</p>
+                    <pre><code>pip install git+https://github.com/a-pertuz/segyrecover.git</code></pre>
+                    
+                    <h3>First Run</h3>
+                    <p>To launch SEGYRecover, open Command Prompt and type:</p>
+                    <pre><code>segyrecover</code></pre>
+                    
+                    <p>On first run:</p>
+                    <ul>
+                        <li>You'll be prompted to choose a data storage location</li>
+                        <li>Example files will be copied to your selected location</li>
+                        <li>The application will create the necessary folder structure</li>
+                    </ul>
+                </div>
+                
+                <div class="installation-guide">
+                    <h3>Quick Start Guide</h3>
+                    
+                    <div class="step">
+                        <strong>Load an image</strong>: Click "Load Image" and select a seismic image file (supported formats: TIF, JPG, PNG)
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Set parameters</strong>: Click "Parameters" to configure ROI points, acquisition parameters, and detection settings
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Begin digitization</strong>: Select the region of interest by marking three corner points
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Review detection</strong>: Check the baseline and timeline detection results
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Complete processing</strong>: The application will extract amplitudes, process data, and create a SEGY file
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="program-section" id="velrecover">
+            <div class="section-header">
+                <h2>VELRecover</h2>
+                <span class="section-toggle">▼</span>
+            </div>
+            <div class="section-content">
+                <p>A tool for interpolating 2D seismic velocity data from sparse velocity analysis found in seismic sections.</p>
+                
+                <div class="quick-links">
+                    <a href="https://github.com/a-pertuz/velrecover" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/a-pertuz/velrecover#overview" target="_blank">Overview</a>
+                </div>
+                
+                <div class="installation-guide">
+                    <h3>Installation</h3>
+                    
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Python 3.12 or higher</li>
+                        <li>Required packages: PySide6, NumPy, pandas, appdirs, matplotlib, seisio</li>
+                    </ul>
+                    
+                    <h4>Using pip</h4>
+                    <pre><code>pip install velrecover</code></pre>
+                    
+                    <h4>From Source</h4>
+                    <pre><code>pip install git+https://github.com/a-pertuz/velrecover.git</code></pre>
+                    
+                    <h3>Launching VELRecover</h3>
+                    <p>After installation, launch the application by typing:</p>
+                    <pre><code>velrecover</code></pre>
+                </div>
+                
+                <div class="installation-guide">
+                    <h3>Quick Start Guide</h3>
+                    
+                    <h4>First Run Setup</h4>
+                    <p>When you run VELRecover for the first time:</p>
+                    <ul>
+                        <li>You'll be prompted to choose a data storage location</li>
+                        <li>Example files will be copied to your selected location</li>
+                        <li>The application will create the necessary folder structure</li>
+                    </ul>
+                    
+                    <h4>Step-by-Step Workflow</h4>
+                    <div class="step">
+                        <strong>Load Velocity Data</strong>: Click "Load Text File" and select a velocity text file with CDP, TWT, Velocity columns
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Load SEGY File</strong>: Click "Load SEGY File" to provide spatial context for interpolation
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Run Interpolation</strong>: Click "Interpolate" to process the data and fill gaps between sparse velocity picks
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Apply Smoothing (Optional)</strong>: Enter a Gaussian blur value and click "Apply Gaussian Blur"
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Export Results</strong>: Save your data in text or binary format using the export buttons
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="program-section" id="inseis">
+            <div class="section-header">
+                <h2>InSeis: Seismic Unix Workflow Manager</h2>
+                <span class="section-toggle">▼</span>
+            </div>
+            <div class="section-content">
+                <p>A graphical interface for creating and running Seismic Unix workflows on Windows through WSL.</p>
+                
+                <div class="quick-links">
+                    <a href="https://github.com/a-pertuz/inseis" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/a-pertuz/inseis#features" target="_blank">Features</a>
+                </div>
+                
+                <div class="installation-guide">
+                    <h3>Installation Prerequisites</h3>
+                    
+                    <h4>1. Install Windows Subsystem for Linux (WSL)</h4>
+                    <p>Open Command Prompt as Administrator and run:</p>
+                    <pre><code>wsl --install</code></pre>
+                    <p>After installation completes, restart your computer.</p>
+                    
+                    <h4>2. Install Seismic Unix in WSL</h4>
+                    <p>Open WSL and run the installation script:</p>
+                    <pre><code>bash -c "$(wget -qO- https://gist.githubusercontent.com/a-pertuz/2b341bc8af2a37cde820d829f2789d99/raw/install_seismic_unix.sh)"</code></pre>
+                    <p>This script automates the installation of Seismic Unix release 44R28 in Ubuntu.</p>
+                    
+                    <h4>3. Install InSeis</h4>
+                    <p>Open Command Prompt and enter:</p>
+                    <pre><code>pip install inseis</code></pre>
+                    <p>Alternatively, install from GitHub:</p>
+                    <pre><code>pip install git+https://github.com/a-pertuz/inseis.git</code></pre>
+                </div>
+                
+                <div class="installation-guide">
+                    <h3>Quick Start Guide</h3>
+                    
+                    <div class="step">
+                        <strong>Launch InSeis</strong>: Open Command Prompt and type <code>inseis</code>
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Create a workflow</strong>: The main interface displays available processes on the left and your current workflow on the right
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Load data</strong>: Add a data loading process (e.g., "Load SU File") to your workflow
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Add processing steps</strong>: Select processing operations from the available processes list
+                    </div>
+                    
+                    <div class="step">
+                        <strong>Run your workflow</strong>: Click "Run Workflow" to execute all steps in sequence
+                    </div>
+                    
+                    <p><strong>Important note</strong>: Seismic Unix uses <strong>SU</strong> files as its native format. If you need <strong>SEGY</strong> files for external applications, use the "Convert SU to SEGY" utility in the menu bar after processing.</p>
+                </div>
+            </div>
+        </div>
     </main>
+    
+    <footer>
+        <p>© 2023 Alejandro Pertuz - For questions or support, please <a href="https://github.com/a-pertuz">contact me on GitHub</a> or email at apertuz@ucm.es.</p>
+    </footer>
+    
+    <script>
+        // JavaScript for dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            
+            sectionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const toggle = this.querySelector('.section-toggle');
+                    
+                    // Toggle active class
+                    content.classList.toggle('active');
+                    toggle.classList.toggle('active');
+                    
+                    // Open the section if it's the target of a hash link
+                    if (window.location.hash) {
+                        const targetId = window.location.hash.substring(1);
+                        const targetSection = document.getElementById(targetId);
+                        
+                        if (targetSection && targetSection.contains(this)) {
+                            content.classList.add('active');
+                            toggle.classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // Open the section if it's the target of a hash link when page loads
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    const content = targetSection.querySelector('.section-content');
+                    const toggle = targetSection.querySelector('.section-toggle');
+                    
+                    if (content && toggle) {
+                        content.classList.add('active');
+                        toggle.classList.add('active');
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
