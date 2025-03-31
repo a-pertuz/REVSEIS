@@ -1,17 +1,17 @@
-/* Updated Theme Colors - Minimalist Light */
+/* Updated Theme Colors - Dark */
 :root {
-    --primary-color: #4b86b4; /* Original blue for SEGYRecover */
+    --primary-color: #4b86b4; /* Blue for SEGYRecover */
     --secondary-color: #63a4ff; /* Lighter blue */
-    --accent-color: #f0f4f8; /* Very light blue-gray */
-    --bg-color: #f8f9fa; /* Soft off-white background */
-    --card-bg: #ffffff; /* Card background */
-    --dark-text: #2d3748; /* Dark gray for text */
-    --light-text: #4a5568; /* Medium gray for secondary text */
-    --border-color: #e2e8f0; /* Light gray for borders */
-    --shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow */
-    --hover-shadow: 0 4px 6px rgba(0,0,0,0.07); /* Slightly deeper shadow for hover */
-    
-    /* Tool-specific colors */
+    --accent-color: #1e1e2f; /* Dark background */
+    --bg-color: #121212; /* Very dark background */
+    --card-bg: #1f1f2e; /* Slightly lighter dark for cards */
+    --dark-text: #e0e0e0; /* Light gray for text */
+    --light-text: #b0b0b0; /* Medium gray for secondary text */
+    --border-color: #2a2a3c; /* Subtle border color */
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Slightly deeper shadow for hover */
+    --badge-bg: #2a2a3c; /* Background for badges */
+    --badge-text: #ffffff; /* Text color for badges */
     --segyrecover-color: #4b86b4; /* Blue */
     --velrecover-color: #4CAF50; /* Green */
     --inseis-color: #9C27B0; /* Purple */
@@ -29,8 +29,8 @@ body {
 
 /* Header and Navigation */
 header {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--dark-text);
     padding: 1.5rem 0;
     text-align: center;
     box-shadow: var(--shadow);
@@ -46,16 +46,18 @@ header h1 {
     margin: 0;
     font-weight: 600;
     font-size: 2rem;
+    color: var(--primary-color);
 }
 
 header p {
     margin: 0.5rem 0 0;
     opacity: 0.9;
     font-weight: 300;
+    color: var(--light-text);
 }
 
 nav {
-    background-color: white;
+    background-color: var(--accent-color);
     padding: 0.5rem 0;
     position: sticky;
     top: 0;
@@ -90,7 +92,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: var(--accent-color);
+    background-color: var(--card-bg);
 }
 
 nav a.active {
@@ -189,6 +191,9 @@ h3 {
 
 .project-header {
     padding: 1rem;
+    color: white;
+    font-weight: 500;
+    font-size: 1.3rem;
 }
 
 .project-header h3 {
@@ -208,16 +213,18 @@ h3 {
 /* Badges */
 .badge {
     display: inline-block;
-    padding: 0.2em 0.5em;
-    font-size: 70%;
-    font-weight: 500;
+    padding: 0.3em 0.8em;
+    font-size: 0.75rem;
+    font-weight: 600;
     line-height: 1;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    border-radius: 4px;
-    margin-right: 0.25rem;
-    margin-bottom: 0.25rem;
+    border-radius: 50px;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .badge-container {
@@ -225,6 +232,19 @@ h3 {
     flex-wrap: wrap;
     gap: 0.25rem;
     margin-bottom: 1rem;
+}
+
+.badge-python {
+    background-color: #3776AB;
+}
+
+.badge-windows {
+    background-color: #0078D6;
+}
+
+.badge-linux {
+    background-color: #FCC624;
+    color: #000;
 }
 
 /* Tool sections */
@@ -320,10 +340,12 @@ button:hover, .copy-btn:hover {
 
 /* Footer styling */
 footer {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--light-text);
     padding: 2rem 0;
     margin-top: 3rem;
+    text-align: center;
+    box-shadow: var(--shadow);
 }
 
 .footer-content {
@@ -338,7 +360,7 @@ footer {
 }
 
 .footer-links a {
-    color: white;
+    color: var(--dark-text);
     text-decoration: none;
     margin: 0 0.75rem;
     transition: opacity 0.2s;
@@ -361,6 +383,41 @@ footer {
 .contact a {
     color: white;
     text-decoration: underline;
+}
+
+/* Code Blocks */
+pre {
+    background-color: var(--card-bg);
+    color: var(--dark-text);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    font-family: 'Consolas', 'Monaco', monospace;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+pre code {
+    background-color: transparent;
+    color: var(--dark-text);
+}
+
+.copy-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+}
+
+.copy-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-1px);
 }
 
 /* Responsive design adjustments */
@@ -398,6 +455,14 @@ footer {
     
     h3 {
         font-size: 1.2rem;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+    }
+
+    .quick-nav-link {
+        padding: 0.5rem 1rem;
     }
 }
 
