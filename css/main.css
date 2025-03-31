@@ -68,24 +68,11 @@ nav a {
     color: #fff;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 3px; /* Add rounded corners */
-    transition: background-color 0.3s, color 0.3s;
 }
 
 nav a:hover {
-    background-color: var(--secondary-color); /* Brighter hover background */
-    color: #fff; /* Ensure text remains white */
-}
-
-nav a.active {
-    background-color: var(--primary-color); /* Highlight selected menu item */
-    font-weight: bold;
-    color: white;
-}
-
-/* Improve hover and selected state for navigation bar */
-nav a.active:hover {
-    background-color: var(--secondary-color); /* Slightly brighter on hover */
+    background-color: #555;
+    border-radius: 3px;
 }
 
 nav a i {
@@ -176,8 +163,8 @@ h3 {
 }
 
 .project-card:hover {
-    transform: translateY(-5px); /* Slightly more pronounced lift */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Stronger shadow */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .project-header {
@@ -299,15 +286,13 @@ h3 {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     text-decoration: none;
-    color: var(--dark-text); /* Ensure good contrast */
+    color: #333;
     display: inline-block;
     font-size: 0.9rem;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .quick-links a:hover {
-    background-color: var(--hover-bg); /* Subtle hover effect */
-    color: var(--primary-color); /* Match primary theme */
+    background-color: #e0e0e0;
 }
 
 /* Quick navigation in overview */
@@ -370,32 +355,20 @@ pre code {
 .copy-btn {
     background-color: var(--primary-color);
     color: white;
-    border: none; /* Remove white borders */
+    border: none;
     border-radius: 4px;
     padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
 }
 
-.copy-btn:hover {
-    background-color: var(--secondary-color); /* Brighter hover effect */
-    transform: translateY(-2px); /* Subtle lift effect */
-}
-
-.copy-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+copy-btn:hover {
+    background-color: var(--secondary-color);
 }
 
 .copy-btn.small {
     font-size: 0.7rem;
     padding: 0.15rem 0.4rem;
-}
-
-.copy-btn.small:hover {
-    background-color: var(--secondary-color); /* Brighter hover effect */
-    transform: translateY(-2px); /* Subtle lift effect */
 }
 
 /* Installation highlighted section */
@@ -548,9 +521,8 @@ pre code {
 }
 
 .back-link:hover {
-    background-color: var(--secondary-color);
-    color: white;
-    text-decoration: none;
+    background-color: var(--accent-color);
+    color: var(--dark-text);
 }
 
 .back-link i {
@@ -745,43 +717,6 @@ footer a {
     color: #fff;
 }
 
-/* Enhanced footer styling */
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.footer-links {
-    margin-bottom: 1rem;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: white; /* Brighter hover effect */
-    text-decoration: underline;
-}
-
-.footer-divider {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.copyright, .contact {
-    margin: 0.3rem 0;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.contact a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: underline;
-}
-
 /* Hide breadcrumb navigation */
 .breadcrumb {
     display: none;
@@ -933,6 +868,45 @@ footer a {
 
 .quick-nav-link:nth-child(4) {
     border-left: 3px solid #FF9800;
+}
+
+/* Enhanced footer styling */
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-divider {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.copyright, .contact {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
 }
 
 /* Add styles to fix the text color in tool headers */
