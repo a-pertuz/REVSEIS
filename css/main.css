@@ -1,58 +1,98 @@
 /* main.css */
 
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+/* Paleta de colores */
+:root {
+    --primary-color: #4b86b4; /* Azul para elementos primarios */
+    --secondary-color: #63a4ff; /* Azul claro para elementos secundarios */
+    --accent-color: #2e2e38; /* Gris oscuro para acentos */
+    --bg-color: #fefefe; /* Fondo Sombra sutil */
+    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra en hover */
+    --badge-bg: #e2e8f0; /* Fondo para badges */
+    --badge-text: #2d3748; /* Color de texto para badges */
+    --segyrecover-color: #4b86b4; /* Azul */
+    --velrecover-color: #4CAF50; /* Verde */
+    --inseis-color: #9C27B0; /* Púrpura */
 }
 
+/* General styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+/* Header y navegación */
 header {
-    background-color: #1e1e2f;
+    background-color: var(--accent-color);
     color: white;
-    padding: 20px;
+    padding: 1.5rem 0;
     text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2em;
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 header p {
-    margin: 5px 0 0;
-    font-size: 1.2em;
+    margin: 0.5rem 0 0;
+    opacity: 0.9;
+    font-weight: 300;
 }
 
 nav {
-    background-color: #ffffff;
-    border-bottom: 1px solid #e0e0e0;
+    background-color: var(--accent-color);
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.nav-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
 }
 
-nav ul li {
-    margin: 0 15px;
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
 }
 
-nav ul li a {
+nav a {
+    color: white;
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 15px 0;
-    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
-nav ul li a.active {
-    color: #007bff;
+nav a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+nav a.active {
+    color: var(--primary-color);
 }
 
 .main-container {
@@ -64,7 +104,7 @@ nav ul li a.active {
 .main-container .back-link {
     display: inline-block;
     margin-bottom: 20px;
-    color: #007bff;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -72,26 +112,34 @@ nav ul li a.active {
     margin-right: 5px;
 }
 
+/* Secciones */
 section {
     margin-bottom: 40px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow);
 }
 
 section h2 {
     font-size: 2em;
     margin-bottom: 20px;
+    color: var(--primary-color);
 }
 
 .section-header h2 {
     font-size: 1.8em;
-    color: #1e1e2f;
+    color: var(--accent-color);
 }
 
 .program-section {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
+    box-shadow: var(--shadow);
 }
 
 .badge-container {
@@ -105,33 +153,38 @@ section h2 {
     padding: 5px 10px;
     border-radius: 12px;
     font-size: 0.8em;
-    color: white;
+    color: var(--badge-text);
+    background-color: var(--badge-bg);
 }
 
 .badge-python {
-    background-color: #4B8BBE;
+    background-color: var(--segyrecover-color);
+    color: white;
 }
 
 .badge-windows {
     background-color: #00A4EF;
+    color: white;
 }
 
 .badge-linux {
-    background-color: #FCC624;
-    color: #333;
+    background-color: var(--inseis-color);
+    color: white;
 }
 
 .badge-version {
-    background-color: #007bff;
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .badge-license {
-    background-color: #333;
+    background-color: var(--dark-text);
+    color: white;
 }
 
 .quick-links a {
     text-decoration: none;
-    color: #007bff;
+    color: var(--primary-color);
     margin-right: 10px;
 }
 
@@ -145,7 +198,7 @@ section h2 {
 
 .installation-guide .step {
     background-color: #e9ecef;
-    border-left: 4px solid #007bff;
+    border-left: 4px solid var(--primary-color);
     margin-bottom: 20px;
     padding: 10px 15px;
     border-radius: 4px;
@@ -158,10 +211,11 @@ section h2 {
 .workflow-steps .workflow-step h4 {
     font-size: 1.5em;
     margin-bottom: 10px;
+    color: var(--primary-color);
 }
 
 .faq-item {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
     padding: 10px 0;
 }
 
@@ -224,7 +278,7 @@ section h2 {
 }
 
 .copy-btn {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -234,22 +288,47 @@ section h2 {
 }
 
 .copy-btn:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
 }
 
 .footer-content {
-    background-color: #1e1e2f;
+    background-color: var(--accent-color);
     color: white;
     text-align: center;
     padding: 20px;
 }
 
 .footer-content a {
-    color: #007bff;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 .footer-divider {
     color: white;
     margin: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .main-container {
+        padding: 10px;
+    }
+
+    .section-header h2, section h2 {
+        font-size: 1.5em;
+    }
+
+    .workflow-steps .workflow-step h4 {
+        font-size: 1.2em;
+    }
 }
