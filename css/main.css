@@ -1,331 +1,255 @@
-:root {
-    /* Paleta de colores */
-    --primary-color: #4b86b4; /* Azul para elementos primarios */
-    --secondary-color: #63a4ff; /* Azul claro para elementos secundarios */
-    --accent-color: #2e2e38; /* Gris oscuro para acentos */
-    --bg-color: #fefefe; /* Fondo claro */
-    --card-bg: #ffffff; /* Blanco para tarjetas */
-    --dark-text: #2d3748; /* Gris oscuro para texto */
-    --light-text: #4a5568; /* Gris medio para texto secundario */
-    --border-color: #e2e8f0; /* Gris claro para bordes */
-    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra en hover */
-    --badge-bg: #e2e8f0; /* Fondo para badges */
-    --badge-text: #2d3748; /* Color de texto para badges */
-    --segyrecover-color: #4b86b4; /* Azul */
-    --velrecover-color: #4CAF50; /* Verde */
-    --inseis-color: #9C27B0; /* Púrpura */
-}
+/* main.css */
 
+/* General styles */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color);
-    color: var(--dark-text);
-    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-/* Header y navegación */
 header {
-    background-color: var(--accent-color);
+    background-color: #1e1e2f;
     color: white;
-    padding: 1.5rem 0;
+    padding: 20px;
     text-align: center;
-    box-shadow: var(--shadow);
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
 }
 
 header h1 {
     margin: 0;
-    font-weight: 600;
-    font-size: 2rem;
-    color: var(--primary-color);
+    font-size: 2em;
 }
 
 header p {
-    margin: 0.5rem 0 0;
-    opacity: 0.9;
-    font-weight: 300;
-    color: var(--light-text);
+    margin: 5px 0 0;
+    font-size: 1.2em;
 }
 
 nav {
-    background-color: var(--accent-color);
-    padding: 0.5rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow);
-}
-
-.nav-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 15px 0;
+    display: block;
+}
+
+nav ul li a.active {
+    color: #007bff;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-container .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.main-container .back-link i {
+    margin-right: 5px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 1.8em;
+    color: #1e1e2f;
+}
+
+.program-section {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.badge-python {
+    background-color: #4B8BBE;
+}
+
+.badge-windows {
+    background-color: #00A4EF;
+}
+
+.badge-linux {
+    background-color: #FCC624;
+    color: #333;
+}
+
+.badge-version {
+    background-color: #007bff;
+}
+
+.badge-license {
+    background-color: #333;
+}
+
+.quick-links a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.quick-links a i {
+    margin-right: 5px;
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+}
+
+.installation-guide .step {
+    background-color: #e9ecef;
+    border-left: 4px solid #007bff;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.workflow-steps .workflow-step {
+    margin-bottom: 20px;
+}
+
+.workflow-steps .workflow-step h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+}
+
+.faq-answer p,
+.faq-answer ul {
     margin: 0;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+.faq-toggle {
+    font-size: 1.2em;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(180deg);
+}
+
+.reference-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.reference-item {
+    margin-bottom: 20px;
+}
+
+.reference-number {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.citation-block pre {
+    background-color: #f1f1f1;
+    padding: 10px;
     border-radius: 4px;
-    transition: all 0.2s ease;
-    font-weight: 500;
-    font-size: 0.95rem;
-}
-
-nav a:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-nav a.active {
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-/* Contenido principal */
-main {
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Estilo de sección */
-section {
-    margin-bottom: 3rem;
-    padding-bottom: 1rem;
-}
-
-h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 3rem;
-    height: 3px;
-    background-color: var(--primary-color);
-}
-
-/* Tarjetas de proyectos */
-.project-card {
-    flex: 0 0 calc(33% - 1rem);
-    display: flex;
-    flex-direction: column;
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    min-width: 250px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid var(--border-color);
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--hover-shadow);
-}
-
-/* Badges */
-.badge {
-    display: inline-block;
-    padding: 0.3em 0.8em;
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 50px;
-    background-color: var(--badge-bg);
-    color: var(--badge-text);
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid var(--border-color);
-}
-.badge-python {
-    background-color: #3776AB;
-    color: white;
-}
-.badge-windows {
-    background-color: #0078D6;
-    color: white;
-}
-.badge-linux {
-    background-color: #FCC624;
-    color: black;
-}
-
-/* Botones */
-button, .copy-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-}
-
-button:hover, .copy-btn:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-1px);
-}
-
-/* Enlace de retroceso */
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 0;
-    transition: color 0.2s;
-}
-
-.back-link:hover {
-    color: var(--secondary-color);
-}
-
-/* Pie de página */
-footer {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-}
-
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    text-align: center;
-}
-
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 0.75rem;
-    transition: opacity 0.2s;
-}
-
-.footer-links a:hover {
-    opacity: 0.8;
-}
-
-/* Cajas de código */
-pre {
-    background-color: var(--card-bg);
-    color: var(--dark-text);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
-    font-family: 'Consolas', 'Monaco', monospace;
     overflow-x: auto;
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-pre code {
-    background-color: transparent;
-    color: var(--dark-text);
 }
 
 .copy-btn {
-    background-color: var(--primary-color);
+    background-color: #007bff;
     color: white;
     border: none;
+    padding: 10px 20px;
     border-radius: 4px;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    margin-top: 10px;
 }
 
 .copy-btn:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-1px);
+    background-color: #0056b3;
 }
 
-/* Diseño responsivo */
-@media (max-width: 900px) {
-    .project-card {
-        flex: 0 0 100%;
-    }
-    
-    .project-cards-container {
-        gap: 1rem;
-    }
+.footer-content {
+    background-color: #1e1e2f;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-wrap: wrap;
-    }
-    
-    .nav-text {
-        display: none;
-    }
-    
-    nav a i {
-        margin-right: 0;
-        font-size: 1.1rem;
-    }
-    
-    section {
-        margin-bottom: 2rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
-    
-    h3 {
-        font-size: 1.2rem;
-    }
-
-    .project-card {
-        flex: 0 0 100%;
-    }
-
-    .quick-nav-link {
-        padding: 0.5rem 1rem;
-    }
+.footer-content a {
+    color: #007bff;
+    text-decoration: none;
 }
 
-/* Importar la fuente Inter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+.footer-divider {
+    color: white;
+    margin: 0 10px;
+}
