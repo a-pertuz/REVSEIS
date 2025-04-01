@@ -82,5 +82,30 @@
     </main>
     
     <footer id="footer-component"></footer>
+
+    <script>
+        function copyText(button) {
+            const pre = button.previousElementSibling;
+            if (pre) {
+                navigator.clipboard.writeText(pre.textContent.trim())
+                    .then(() => {
+                        const originalText = button.textContent;
+                        button.textContent = 'Copied!';
+                        button.disabled = true;
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.disabled = false;
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy text: ', err);
+                        button.textContent = 'Error!';
+                        setTimeout(() => {
+                            button.textContent = 'Copy';
+                        }, 2000);
+                    });
+            }
+        }
+    </script>
 </body>
 </html>

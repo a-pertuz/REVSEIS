@@ -152,15 +152,30 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
-                // Setup FAQ toggles
+                // Initialize FAQ toggles
                 const faqQuestions = document.querySelectorAll('.faq-question');
                 
                 faqQuestions.forEach(question => {
                     question.addEventListener('click', function() {
                         const faqItem = this.parentElement;
                         faqItem.classList.toggle('active');
+                        
+                        // Close other FAQ items when one is opened
+                        if (faqItem.classList.contains('active')) {
+                            const siblings = Array.from(faqItem.parentElement.children);
+                            siblings.forEach(sibling => {
+                                if (sibling !== faqItem) {
+                                    sibling.classList.remove('active');
+                                }
+                            });
+                        }
                     });
                 });
+                
+                // Open the first FAQ item by default
+                if (document.querySelector('.faq-item')) {
+                    document.querySelector('.faq-item').classList.add('active');
+                }
             }, 500);
         });
     </script>

@@ -240,4 +240,60 @@ function copyToClipboard(button) {
         });
 }
 
+// Enhance FAQ functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait for components to load
+    setTimeout(function() {
+        // Setup FAQ toggles
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            if (question && answer) {
+                question.addEventListener('click', function() {
+                    item.classList.toggle('active');
+                });
+            }
+        });
+        
+        // Add copy buttons to all code blocks that don't have them
+        document.querySelectorAll('pre').forEach(pre => {
+            if (!pre.querySelector('.copy-btn')) {
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-btn';
+                copyBtn.textContent = 'Copy';
+                copyBtn.addEventListener('click', function() {
+                    copyText(this);
+                });
+                pre.appendChild(copyBtn);
+            }
+        });
+        
+        // Add subtle animations to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Highlight active navigation link
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('nav a');
+        
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href').split('#')[0];
+            if (linkPath === currentPath || 
+                (currentPath === 'index.html' && linkPath === 'index.html') || 
+                (currentPath === '' && linkPath === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+    }, 500);
+});
+
 // ...existing code...
