@@ -1,94 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seismic Data Tools</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            background-color: #007bff;
-            padding: 15px;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            margin: 0 15px;
-        }
-        .container {
-            padding-top: 80px;
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #0056b3;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .section {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seismic Tools - Professional</title>
+  <style>
+    /* Fuentes y colores modernos */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #f8f9fa;
+      --accent-color: #28a745;
+      --accent-hover: #218838;
+      --text-color: #333;
+      --bg-color: #ffffff;
+      --border-color: #e0e0e0;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* Reset básico y estilos globales */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+    a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Header y Navegación */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), #0056b3);
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    nav a:hover,
+    nav a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Contenedor Principal */
+    .container {
+      max-width: 900px;
+      margin: 100px auto 40px;
+      padding: 0 20px;
+    }
+
+    /* Tarjetas / Cards */
+    .card {
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    .card p {
+      margin-bottom: 15px;
+    }
+    .card ul {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .card ul li {
+      margin: 8px 0;
+    }
+    .card ul li a {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    .card ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn:hover {
+      background-color: var(--accent-hover);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .container {
+        margin-top: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#segyrecover">SEGYRecover</a>
-        <a href="#velrecover">VELRecover</a>
-        <a href="#inseis">InSeis</a>
+  <header>
+    <h1>Seismic Tools</h1>
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#tools">Tools</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Overview</h2>
+      <p>Open-source utilities for recovering vintage seismic data with a modern, professional approach.</p>
+      <ul>
+        <li><a href="#segy">SEGYRecover</a></li>
+        <li><a href="#vel">VELRecover</a></li>
+        <li><a href="#inseis">InSeis</a></li>
+      </ul>
     </div>
-    
-    <div class="container">
-        <div class="section">
-            <h1>Overview</h1>
-            <p>This documentation hub provides installation guides and essential information for specialized seismic data processing tools.</p>
-            <p><strong>Looking for more information?</strong> Check out our:</p>
-            <p>
-                <a href="#integration" class="btn">Integration Guide</a>
-                <a href="#faq" class="btn">FAQ</a>
-                <a href="#troubleshooting" class="btn">Troubleshooting</a>
-                <a href="#references" class="btn">References</a>
-            </p>
-        </div>
-        
-        <div class="section" id="segyrecover">
-            <h2>SEGYRecover</h2>
-            <p>Python Windows 1.0.0 GPL-3.0</p>
-            <p>A tool for digitizing scanned seismic sections and converting them to standard SEGY format.</p>
-            <a href="#learnmore" class="btn">Learn more →</a>
-        </div>
+    <div class="card">
+      <h2>More Information</h2>
+      <ul>
+        <li><a href="#integration">Integration Guide</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
     </div>
+    <div class="card">
+      <h2>SEGYRecover</h2>
+      <p>A tool for digitizing scanned seismic sections and converting them to the standard SEGY format.</p>
+      <a href="#learn-more" class="btn">Learn more →</a>
+    </div>
+  </div>
 </body>
 </html>
