@@ -1,185 +1,94 @@
-/* Variables para colores y fuentes */
-:root {
-  --primary-color: #0a192f;
-  --secondary-color: #f8f9fa;
-  --accent-color: #64ffda;
-  --accent-light: #a8ffea;
-  --text-color: #ccd6f6;
-  --text-light: #ffffff;
-  --text-dark: #8892b0;
-  --border-color: #233554;
-  --success-color: #28a745;
-  --warning-color: #ffc107;
-  --danger-color: #dc3545;
-  --info-color: #17a2b8;
-  
-  --font-main: 'Inter', sans-serif;
-  --font-code: 'Fira Code', monospace;
-  
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-lg: 0 10px 20px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1);
-  --transition: all 0.3s ease-in-out;
-}
-
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-main);
-  line-height: 1.7;
-  color: var(--text-color);
-  background-color: #0a192f;
-  font-size: 18px;
-  overflow-x: hidden;
-}
-
-/* Header Innovador */
-header {
-  background: linear-gradient(135deg, var(--primary-color), #112240);
-  color: var(--text-light);
-  padding: 3rem 0;
-  text-align: center;
-  border-radius: 0 0 25px 25px;
-  box-shadow: var(--shadow-lg);
-  animation: fadeIn 1s ease-in-out;
-}
-
-header h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-header p {
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: var(--text-dark);
-}
-
-/* Contenedor principal */
-.main-container {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-}
-
-#main-content {
-  background-color: #112240;
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
-  padding: 3rem;
-  overflow-x: hidden;
-}
-
-/* Navegación Moderna */
-nav {
-  background-color: transparent;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 1rem 0;
-  z-index: 1000;
-  transition: var(--transition);
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav li a {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-light);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: var(--transition);
-}
-
-nav li a:hover, nav li a.active {
-  background: var(--accent-color);
-  color: #0a192f;
-}
-
-/* Código Estilizado */
-.code-snippet {
-  position: relative;
-  background-color: #1e1e1e;
-  color: #f8f8f8;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  overflow-x: auto;
-  border: 2px solid var(--border-color);
-  word-wrap: break-word;
-  transition: var(--transition);
-}
-
-.code-snippet:hover {
-  box-shadow: var(--shadow-lg);
-}
-
-.code-snippet code {
-  background: transparent;
-  padding: 0;
-  border: none;
-  display: block;
-  white-space: pre-wrap;
-  font-family: var(--font-code);
-}
-
-.copy-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: var(--accent-color);
-  color: #0a192f;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.copy-btn:hover {
-  background-color: var(--accent-light);
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-/* Media queries para responsive */
-@media (max-width: 768px) {
-  .main-container {
-    padding: 2rem;
-  }
-  
-  #main-content {
-    padding: 2rem;
-  }
-  
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seismic Data Tools</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #007bff;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        .container {
+            padding-top: 80px;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#segyrecover">SEGYRecover</a>
+        <a href="#velrecover">VELRecover</a>
+        <a href="#inseis">InSeis</a>
+    </div>
+    
+    <div class="container">
+        <div class="section">
+            <h1>Overview</h1>
+            <p>This documentation hub provides installation guides and essential information for specialized seismic data processing tools.</p>
+            <p><strong>Looking for more information?</strong> Check out our:</p>
+            <p>
+                <a href="#integration" class="btn">Integration Guide</a>
+                <a href="#faq" class="btn">FAQ</a>
+                <a href="#troubleshooting" class="btn">Troubleshooting</a>
+                <a href="#references" class="btn">References</a>
+            </p>
+        </div>
+        
+        <div class="section" id="segyrecover">
+            <h2>SEGYRecover</h2>
+            <p>Python Windows 1.0.0 GPL-3.0</p>
+            <p>A tool for digitizing scanned seismic sections and converting them to standard SEGY format.</p>
+            <a href="#learnmore" class="btn">Learn more →</a>
+        </div>
+    </div>
+</body>
+</html>
