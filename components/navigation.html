@@ -7,9 +7,35 @@
         <li><a href="segyrecover.html"><i class="fas fa-chart-line"></i>SEGYRecover</a></li>
         <li><a href="velrecover.html"><i class="fas fa-tachometer-alt"></i>VELRecover</a></li>
         <li><a href="inseis.html"><i class="fas fa-layer-group"></i>InSeis</a></li>
-        <li><a href="integration.html"><i class="fas fa-project-diagram"></i>Integration</a></li>
+        <li><a href="workflow-guide.html"><i class="fas fa-project-diagram"></i>Guide</a></li>
         <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        <li><a href="troubleshooting.html"><i class="fas fa-wrench"></i>Troubleshooting</a></li>
         <li><a href="references.html"><i class="fas fa-book"></i>References</a></li>
     </ul>
 </div>
+
+<script>
+    // Direct inline script to handle dropdown toggling
+    function toggleDropdown(event, element) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        const dropdown = element.parentElement;
+        dropdown.classList.toggle('active');
+        
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown').forEach(item => {
+            if (item !== dropdown && item.classList.contains('active')) {
+                item.classList.remove('active');
+            }
+        });
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown.active').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    });
+</script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEGYRecover - Seismic Tools</title>
+    <title>SEGYRecover - REVISEIS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js"></script>
@@ -34,56 +34,407 @@
                             
                             <div class="quick-links">
                                 <a href="https://github.com/a-pertuz/segyrecover" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                                <a href="https://github.com/a-pertuz/segyrecover/blob/main/TUTORIAL.md" target="_blank"><i class="fas fa-book-open"></i> Tutorial</a>
-                                <a href="troubleshooting.html" target="_blank"><i class="fas fa-wrench"></i> Troubleshooting</a>
                             </div>
                         </div>
                         
-                        <h3 id="segyrecover-features">Features</h3>
-                        <ul class="feature-list">
+
+                        
+                        
+                     <div class="installation-guide" id="segyrecover-quickstart">
+                        <h4>Features</h4>
+                        <ul>
                             <li><strong>Digitization of seismic images</strong> - Convert paper/raster seismic sections into SEGY files compatible with modern interpretation software</li>
                             <li><strong>User-friendly GUI</strong> - Simple interface for the entire digitization workflow</li>
                             <li><strong>Perspective correction</strong> - Handles skewed or distorted scanned images</li>
                             <li><strong>Automatic trace line detection</strong> - Identifies vertical trace lines using common image processing techniques</li>
-                            <li><strong>Timeline detection and removal</strong> - Detects and removes horizontal time markers while preserving data</li>
+                            <li><strong>Timeline detection and removal</strong> - Detects and removes horizontal time markers while preserving amplitude information</li>
                             <li><strong>Amplitude extraction</strong> - Converts pixel density to seismic amplitude values</li>
                             <li><strong>Frequency filtering</strong> - Apply bandpass filters to clean up digitized data</li>
                             <li><strong>Geospatial referencing</strong> - Associates traces with real-world coordinates</li>
                         </ul>
-                        
-                        <div class="installation-guide" id="segyrecover-quickstart">
-                            <h3>Quick Start Guide</h3>
-                            
-                            <div class="step">
-                                <strong>Load an image</strong>: Click "Load Image" and select a seismic image file (supported formats: TIF, JPG, PNG)
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Set parameters</strong>: Click "Parameters" to configure ROI points, acquisition parameters, and detection settings
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Begin digitization</strong>: Select the region of interest by marking three corner points
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Review detection</strong>: Check the baseline and timeline detection results
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Complete processing</strong>: The application will extract amplitudes, process data, and create a SEGY file
-                            </div>
-                            
-                            <h4>File Structure</h4>
-                            <p>SEGYRecover uses the following folder structure:</p>
-                            <ul>
-                                <li><strong>IMAGES/</strong> - Store input seismic images</li>
-                                <li><strong>GEOMETRY/</strong> - Store .geometry files with trace coordinates</li>
-                                <li><strong>LOG/</strong> - Store log files</li>
-                                <li><strong>ROI/</strong> - Store region of interest points</li>
-                                <li><strong>PARAMETERS/</strong> - Store processing parameters</li>
-                                <li><strong>SEGY/</strong> - Store output SEGY files</li>
+                    
+                                                
+                        <h4>File Structure</h4>
+                        <ul>
+                            <li><strong>IMAGES/</strong> - Store input seismic images</li>
+                            <li><strong>GEOMETRY/</strong> - Store .geometry files with trace coordinates</li>
+                            <li><strong>LOG/</strong> - Store log files</li>
+                            <li><strong>ROI/</strong> - Store region of interest points</li>
+                            <li><strong>PARAMETERS/</strong> - Store processing parameters</li>
+                            <li><strong>SEGY/</strong> - Store output SEGY files</li>
+                        </ul>
+
+                        <h4>Quick Start Guide</h4>                            
+                        <ul>
+                            <li><strong>Load an image</strong>: Click "Load Image" and select a seismic image file (supported formats: TIF, JPG, PNG).</li>
+                            <li><strong>Set parameters</strong>: Click "Parameters" to configure ROI points, acquisition parameters, and detection settings.</li>
+                            <li><strong>Begin digitization</strong>: Select the region of interest by marking three corner points.</li>
+                            <li><strong>Review detection</strong>: Check the baseline and timeline detection results.</li>
+                            <li><strong>Complete processing</strong>: The application will extract amplitudes, process data, and create a SEGY file.</li>
+                        </ul>
+                    </div>
+
+                        <!-- Unified Tutorial Section -->
+                        <h3 id="detailed-tutorial">Detailed Tutorial</h3>
+
+                        <div class="toc-container">
+                            <ul class="toc-list">
+                                <li><a href="#preparation">Preparation</a></li>
+                                <li><a href="#step1-loading">Loading an Image</a></li>
+                                <li><a href="#step2-parameters">Setting Parameters</a></li>
+                                <li><a href="#step3-roi">Selecting Region of Interest</a></li>
+                                <li><a href="#step4-processing">Processing</a></li>
+                                <li><a href="#step5-results">Results</a></li>
+                                <li><a href="#troubleshooting">Troubleshooting</a></li>
                             </ul>
+                        </div>
+                        
+                        <div class="tutorial-section" id="preparation">
+                            <h4><i class="fas fa-clipboard-list"></i> Preparation</h4>
+                            
+                            <p>Before beginning the digitization process:</p>
+                            
+                            <div class="info-box">
+                                <h4>1. Organize your files</h4>
+                                <ul>
+                                    <li>Place all seismic image files you want to digitize in the <code>IMAGES</code> folder</li>
+                                    <li>Put corresponding geometry files in the <code>GEOMETRY</code> folder</li>
+                                    <li>Ensure geometry files have the same base name as the image files with a <code>.geometry</code> extension</li>
+                                </ul>
+                                
+                                <h4>2. Check supported formats</h4>
+                                <ul>
+                                    <li>Image files: TIF, JPG, PNG</li>
+                                    <li>Geometry files: Text files with CDP, X, Y coordinates (see format below)</li>
+                                </ul>
+                                
+                                <h4>3. Verify image quality</h4>
+                                <ul>
+                                    <li>Images should have clear trace lines and time markers</li>
+                                    <li>Higher resolution images generally yield better results</li>
+                                    <li>Minimal annotations overlapping the seismic data is preferable</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tutorial-section" id="step1-loading">
+                            <h4><i class="fas fa-file-image"></i> Step 1: Loading an Image</h4>
+                            
+                            <div class="steps-container">
+                                <ol>
+                                    <li>Launch SEGYRecover by running <code>segyrecover</code></li>
+                                    <li>Click the "Load Image" button</li>
+                                    <li>Select your seismic image file (supported formats: TIF, JPG, PNG)</li>
+                                </ol>
+                                
+                                <p>Two windows will appear:</p>
+                                <ul>
+                                    <li><strong>Seismic Section Image</strong>: Displays the loaded image</li>
+                                    <li><strong>Seismic Line Location</strong>: Shows the geometry data if available</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-box info-box--warning">
+                                <p><i class="fa-solid fa-triangle-exclamation"></i> <strong>Note</strong>: SEGYRecover looks for a corresponding geometry file in the GEOMETRY folder. The geometry file should have the same base name as your image with a .geometry extension.</p>
+                            </div>
+                            
+                            
+                                <h4>Geometry File Format</h4>
+                                <p>The geometry file should contain CDP (Common Depth Point) numbers and their corresponding X,Y coordinates in UTM format. The first and last CDP point for a seismic lines are needed in order to have a georeferenced SEGY file.</p>
+                                <div class="code-snippet">
+                                    <code>CDP_NUMBER X_COORDINATE Y_COORDINATE</code>
+                                </div>
+                                
+                                <p>For example:</p>
+                                <div class="code-snippet">
+                                    <code>100 500000.0 4500000.0
+101 500025.0 4500020.0
+102 500050.0 4500040.0
+</code>
+                                </div>
+                        </div>
+                        
+                        <div class="tutorial-section" id="step2-parameters">
+                            <h4><i class="fas fa-sliders-h"></i> Step 2: Setting Parameters</h4>
+                            
+                             <p>In this step, you'll configure how the software interprets your seismic image. You'll define which parts of the image correspond to which traces and times, and set processing parameters.</p>
+                            
+                            <div class="steps-container">
+                                <ol>
+                                    <li>Click the "Parameters" button to open the parameter dialog</li>
+                                    <li>Set the following parameters in each section</li>
+                                </ol>
+                            </div>
+                            
+                            <h4>ROI Points</h4>
+                            <p>These define the mapping between image pixels and seismic trace/time coordinates:</p>
+                            <ul>
+                                <li><strong>P1 (Top Left)</strong>: Set Trace number and TWT (Two-Way Time) value</li>
+                                <li><strong>P2 (Top Right)</strong>: Set Trace number and TWT value</li>
+                                <li><strong>P3 (Bottom Left)</strong>: Set Trace number and TWT value</li>
+                            </ul>
+                            
+                            <div class="info-box info-box--example">
+                                <p><i class="fas fa-lightbulb"></i> <strong>Example:</strong> If your seismic image shows:</p>
+                                <ul>
+                                    <li>Top left corner (P1): Trace 100 at 0 ms</li>
+                                    <li>Top right corner (P2): Trace 500 at 0 ms</li>
+                                    <li>Bottom left corner (P3): Trace 100 at 3000 ms</li>
+                                </ul>
+                                
+                                <p>This creates a coordinate system where:</p>
+                                <ul>
+                                    <li>Horizontally: 400 traces (from 100 to 500)</li>
+                                    <li>Vertically: 3000 ms of seismic data</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="info-box info-box--note">
+                                <p><i class="fas fa-info-circle"></i> <strong>Note</strong>: For data above datum, you can use negative time values (e.g., -200 ms)</p>
+                            </div>
+                            
+                            <h4>Acquisition Parameters</h4>
+                            <ul>
+                                <li><strong>Sample Rate (ms)</strong>: Time between data points (common values: 1, 2, or 4 ms)</li>
+                                <li><strong>Frequency Band (Hz)</strong>: Four values that define the bandpass filter:
+                                    <ul>
+                                        <li>F1: Start cutting off below this frequency</li>
+                                        <li>F2: Keep everything above this frequency</li>
+                                        <li>F3: Keep everything below this frequency</li>
+                                        <li>F4: Start cutting off above this frequency</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                            <div class="info-box info-box--example">
+                                <p><i class="fas fa-lightbulb"></i><strong> Common values:</strong></p>
+                                <ul>
+                                    <li>For vintage seismic data: F1=8, F2=12, F3=60, F4=80</li>
+                                    <li>For modern data: F1=3, F2=5, F3=80, F4=100</li>
+                                </ul>
+                            </div>
+                            
+                            <h4>Detection Parameters</h4>
+                            <ul>
+                                <li><strong>TLT (Traceline Thickness)</strong>: Width of vertical trace lines in pixels</li>
+                                <li><strong>HLT (Timeline Thickness)</strong>: Width of horizontal time lines in pixels</li>
+                            </ul>
+                            
+                            <div class="info-box info-box--example">
+                                <p><i class="fas fa-lightbulb"></i><strong> Starting values:</strong></p>
+                                <ul>
+                                    <li><strong>TLT</strong>: Usually 1 pixel (increase for thick traces)</li>
+                                    <li><strong>HLT</strong>: Usually 4-8 pixels (for standard timeline thickness)</li>
+                                </ul>
+                            </div>
+                            
+                            <h4>Advanced Parameters</h4>
+                            <p><em>For most images, you can leave these at default values</em></p>
+                            <div class="toggle-container">
+                                <button class="toggle-button">Show Advanced Parameters</button>
+                                <div class="toggle-content">
+                                    <ul>
+                                        <li><strong>HE (Horizontal Erode)</strong>: Controls how aggressively horizontal features are removed. Higher values remove more.</li>
+                                        <li><strong>BDB (Baseline Detection Beginning)</strong>: Starting row for trace detection, measured from the top edge in pixels.</li>
+                                        <li><strong>BDE (Baseline Detection End)</strong>: Ending row for trace detection, measured from top.</li>
+                                        <li><strong>BFT (Baseline Filter Threshold)</strong>: Controls how strictly the software filters out duplicate traces (percentage, 0-100).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tutorial-section" id="step3-roi">
+                            <h4><i class="fas fa-crop-alt"></i> Step 3: Selecting Region of Interest</h4>
+                            
+                            <p>You'll mark three corners of your seismic image to define the area to be digitized. The software will adjust for any skew or distortion.</p>
+                            
+                            <div class="steps-container">
+                                <ol>
+                                    <li>Click "Begin Digitization" to start the ROI selection</li>
+                                    <li>Use the <strong>magnifier button</strong> <i class="fas fa-search-plus"></i> to zoom in for precision</li>
+                                    <li>Click the "P1" button, then click on the <strong>top-left corner</strong> of your seismic section</li>
+                                    <li>Click the "P2" button, then click on the <strong>top-right corner</strong></li>
+                                    <li>Click the "P3" button, then click on the <strong>bottom-left corner</strong></li>
+                                    <li>The fourth corner will be calculated automatically</li>
+                                    <li>Verify your selection and click "Accept"</li>
+                                </ol>
+                            
+                            <div class="info-box info-box--warning">
+                                <p><i class="fas fa-exclamation-circle"></i> <strong>Important:</strong> The order of point selection matters! Always select P1 → P2 → P3 in that order.</p>
+                                </div>
+                                </div>
+
+                            <div class="info-box info-box--note">
+                                <p><i class="fas fa-info-circle"></i> <strong>Note</strong>: ROI points will be saved and can be automatically reused when digitizing the same section.</p>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-section" id="step4-processing">
+                            <h4><i class="fas fa-cogs"></i> Step 4: Processing</h4>
+                            
+                            <p> After confirming your ROI selection, the software will automatically process the image. You'll need to verify the trace detection results before proceeding.</p>
+                            
+                            <p>SEGYRecover performs these processing steps automatically:</p>
+                            
+                            <div class="process-steps">
+                                <div class="process-step">
+                                    <h4>1. Timeline Detection and Removal</h4>
+                                    <ul>
+                                        <li>Detects horizontal timeline marks</li>
+                                        <li>Removes timelines while preserving amplitude information</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <h4>2. Baseline Detection</h4>
+                                    <ul>
+                                        <li>Identifies vertical trace lines</li>
+                                        <li>A verification window appears showing:
+                                            <ul>
+                                                <li>Original image with baselines</li>
+                                                <li>Detected timelines</li>
+                                                <li>Image with timelines removed</li>
+                                                <li>Debug view of baseline detection</li>
+                                            </ul>
+                                        </li>
+                                        <li>Review the detected baselines (shown in different colors):
+                                            <ul>
+                                                <li><span style="color: red;">Red</span>: Raw detected baselines</li>
+                                                <li><span style="color: lime;">Lime</span>: Final selected baselines</li>
+                                                <li><span style="color: cyan;">Cyan</span> (dashed): Synthetic baselines added to fill gaps</li>
+                                            </ul>
+                                        </li>
+                                        <li>Click "Continue" if the detection is acceptable, or "Restart" to try different parameters</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <h4>3. Amplitude Extraction</h4>
+                                    <ul>
+                                        <li>Extracts amplitude values between detected baselines counting the number of black pixels per row</li>
+                                        <li>Processing methods after raw amplitude extraction:
+                                            <ul>
+                                                <li>Zero-values are assigned a new value equal to -(median) of each trace</li>
+                                                <li>Handles clipped values using Akima interpolation for natural curve restoration</li>
+                                                <li>Smooths the curve with cubic spline interpolation</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <h4>4. Data Processing</h4>
+                                    <ul>
+                                        <li>Resamples to the specified sample rate</li>
+                                        <li>Applies bandpass filtering using the specified frequency band</li>
+                                        <li>Normalizes amplitudes for each trace</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <h4>5. SEGY Creation</h4>
+                                    <ul>
+                                        <li>A "Coordinates Assignment" dialog appears to select the direction of CDPs: increasing or decreasing left to right</li>
+                                        <li>The application interpolates coordinates for all traces</li>
+                                        <li>Creates a standard SEGY file with properly populated headers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tutorial-section" id="step5-results">
+                            <h4><i class="fas fa-check-circle"></i> Step 5: Results</h4>
+                            
+                            <p>When processing is complete, two windows will appear:</p>
+                            <ol>
+                                <li><strong>Digitized SEGY</strong>: Displays the final SEGY section</li>
+                                <li><strong>Average Amplitude Spectrum</strong>: Shows the frequency spectrum of the data. Spikes can be correlated to timelines not being correctly removed</li>
+                            </ol>
+                            
+                            <p>The SEGY file is saved in the SEGY folder with the same base name as the input image.</p>
+                        </div>
+                        
+                        <div class="tutorial-section" id="troubleshooting">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Troubleshooting</h4>
+                            
+                            <h4>Common Issues</h4>
+                            
+                            <div class="issues-container">
+                                <div class="issue-item">
+                                    <h5>Poor timeline detection</h5>
+                                    <ul>
+                                        <li>Try adjusting HLT and HE parameters</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="issue-item">
+                                    <h5>Missing or extra baselines</h5>
+                                    <ul>
+                                        <li>Adjust BDB and BDE to focus on a cleaner part of the image</li>
+                                        <li>Increase BFT to filter out false detections</li>
+                                        <li>Decrease BFT if legitimate baselines are being filtered out</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="issue-item">
+                                    <h5>Noisy or spiky data</h5>
+                                    <ul>
+                                        <li>Adjust frequency filter parameters (F1-F4)</li>
+                                        <li>Try a narrower frequency band</li>
+                                        <li>Check if the selected ROI includes non-seismic elements</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="issue-item">
+                                    <h5>Coordinate assignment issues</h5>
+                                    <ul>
+                                        <li>Ensure geometry file is properly formatted</li>
+                                        <li>Verify CDP numbers are in the correct range</li>
+                                        <li>Make sure X/Y coordinates are in a consistent coordinate system</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <h4>Log Files</h4>
+                            <p>SEGYRecover automatically creates detailed log files for every session. These logs can be extremely helpful for troubleshooting issues:</p>
+                            <ol>
+                                <li><strong>Location</strong>: Log files are stored in the <code>LOG</code> folder within your data directory.</li>
+                                <li><strong>Naming</strong>: Each log file is named with a timestamp format <code>segyrecover_YYYYMMDD_HHMMSS.log</code></li>
+                                <li><strong>Contents</strong>: Log files contain:
+                                    <ul>
+                                        <li>Complete console output with timestamps</li>
+                                        <li>Process steps with success/failure indicators</li>
+                                        <li>Error messages and warnings</li>
+                                        <li>Summary statistics of processed data</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <p>If you encounter issues with the software, providing these log files to the developers can help diagnose problems more quickly.</p>
+                            
+                            <h4>Frequently Asked Questions</h4>
+                            
+                            <div class="faq-container">
+                                <div class="faq-item">
+                                    <h5>Why are my traces not being detected correctly?</h5>
+                                    <p>This is usually due to either low contrast in your image or incorrect TLT value. Try:</p>
+                                    <ul>
+                                        <li>Adjusting image contrast before loading</li>
+                                        <li>Changing TLT to match the actual width of trace lines</li>
+                                        <li>Modifying BDB/BDE to focus on a cleaner part of the image</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <h5>How can I improve the quality of the final SEGY file?</h5>
+                                    <p>For best results:</p>
+                                    <ul>
+                                        <li>Start with the highest resolution scan possible</li>
+                                        <li>Experiment with different frequency filter settings</li>
+                                        <li>Make sure time lines are properly detected and removed</li>
+                                        <li>Ensure your ROI selection is precise and covers exactly the area you want</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seismic Tools - Documentation Hub</title>
+    <title>REVISEIS - Documentation Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" defer></script>
@@ -11,29 +11,36 @@
 <body>
     <header id="header-component"></header>
     
-    <div class="mobile-nav-toggle" id="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-    </div>
-    
     <nav id="nav-component"></nav>
     
     <main>
         <div class="main-container">
             <!-- Main Content -->
             <div id="main-content">
-                <section id="overview">
-                    <h2>Overview</h2>
-                    <p>This documentation hub provides installation guides and essential information for three specialized seismic data processing tools. Each tool addresses a specific need in seismic data workflows:</p>
+                <!-- Introduction Section -->
+                <section id="introduction" class="intro-section">
+                    <h2>Welcome to REVISEIS</h2>
+                    <p>REVISEIS helps geologists and geophysicists breathe new life into old seismic data originally recorded on paper. This suite of tools allows you to digitize seismic sections into SEG-Y format, interpolate sparse velocity picks, and enhance vintage seismic data through Seismic Unix processes, making it accessible for modern interpretation.</p>
                     
-                    <div class="quick-links-box">
-                        <p><strong>Looking for more information?</strong> Check out our:</p>
-                        <div class="quick-nav-links">
-                            <a href="integration.html" class="quick-nav-link"><i class="fas fa-project-diagram"></i> Integration Guide</a>
-                            <a href="faq.html" class="quick-nav-link"><i class="fas fa-question-circle"></i> FAQ</a>
-                            <a href="troubleshooting.html" class="quick-nav-link"><i class="fas fa-wrench"></i> Troubleshooting</a>
-                            <a href="references.html" class="quick-nav-link"><i class="fas fa-book"></i> References</a>
-                        </div>
+                    <div class="implementation-guide-box">
+                        <h3><i class="fas fa-map"></i> Learn How to Start Here</h3>
+                        <p>See how to implement REVISEIS in your seismic data recovery workflow:</p>
+                        <ul class="guide-highlights">
+                            <li>Complete data recovery workflows from paper to interpretation</li>
+                            <li>Step-by-step process demonstrations</li>
+                            <li>Integration between all three tools</li>
+                            <li>Real-world examples and applications</li>
+                        </ul>
+                        <a href="workflow-guide.html" class="button-primary">Workflow Implementation Guide <i class="fas fa-arrow-right"></i></a>
                     </div>
+                </section>
+
+
+                
+                <!-- Tool Showcase Section -->
+                <section id="tool-showcase">
+                    <h2>REVISEIS Tools</h2>
+                    <p>Each tool in the REVISEIS suite addresses a specific challenge in the vintage seismic data recovery process:</p>
                     
                     <div class="project-cards-container">
                         <div class="project-card">
@@ -79,16 +86,28 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                    
                 
-                <section id="prerequisites" class="installation-highlight">
-                    <h2>Quick Installation Guide</h2>
+                
+                <!-- Installation Section -->
+                <section>
+                    <h2>Installation Guide</h2>
+                    <div class="beginner-note">
+                        <p><i class="fas fa-info-circle"></i> <strong>New to command line?</strong> Don't worry! We'll explain each step. The command line is just a text interface where you type commands instead of clicking buttons.</p>
+                    </div>
+                    
                     <div class="installation-steps">
                         <div class="step-box">
                             <h3><i class="fab fa-python"></i> Step 1: Install Python</h3>
-                            <p>Download and install Python from <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a></p>
+                            <p>Python is the programming language that powers our tools. You need to install it first:</p>
+                            <ol>
+                                <li>Go to <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a> and click the "Download Python" button</li>
+                                <li>Run the downloaded file</li>
+                                <li>Make sure to check the box that says "Add Python to PATH" during installation</li>
+                            </ol>
                             <div class="important-note">
-                                <strong>Important:</strong> During installation, check "Add Python to PATH" ✓
+                                <strong>What does "Add Python to PATH" do?</strong><br>
+                                It allows you to run Python commands from any folder on your computer. This is essential for our tools to work properly.
                             </div>
                         </div>
                         
@@ -100,10 +119,9 @@
                                     <code>pip install segyrecover velrecover inseis</code>
                                     <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                                 </div>
-                                <small>Install all tools at once with a single command</small>
                             </div>
                             
-                            <p>Or install them individually:</p>
+                            <p>Or install the tools individually:</p>
                             <div class="install-tools-grid">
                                 <div class="code-snippet compact">
                                     <code>pip install segyrecover</code>
@@ -145,32 +163,37 @@
                                 <code>bash -c "$(wget -qO- https://gist.githubusercontent.com/a-pertuz/2b341bc8af2a37cde820d829f2789d99/raw/install_seismic_unix.sh)"</code>
                                 <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                             </div>
-                            <p>This script will automatically install Seismic Unix. The process may take 10-15 minutes.</p>
+                            <p>This script will automatically install Seismic Unix. The process may take several minutes.</p>
+                            <div class="important-note">
+                                <strong>Important:</strong> During installation <b>accept Seismic Unix license</b> agreement when prompted. <br>
+                                If you don't accept, the installation will fail and you won't be able to use InSeis.
+                            </div>
                         </div>
                         
                         <div class="step-box">
                             <h3><i class="fas fa-play"></i> Step 5: Launch the Tools</h3>
                             <p>Open Command Prompt and run any of these commands:</p>
                             <div class="launch-commands">
-                                <div class="launch-item">
+                                <div class="code-snippet compact">
                                     <code>segyrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
                                 </div>
-                                <div class="launch-item">
+                                <div class="code-snippet compact">
                                     <code>velrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
                                 </div>
-                                <div class="launch-item">
+                                <div class="code-snippet compact">
                                     <code>inseis</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
                                 </div>
                             </div>
                             <p>On first run, each tool will guide you through selecting a data directory.</p>
                         </div>
                     </div>
                 </section>
+                   
                 
-                <!-- Tool components will be loaded here -->
-                <!-- <div id="segyrecover-component"></div> -->
-                <!-- <div id="velrecover-component"></div> -->
-                <!-- <div id="inseis-component"></div> -->
+               
             </div>
         </div>
     </main>

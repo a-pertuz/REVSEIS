@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Implementation Guide - REVISEIS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header id="header-component"></header>
+    
+    <nav id="nav-component"></nav>
+    
+    <main>
+        <div class="main-container">
+            <div id="main-content">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Documentation Hub</a>
+                
+                <section id="workflow-guide">
+                    <h2>Workflow Implementation Guide</h2>
+                    
+                    <div class="guide-intro">
+                        <p class="lead-text">This guide demonstrates how to implement REVISEIS tools in your seismic data recovery workflows. Learn how to take your vintage seismic data from paper to modern digital formats ready for interpretation.</p>
+                    </div>
+                    
+
+                        
+                        <p>The REVISEIS workflow consists of three main stages, each handled by a dedicated tool:</p>
+                        
+                        <div class="workflow-diagram-full">
+                            <img src="images/complete-workflow.png" alt="Complete workflow diagram" class="full-width-image">
+                        </div>
+                        
+                        <div class="tool-explained-box">
+                            <h4>Stage 1: Digitization with SEGYRecover</h4>
+                            <p>Convert paper seismic sections or raster images to standard SEGY format, preserving amplitude and spatial information.</p>
+                            <div class="tool-illustration">
+                                <div class="illustration-before">
+                                    <span>Input: Scanned Image</span>
+                                    <img src="images/segyrecover-before.jpg" alt="Paper seismic section">
+                                </div>
+                                <div class="illustration-arrow">→</div>
+                                <div class="illustration-after">
+                                    <span>Output: Digital SEGY</span>
+                                    <img src="images/segyrecover-after.jpg" alt="Digital seismic section">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-explained-box">
+                            <h4>Stage 2: Velocity Modeling with VELRecover</h4>
+                            <p>Create complete velocity fields from sparse velocity picks using interpolation algorithms.</p>
+                            <div class="tool-illustration">
+                                <div class="illustration-before">
+                                    <span>Input: Sparse Points</span>
+                                    <img src="images/velrecover-before.jpg" alt="Sparse velocity points">
+                                </div>
+                                <div class="illustration-arrow">→</div>
+                                <div class="illustration-after">
+                                    <span>Output: Complete Model</span>
+                                    <img src="images/velrecover-after.jpg" alt="Complete velocity model">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-explained-box">
+                            <h4>Stage 3: Processing with InSeis</h4>
+                            <p>Apply Seismic Unix processing algorithms to enhance, filter, and analyze the digitized data.</p>
+                            <div class="tool-illustration">
+                                <div class="illustration-before">
+                                    <span>Input: Raw Data</span>
+                                    <img src="images/inseis-before.jpg" alt="Raw seismic data">
+                                </div>
+                                <div class="illustration-arrow">→</div>
+                                <div class="illustration-after">
+                                    <span>Output: Processed Data</span>
+                                    <img src="images/inseis-after.jpg" alt="Processed seismic data">
+                                </div>
+                            </div>
+                        </div>
+                    
+                    
+            </div>
+        </div>
+    </main>
+    
+    <footer id="footer-component"></footer>
+</body>
+</html>

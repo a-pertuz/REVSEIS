@@ -195,8 +195,6 @@ function debounce(func, wait) {
 // Add detection for current page to highlight the right navigation item
 
 document.addEventListener('DOMContentLoaded', function() {
-    // ...existing code...
-    
     // Highlight current page in navigation
     setTimeout(function() {
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
@@ -296,4 +294,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 500);
 });
 
-// ...existing code...
+// Add mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    
+    if (mobileMenuToggle && mainNav) {
+      mobileMenuToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        // Optional: toggle icon between hamburger and X
+        const icon = this.querySelector('i');
+        if (icon.classList.contains('fa-bars')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+    }
+  }, 500);
+});
+
+// Add this to your existing script
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize toggle buttons
+  const toggleButtons = document.querySelectorAll('.toggle-button');
+  
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      this.classList.toggle('active');
+      const content = this.nextElementSibling;
+      
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+      } else {
+        content.style.display = 'block';
+      }
+    });
+  });
+});
