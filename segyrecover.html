@@ -6,334 +6,6 @@
     <title>SEGYRecover - REV-SEIS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        /* Page-specific styles */
-        .sticky-toc {
-            position: sticky;
-            top: 20px;
-            max-height: calc(100vh - 40px);
-            overflow-y: auto;
-            padding-right: 15px;
-        }
-        
-        .toc-list {
-            list-style-type: none;
-            margin-left: 0;
-            padding-left: 0;
-        }
-        
-        .toc-list li {
-            margin-bottom: 10px;
-            border-left: 2px solid var(--light-gray);
-            padding-left: 15px;
-            transition: all 0.2s ease;
-        }
-        
-        .toc-list li:hover {
-            border-left-color: var(--SEGYRecover-color);
-        }
-        
-        .toc-list li a {
-            display: block;
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-        
-        .toc-list li a:hover {
-            color: var(--SEGYRecover-color);
-        }
-        
-        .toc-list li.active {
-            border-left-color: var(--SEGYRecover-color);
-        }
-        
-        .toc-list li.active a {
-            color: var(--SEGYRecover-color);
-        }
-        
-        .tutorial-layout {
-            display: grid;
-            grid-template-columns: 1fr 3fr;
-            gap: 30px;
-        }
-        
-        .tutorial-content {
-            overflow-x: hidden;
-        }
-        
-        .section-divider {
-            margin: 40px 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--light-gray), transparent);
-            border: none;
-        }
-        
-        .screenshot {
-            margin: 20px 0;
-            border: 1px solid var(--light-gray);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .screenshot img {
-            max-width: 100%;
-            display: block;
-        }
-        
-        .caption {
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-        
-        @media (max-width: 1024px) {
-            .tutorial-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .sticky-toc {
-                position: relative;
-                max-height: none;
-                margin-bottom: 30px;
-                padding: 15px;
-                background-color: #f8fafc;
-                border-radius: 8px;
-                border: 1px solid var(--light-gray);
-            }
-            
-            .toc-container h3 {
-                cursor: pointer;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            
-            .toc-container h3:after {
-                content: '\f107';
-                font-family: 'Font Awesome 6 Free';
-                font-weight: 900;
-                transition: transform 0.3s ease;
-            }
-            
-            .toc-container.collapsed h3:after {
-                transform: rotate(-180deg);
-            }
-            
-            .toc-container.collapsed .toc-list {
-                display: none;
-            }
-        }
-        
-        /* Enhanced tutorial styles */
-        .tutorial-section {
-            margin-bottom: 2rem;
-            background-color: white;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-sm);
-            padding: 1.5rem;
-            border-left: 4px solid var(--SEGYRecover-color);
-        }
-        
-        .tutorial-section h4 {
-            display: flex;
-            align-items: center;
-            color: var(--SEGYRecover-color);
-            border-bottom: 1px solid var(--light-gray);
-            padding-bottom: var(--spacing-sm);
-            margin-top: 0;
-        }
-        
-        .tutorial-section h4 i {
-            margin-right: var(--spacing-sm);
-        }
-        
-        .info-box {
-            margin: 1.5rem 0;
-            padding: 1rem;
-            border-radius: 6px;
-            background-color: #f8f9fa;
-            border-left: 4px solid #6c757d;
-        }
-        
-        .info-box--note {
-            border-left-color: #17a2b8;
-            background-color: #e3f4f6;
-        }
-        
-        .info-box--warning {
-            border-left-color: #dc3545;
-            background-color: #f8d7da;
-        }
-        
-        .info-box--tip {
-            border-left-color: #28a745;
-            background-color: #d4edda;
-        }
-        
-        .info-box--example {
-            border-left-color: #fd7e14;
-            background-color: #fff3cd;
-        }
-        
-        .info-box--success {
-            border-left-color: #28a745;
-            background-color: #d4edda;
-        }
-        
-        .steps-container {
-            margin-bottom: 1.5rem;
-        }
-        
-        .steps-container ol {
-            padding-left: 2rem;
-        }
-        
-        .steps-container ol li {
-            margin-bottom: 0.5rem;
-            padding-left: 0.5rem;
-        }
-        
-        .process-steps {
-            margin: 1.5rem 0;
-        }
-        
-        .process-step {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background-color: #f8fafc;
-            border-radius: var(--border-radius-md);
-            border-left: 3px solid var(--SEGYRecover-color);
-        }
-        
-        .process-step h5 {
-            margin-top: 0;
-            color: var(--SEGYRecover-color);
-            font-weight: 600;
-        }
-        
-        /* Toggle button styling */
-        .toggle-button {
-            padding: 0.5rem 1rem;
-            background-color: #e9ecef;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-        
-        .toggle-button:after {
-            content: '\f107';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            transition: transform 0.3s ease;
-        }
-        
-        .toggle-button.active:after {
-            transform: rotate(180deg);
-        }
-        
-        .toggle-content {
-            display: none;
-            padding: 1rem;
-            border: 1px solid #ced4da;
-            border-top: none;
-            border-radius: 0 0 4px 4px;
-        }
-        
-        /* Parameter groups */
-        .parameter-group {
-            margin-bottom: var(--spacing-md);
-            padding: var(--spacing-md);
-            background-color: #f8fafc;
-            border-radius: var(--border-radius-md);
-            border-left: 3px solid var(--SEGYRecover-color);
-        }
-        
-        .parameter-group h5 {
-            color: var(--SEGYRecover-color);
-            margin-top: 0;
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        /* Issues and FAQ styling */
-        .issues-container, .faq-container {
-            margin: 1.5rem 0;
-        }
-        
-        .issue-item, .faq-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background-color: #f8fafc;
-            border-radius: var(--border-radius-md);
-            border-left: 3px solid var(--SEGYRecover-color);
-        }
-        
-        .issue-item h5, .faq-item h5 {
-            margin-top: 0;
-            color: var(--primary-dark);
-            font-weight: 600;
-        }
-        
-        /* Quick jump buttons */
-        .quick-jump {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .quick-jump a {
-            padding: 0.5rem 1rem;
-            background-color: #f1f5f9;
-            border-radius: var(--border-radius-md);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        
-        .quick-jump a:hover {
-            background-color: #e2e8f0;
-            transform: translateY(-2px);
-        }
-        
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 3rem;
-            height: 3rem;
-            background-color: var(--SEGYRecover-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            box-shadow: var(--shadow-md);
-            z-index: 100;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background-color: var(--SEGYRecover-dark);
-        }
-    </style>
     <script src="js/main.js"></script>
 </head>
 <body class="SEGYRecover-page">
@@ -351,7 +23,6 @@
                         <h2>SEGYRecover</h2>
                     </div>
                     <div class="section-content active">
-                        <!-- Tool summary with badges -->
                         <div class="tool-summary">
                             <div class="badge-container">
                                 <span class="badge badge-python">Python</span>
@@ -368,9 +39,7 @@
                         
                         <div class="screenshot" style="max-width: 100%; margin: 1.5rem auto; padding: 10px;">
                             <img src="images/web_segyrecover_intro.png" alt="SEGYRecover Main Interface" style="max-width: 80%; height: auto; display: block; margin: 2rem auto;">
-
-                        <!-- Detailed Tutorial Section with improved structure -->
-                        <h3 id="detailed-tutorial">Detailed Tutorial</h3>
+                        </div>
 
                         <div class="tutorial-layout">
                             <!-- Table of Contents -->
@@ -399,7 +68,6 @@
                                 <div class="tutorial-section" id="quickstart-guide">
                                     <h4><i class="fas fa-play-circle"></i> Quick Start Guide</h4>
                                     
-                                    <div class="info-box info-box--intro">
                                         <h5>Key Features</h5>
                                         <ul>
                                             <li><strong>Digitization of seismic images</strong> - Convert paper/raster seismic sections into SEG-Y files</li>
@@ -410,16 +78,13 @@
                                         </ul>
 
                                     <h5>Basic Workflow</h5>
-                                    <div class="process-steps">
                                         <ol>
-                                            <li><strong>Set Data Directory</strong>: Choose a location for your project data</li>
                                             <li><strong>Load an image</strong>: Select a seismic image file to digitize</li>
                                             <li><strong>Set parameters</strong>: Configure trace-time mapping and processing settings</li>
                                             <li><strong>Select ROI</strong>: Mark the region of interest on the image</li>
                                             <li><strong>Process</strong>: Run digitization and review results</li>
                                             <li><strong>Save</strong>: Output a standard SEG-Y file ready for interpretation</li>
                                         </ol>
-                                    </div>
                                 </div>
                                     
                                 
@@ -428,13 +93,11 @@
                                     
                                     <p>When you run SEGYRecover for the first time, you'll need to set up your data directory:</p>
                                     
-                                    <div class="steps-container">
                                         <ol>
                                             <li>The First Run Dialog will appear asking you to select a location for your data</li>
                                             <li>Choose a location with plenty of disk space - this is where all your images, parameters, and output files will be stored</li>
                                             <li>Click "OK" to confirm your selection</li>
                                         </ol>
-                                    </div>
                                     
                                     <div class="screenshot" style="max-width: 400px; margin: 1.5rem auto;">
                                         <img src="images/sr_firstrun.png" alt="SEGYRecover First Run Setup Dialog" style="display: block; width: 100%; margin: 0 auto;">
@@ -501,7 +164,6 @@
                                 <div class="tutorial-section" id="step1-loading">
                                     <h4><i class="fas fa-file-image"></i> Step 1: Loading an Image</h4>
                                     
-                                    <div class="steps-container">
                                         <ol>
                                             <li>From the Welcome screen, click the <b>"Start New Line"</b> button</li>
                                             <li>Click the <b>"Load Image"</b> button to select your seismic section file</li>
@@ -509,7 +171,6 @@
                                             <li>The image will be loaded and displayed in the preview area along with the coordinates file</li>
                                             <li>Once the image is loaded, click "Next" to proceed to the Parameters tab</li>
                                         </ol>
-                                    </div>
                                     
                                     <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
                                         <img src="images/sr_load.png" alt="SEGYRecover Load Image Tab" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
@@ -528,7 +189,6 @@
                                     
                                     <p>In this step, you'll configure how the software interprets your seismic image by defining trace and time coordinates, and setting processing parameters.</p>
                                     
-                                    <div class="steps-container">
                                         <ol>
                                             <li>After loading your image, you'll be automatically taken to the Parameters tab</li>
                                             <li>If parameters were previously saved for this image, they will be loaded automatically</li>
@@ -536,7 +196,6 @@
                                             <li>Click <b>"Save Parameters"</b> to store your settings</li>
                                             <li>Click <b>"Next"</b> to proceed to the ROI Selection tab</li>
                                         </ol>
-                                    </div>
                                     
                                     <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
                                         <img src="images/sr_parameter.png" alt="SEGYRecover Parameter Settings Interface" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
@@ -609,7 +268,6 @@
                                     
                                     <p>In this step, you'll mark three corners of your seismic image to define the area to be digitized. The software will correct for any skew or distortion in the image.</p>
                                     
-                                    <div class="steps-container">
                                         <ol>
                                             <li>After setting parameters, you'll be automatically taken to the ROI Selection tab</li>
                                             <li>Your image will be displayed with a prompt to select three corner points</li>
@@ -629,7 +287,6 @@
                                             <li>Verify the result and click "Accept"</li>
                                             <li>Click "Next" to proceed to the Digitization tab</li>
                                         </ol>
-                                    </div>
 
                                     <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
                                         <img src="images/sr_roi.png" alt="Region of Interest Selection" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
@@ -648,15 +305,13 @@
                                     
                                     <p>After confirming your ROI selection, you'll be taken to the Digitization tab where you can start the automatic processing of your image.</p>
                                     
-                                    <div class="steps-container">
                                         <ol>
                                             <li>Click the "Start Digitization" button to begin processing</li>
                                             <li>Monitor the console for information on each processing step</li>
                                             <li>When prompted for coordinate assignment, select the correct CDP direction</li>
                                             <li>Once processing is complete, you can verify the processing steps in the visualization window</li>
                                         </ol>
-                                    </div>
-                                    
+                                                                        
                                     <p>SEGYRecover performs these processing steps automatically:</p>                                   
                                         
                                     <h5>1. Timeline Detection and Removal</h5>
@@ -740,14 +395,12 @@
                                     
                                     <p>When processing is complete, you'll be taken to the Results tab where you can view and analyze your digitized SEG-Y data.</p>
                                     
-                                    <div class="steps-container">
                                         <ol>
                                             <li>The digitized SEG-Y section is displayed in the main view</li>
                                             <li>An amplitude spectrum graph shows the frequency content of the data</li>
                                             <li>Check the console for a summary of the digitization results</li>
                                             <li>Click "Start New Line" if you want to process another image</li>
                                         </ol>
-                                    </div>
                                     
                                     <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
                                         <img src="images/sr_results.png" alt="SEGYRecover Processed Results View" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
@@ -784,111 +437,81 @@
                                 </div>
                                 
                                 <div class="tutorial-section" id="troubleshooting">
-                                    <h4><i class="fas fa-exclamation-triangle"></i> Troubleshooting</h4>
-                                    
-                                    <h4>Common Issues</h4>
-                                    
-                                    <div class="issues-container">
-                                        <div class="issue-item">
-                                            <h5>Poor timeline detection</h5>
-                                            <ul>
-                                                <li>Increase HE (Horizontal Erode) parameter if timelines aren't being fully removed</li>
-                                                <li>Make sure your ROI selection is not rotated and correctly situates timelines across the horizontal axis</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="issue-item">
-                                            <h5>Missing or extra baselines</h5>
-                                            <ul>
-                                                <li>Adjust TLT (Trace Line Thickness) to match the width of vertical traces in your image</li>
-                                                <li>Modify BDB and BDE to focus detection on a cleaner part of the image</li>
-                                                <li>Increase BFT to filter out false detections</li>
-                                                <li>Decrease BFT if legitimate baselines are being filtered out</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="issue-item">
-                                            <h5>Noisy or spiky data</h5>
-                                            <ul>
-                                                <li>Adjust frequency filter parameters (F1-F4) to better match your data</li>
-                                                <li>Try a narrower frequency band to reduce noise</li>
-                                                <li>Check if the selected ROI includes non-seismic elements like annotations or color bars</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="issue-item">
-                                            <h5>Coordinate assignment issues</h5>
-                                            <ul>
-                                                <li>Ensure your geometry file is properly formatted with CDP, X, Y values</li>
-                                                <li>Verify that at least the first and last CDP numbers in the geometry file match those in your parameters</li>
-                                                <li>Make sure X/Y coordinates are in a consistent coordinate system (UTM recommended)</li>
-                                                <li>Check that the first and last CDP points cover the extent of your seismic line</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="issue-item">
-                                            <h5>Application crashes or freezes</h5>
-                                            <ul>
-                                                <li>Check if your image is very large (>100 MB) which may require more memory</li>
-                                                <li>Ensure you have enough disk space in your data directory</li>
-                                                <li>Try restarting the application </li>
-                                                <li>Check log files or console for specific error messages</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    
-                                    <h4>Log Files</h4>
-                                    <p>SEGYRecover automatically creates detailed log files for every session. These logs can be extremely helpful for troubleshooting issues:</p>
-                                    <ol>
-                                        <li><strong>Location</strong>: Log files are stored in the <code>LOG</code> folder within your data directory.</li>
-                                        <li><strong>Naming</strong>: Each log file is named with a timestamp format <code>SEGYRecover_YYYYMMDD_HHMMSS.log</code></li>
-                                        <li><strong>Contents</strong>: Log files contain:
-                                            <ul>
-                                                <li>Complete console output with timestamps</li>
-                                                <li>Process steps with success/failure indicators</li>
-                                                <li>Error messages and warnings</li>
-                                                <li>Summary statistics of processed data</li>
-                                            </ul>
-                                        </li>
-                                    </ol>
-                                    <p>If you encounter issues with the software, providing these log files to the developers can help diagnose problems more quickly.</p>
-                                    
-                                    <div class="tutorial-section" id="faq">
-                                        <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
-                                    
-                                    <div class="faq-container">
-                                        <div class="faq-item">
-                                          
-                                        
-                                        <div class="faq-item">
-                                            <h5>How can I improve the quality of the final SEG-Y file?</h5>
-                                            <p>For best results:</p>
-                                            <ul>
-                                                <li>Start with the highest resolution scan possible</li>
-                                                <li>Experiment with different frequency filter settings</li>
-                                                <li>Make sure time lines are properly detected and removed</li>
-                                                <li>Ensure your ROI selection is precise and covers exactly the area you want</li>
-                                                <li>Apply post-stack processing using InSeis (Seismic Unix) or other seismic processing package</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="faq-item">
-                                            <h5>Can I process multiple images in batch mode?</h5>
-                                            <p>Currently, SEGYRecover processes one image at a time. For multiple images:</p>
-                                            <ul>
-                                                <li>Process them one by one using "Start New Line" after each completion</li>
-                                                <li>Save parameters for similar images to speed up the workflow</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="faq-item">
-                                            <h5>What if I don't have geometry data for my seismic line?</h5>
-                                            <p>You can still digitize the image, but the resulting SEG-Y will not have real-world coordinates.</p>
-                                            <p> You can create a geometry file placeholder with only the first and last CDP number and random values for the coordinates</p>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+  <h4><i class="fas fa-exclamation-triangle"></i> Troubleshooting</h4>
+  
+  <p>Use this guide to resolve common issues you might encounter when using SEGYRecover:</p>
+  
+  <div class="issues-container">
+    <div class="issue-item">
+      <h5>Poor timeline detection</h5>
+      <ul>
+        <li>Increase HE (Horizontal Erode) parameter if timelines aren't being fully removed</li>
+        <li>Make sure your ROI selection correctly aligns timelines horizontally</li>
+      </ul>
+    </div>
+    
+    <div class="issue-item">
+      <h5>Missing or extra baselines</h5>
+      <ul>
+        <li>Adjust TLT (Trace Line Thickness) to match your image's trace width</li>
+        <li>Modify BDB and BDE to focus detection on cleaner parts of the image</li>
+        <li>Increase BFT to filter out false detections</li>
+      </ul>
+    </div>
+    
+    <div class="issue-item">
+      <h5>Noisy or spiky data</h5>
+      <ul>
+        <li>Adjust frequency filter parameters (F1-F4) to better match your data</li>
+        <li>Try a narrower frequency band to reduce noise</li>
+        <li>Check if your ROI includes non-seismic elements</li>
+      </ul>
+    </div>
+    
+    <div class="issue-item">
+      <h5>Coordinate assignment issues</h5>
+      <ul>
+        <li>Verify your geometry file format (CDP, X, Y values)</li>
+        <li>Ensure CDP numbers in the geometry file match those in your parameters</li>
+        <li>Use a consistent coordinate system (UTM recommended)</li>
+      </ul>
+    </div>
+  </div>
+  
+  <h5>Log Files</h5>
+  <p>SEGYRecover creates log files for each session in the <code>LOG</code> folder. These contain process details and error messages that can help diagnose issues.</p>
+</div>
+
+<div class="tutorial-section" id="faq">
+  <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
+
+  <div class="faq-container">
+    <div class="faq-item">
+      <h5>How can I improve the quality of my results?</h5>
+      <ul>
+        <li>Start with the highest resolution scan possible</li>
+        <li>Experiment with different frequency filter settings</li>
+        <li>Ensure time lines are properly detected and removed</li>
+        <li>Make your ROI selection precise</li>
+      </ul>
+    </div>
+    
+    <div class="faq-item">
+      <h5>Can I process multiple images in batch mode?</h5>
+      <p>Currently, SEGYRecover processes one image at a time. Process them sequentially using "Start New Line" after each completion. Save parameters for similar images to speed up your workflow.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h5>What if I don't have geometry data?</h5>
+      <p>You can still digitize the image, but the SEG-Y will not have real-world coordinates. You can create a placeholder file with first and last CDP numbers and arbitrary coordinates.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h5>Can I use color seismic images?</h5>
+      <p>SEGYRecover works best with black and white images. Convert color seismic images to grayscale or black/white before processing for optimal results.</p>
+    </div>
+  </div>
+</div>
                             </div>
                         </div>
                     </div>
@@ -934,6 +557,24 @@
                 });
             }
             
+            // Enhanced sticky TOC functionality
+            const tocElement = document.querySelector('.sticky-toc');
+            const tocList = document.querySelector('.toc-list');
+            
+            if (tocElement) {
+                // Add progress bar to TOC
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                tocElement.prepend(progressBar);
+            }
+            
+            if (tocList) {
+                // Add indicator for current position
+                const tocIndicator = document.createElement('div');
+                tocIndicator.className = 'toc-indicator';
+                tocList.parentNode.appendChild(tocIndicator);
+            }
+            
             // Smooth scrolling for TOC links
             const tocLinks = document.querySelectorAll('.toc-list a');
             
@@ -956,16 +597,29 @@
                 });
             });
             
-            // Highlight active section on scroll
+            // Highlight active section on scroll and update progress
             const tutorialSections = document.querySelectorAll('.tutorial-section');
+            const tutorialContent = document.querySelector('.tutorial-content');
             
-            function highlightActiveTocItem() {
+            function updateTocState() {
                 let currentActiveSection = '';
+                let activeTocItem = null;
                 
+                const scrollPosition = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                const scrollBottom = scrollPosition + viewportHeight;
+                
+                // Calculate scroll progress for progress bar
+                const scrollableHeight = document.documentElement.scrollHeight - viewportHeight;
+                const scrollProgress = (scrollPosition / scrollableHeight) * 100;
+                if (progressBar) {
+                    progressBar.style.width = scrollProgress + '%';
+                }
+                
+                // Find current active section
                 tutorialSections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.offsetHeight;
-                    const scrollPosition = window.scrollY;
                     
                     if (scrollPosition >= sectionTop - 100 && 
                         scrollPosition < sectionTop + sectionHeight - 100) {
@@ -973,34 +627,28 @@
                     }
                 });
                 
+                // Update TOC highlighting
                 tocLinks.forEach(link => {
                     if (link.getAttribute('href') === currentActiveSection) {
                         link.parentElement.classList.add('active');
+                        activeTocItem = link.parentElement;
                     } else {
                         link.parentElement.classList.remove('active');
                     }
                 });
+                
+                // Update indicator position
+                if (activeTocItem && tocIndicator) {
+                    tocIndicator.classList.add('visible');
+                    tocIndicator.style.top = (activeTocItem.offsetTop + 4) + 'px';
+                    tocIndicator.style.height = (activeTocItem.offsetHeight - 8) + 'px';
+                } else if (tocIndicator) {
+                    tocIndicator.classList.remove('visible');
+                }
             }
             
-            window.addEventListener('scroll', highlightActiveTocItem);
-            
-            // Toggle button for advanced parameters
-            const toggleButtons = document.querySelectorAll('.toggle-button');
-            
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const content = this.nextElementSibling;
-                    
-                    if (content.style.display === 'block') {
-                        content.style.display = 'none';
-                        this.textContent = this.textContent.replace('Hide', 'Show');
-                    } else {
-                        content.style.display = 'block';
-                        this.textContent = this.textContent.replace('Show', 'Hide');
-                    }
-                });
-            });
+            window.addEventListener('scroll', updateTocState);
+            window.addEventListener('resize', updateTocState);
             
             // Back to top button functionality
             const backToTopButton = document.querySelector('.back-to-top');
@@ -1015,16 +663,64 @@
             
             window.addEventListener('scroll', toggleBackToTopButton);
             
-            backToTopButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
-            });
+            }
             
-            // Initial call to highlight active section
-            highlightActiveTocItem();
+            // Initial call to setup TOC state
+            setTimeout(updateTocState, 500);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add collapsible functionality to tutorial sections
+            const sections = document.querySelectorAll('.tutorial-section');
+            
+            sections.forEach(section => {
+                const heading = section.querySelector('h4');
+                const content = document.createElement('div');
+                
+                // Move all content after the heading into the content div
+                let nextElement = heading.nextElementSibling;
+                while (nextElement) {
+                    const current = nextElement;
+                    nextElement = nextElement.nextElementSibling;
+                    content.appendChild(current);
+                }
+                
+                // Add content div to the section
+                content.className = 'tutorial-content-collapsible';
+                section.appendChild(content);
+                
+                // Add expand/collapse indicator to heading
+                heading.classList.add('collapsible-heading');
+                heading.innerHTML += '<span class="collapse-indicator"><i class="fas fa-chevron-down"></i></span>';
+                
+                // Add click event to heading
+                heading.addEventListener('click', function() {
+                    this.classList.toggle('collapsed');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                    
+                    // Toggle indicator
+                    const indicator = this.querySelector('.collapse-indicator i');
+                    indicator.classList.toggle('fa-chevron-down');
+                    indicator.classList.toggle('fa-chevron-right');
+                });
+                
+                // Start expanded by default
+                content.style.maxHeight = content.scrollHeight + "px";
+            });
         });
     </script>
 </body>

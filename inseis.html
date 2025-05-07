@@ -34,68 +34,334 @@
                             
                             <div class="quick-links">
                                 <a href="https://github.com/a-pertuz/inseis" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                                <a href="#inseis-features"><i class="fas fa-list-check"></i> Features</a>
-                                <a href="troubleshooting.html"><i class="fas fa-wrench"></i> Troubleshooting</a>
-                                <a href="integration.html"><i class="fas fa-project-diagram"></i> Integration Guide</a>
+                                <a href="https://zenodo.org/record/1234567" target="_blank"><i class="fas fa-database"></i> Zenodo</a>
                             </div>
                         </div>
                         
-                        <h3 id="inseis-features">Features</h3>
-                        <ul class="feature-list">
-                            <li><strong>User-Friendly Interface</strong> - Easily create, edit, and run Seismic Unix workflows</li>
-                            <li><strong>Workflow Management</strong> - Save, load, and manage your processing workflows</li>
-                            <li><strong>Visualization</strong> - View seismic data directly in the application</li>
-                            <li><strong>Process Library</strong> - Extensive library of pre-configured Seismic Unix processes</li>
-                            <li><strong>Windows Integration</strong> - Use Seismic Unix on Windows through WSL</li>
-                            <li><strong>File Format Conversion</strong> - Convert between SU and SEGY formats seamlessly</li>
-                        </ul>
-                        
-                        <div class="installation-guide" id="inseis-quickstart">
-                            <h3>Quick Start Guide</h3>
-                            
-                            <div class="step">
-                                <strong>Launch InSeis</strong>: Open Command Prompt and type <code>inseis</code>
+                        <div class="tutorial-layout">
+                            <!-- Table of Contents -->
+                            <div class="toc-container">
+                                <div class="sticky-toc">
+                                    <h3>Navigation</h3>
+                                    <ul class="toc-list">
+                                        <li><a href="#interface-overview">Interface Overview</a></li>
+                                        <li><a href="#workflows">Creating Workflows</a></li>
+                                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                                        <li><a href="#faq">FAQ</a></li>
+                                    </ul>
+                                </div>
                             </div>
+
+
                             
-                            <div class="step">
-                                <strong>Create a workflow</strong>: The main interface displays available processes on the left and your current workflow on the right
+                            <div class="tutorial-content">
+
+                                <div class="tutorial-section" id="how-to-use">
+                                    <h4><i class="fas fa-play-circle"></i> How to Use</h4>
+                                    <ol>
+                                        <li><strong>Launch InSeis</strong>: Open the application from your Start menu or run <code>inseis</code> in Command Prompt</li>
+                                        <li><strong>Create a new workflow</strong>: The main interface displays available processes on the left and your current workflow on the right</li>
+                                        <li><strong>Load data</strong>: Add a data loading process to your workflow (e.g., "SEGYREAD")</li>
+                                        <li><strong>Add processing steps</strong>: Select and configure processing operations from the available processes list</li>
+                                        <li><strong>Run your workflow</strong>: Click "Run Workflow" to execute all steps in sequence</li>
+                                        <li><strong>View results</strong>: Results will be displayed automatically upon completion</li>
+                                    </ol>
+
+                                    <div class="info-box info-box--note">
+                                        <p><i class="fas fa-file-alt"></i> <strong>File information:</strong> Seismic Unix uses <strong>SU</strong> files as its native format. If you need <strong>SEGY</strong> files for external applications, use the <strong>"Convert SU to SEGY"</strong> utility in the menu bar after processing.</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="tutorial-section" id="interface-overview">
+                                    <h4><i class="fas fa-desktop"></i> Interface Overview</h4>
+                                    
+                                    <h5>Main Application Window</h5>
+                                    <ul>
+                                        <li><strong>Process Library Panel (Left)</strong>: Contains all available Seismic Unix processes organized by category</li>
+                                        <li><strong>Workflow Canvas (Center)</strong>: Where you build and configure your processing workflow</li>
+                                        <li><strong>Parameters Panel (Right)</strong>: Shows parameters for the currently selected process</li>
+                                        <li><strong>Log Window (Bottom)</strong>: Displays output and error messages from workflow execution</li>
+                                        <li><strong>Results Viewer (Tab)</strong>: Visualizes processing results</li>
+                                    </ul>                                  
+                                    
+
+                                    <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
+                                        <img src="images/is_gui_workflow.png" alt="InSeis GUI" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
+                                        <p class="caption">Graphical user interface of InSeis</p>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="tutorial-section" id="workflows">
+                                    <h4><i class="fas fa-project-diagram"></i> Creating Workflows</h4>
+                                    
+                                    <h5>Basic Workflow Structure</h5>
+                                    <ol>
+                                        <li><strong>Input</strong>: Data loading processes (e.g., "Load SU File", "Read SEGY")</li>
+                                        <li><strong>Processing</strong>: Processing operations (filtering, deconvolution, migration, etc.)</li>
+                                        <li><strong>Output</strong>: Results are saved as SU files and displayed within the applications.</li>
+                                    </ol>
+                                    
+                                        
+                                    <h5>To save your workflow:</h5>
+                                    <ol>
+                                        <li>Click <strong>"Workflows"</strong> > <strong>"Save Workflow..."</strong></li>
+                                        <li>Enter a name and description</li>
+                                    </ol>
+                                    
+                                    <h5>To load a workflow:</h5>
+                                    <ol>
+                                        <li>Click <strong>"Workflows"</strong> > <strong>"Load Workflow..."</strong></li>
+                                        <li>Select from your saved workflows</li>
+                                    </ol>
+                                    
+                                    <h5>Workflow Examples</h5>
+                                    
+                                    
+                                                                        
+                                    <div class="workflow-example">
+                                        <h6>Post-stack migration and SNR enhacement</h6>
+                                        <ol>
+                                            <li>Add <strong>SEGYREAD</strong>: Set input file path <br> <code>tape=&lt;input_file.segy&gt;</code></li>
+
+                                            <li> Add <strong>SEGYCLEAN</strong>: Clean unused headers in the SU file</li>
+
+                                            <li>Add <strong>SUAGC</strong>: Automatic gain control <br> <code>panel=1, agc=1, wagc=0.75</code></li>
+
+                                            <li>Add <strong>SUMIX</strong>: Compute weighted moving average - trace mix - on the seismic data <br> <code>mix=.6,1,1,1,.6</code> </li>
+
+                                            <li>Add <strong>SUKTMIG2D</strong>: Kirchhoff post-stack time migration. Requires a velocity model in binary format (see <a href="velrecover.html" target="_blank">VelRecover</a>) <br> <code>vfile=&lt;velocity_model.bin&gt;, hoffset=0, dx=25</code></li>
+
+                                            <li>Add <strong>SUPEF</strong>: Spike deconvolution for improved vertical resolution <br> <code>minlag=0.004 ms maxlag=0.12 pnoise=0.01</code></li>
+
+                                            <li>Add <strong>SUFXDECON</strong>: Random noise attenuation <br> <code>fmin=12 fmax=60 twlen=0.3 ntrw=30 ntrf=4 </code></li>
+
+                                            <li>Add <strong>SUTVBAND</strong>: Time-variant bandpass filtering <br> <code>tf=0,1.5,2.5 f=10,12,55,60 f=14,16,50,55 f=14,16,45,50</code></li>
+
+                                            <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
+                                                <img src="images/is_workflow_steps.png" alt="Results of a workflow using InSeis" style="display: block; width: 90%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
+                                                <p class="caption">Results of a workflow using InSeis</p>
+                                            </div>
+
+
+                                        </ol>
+                                    </div>
+                                
+                                </div>
+                                
+                                <div class="tutorial-section" id="troubleshooting">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> Troubleshooting</h4>
+                                                                        
+                                    <div class="issues-container">
+                                        <div class="issue-item">
+                                            <h5>WSL Connection Problems</h5>
+                                            <ul>
+                                                <li>Ensure WSL is installed: Open PowerShell and type <code>wsl --list</code>. If no distributions are listed, install one using <code>wsl --install</code>.</li>
+                                                <li>Verify WSL is running: Open PowerShell and type <code>wsl --list --running</code></li>
+                                                <li>Restart WSL: <code>wsl --shutdown</code> and then launch WSL again</li>
+                                                <li>Check your network settings if you're accessing remote data</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="issue-item">
+                                            <h5>Seismic Unix Command Failures</h5>
+                                            <ul>
+                                                <li>Check that Seismic Unix is properly installed: Run <code>suplane | suximage</code> in WSL</li>
+                                                <li>Verify the CWPROOT environment variable: <code>echo $CWPROOT</code> should show the SU installation path</li>
+                                                <li>Reinstall Seismic Unix if needed using the installation script</li>
+                                                <li>Check the log window for specific error messages</li>
+                                            </ul>
+                                        </div>
+                                        
+
+                                        
+                                    </div>
+                                    
+
+                                </div>
+                                
+                                <div class="tutorial-section" id="faq">
+                                    <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
+                                    
+                                    <div class="faq-container">
+                                        <div class="faq-item">
+                                            <h5>Is InSeis compatible with all versions of Seismic Unix?</h5>
+                                            <p>InSeis works with Seismic Unix versions 43 and newer. The installer script automatically installs the latest compatible version. If you have an existing installation of Seismic Unix, InSeis will attempt to use it if the path is correctly set in your <code>.bashrc</code> file.</p>
+                                        </div>
+                                        
+
+                                        
+                                        <div class="faq-item">
+                                            <h5>How do I integrate results from SEGYRecover and VELRecover?</h5>
+                                            <p>To use data from other REV-SEIS tools:</p>
+                                            <ol>
+                                                <li>SEGY files from SEGYRecover can be directly loaded using the "SEGYREAD" process</li>
+                                                <li>Velocity models from VELRecover should be exported in binary format and can be loaded using the "Load Velocity Model" where necessary, for example during migration</li>
+                                                <li>Use the workspace data directory structure to keep your project organized</li>
+                                            </ol>
+                                        </div>
+                                        
+                                        <div class="faq-item">
+                                            <h5>Does InSeis work on macOS or Linux?</h5>
+                                            <p>InSeis is designed specifically for Windows with WSL. On macOS or Linux, you can install Seismic Unix directly and use its native command-line interface or GUI alternatives like OpenSeaSeis or BotoSeis.</p>
+                                        </div>
+                                        
+
+                                    
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div class="step">
-                                <strong>Load data</strong>: Add a data loading process (e.g., "Load SU File") to your workflow
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Add processing steps</strong>: Select processing operations from the available processes list
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Run your workflow</strong>: Click "Run Workflow" to execute all steps in sequence
-                            </div>
-                            
-                            <div class="info-note">
-                                <p><strong>Important note</strong>: Seismic Unix uses <strong>SU</strong> files as its native format. If you need <strong>SEGY</strong> files for external applications, use the "Convert SU to SEGY" utility in the menu bar after processing.</p>
-                            </div>
-                            
-                            <h4>Saving and Loading Workflows</h4>
-                            <p>To save your workflow:</p>
-                            <ol>
-                                <li>Click "Workflows" > "Save Workflow..."</li>
-                                <li>Enter a name and description</li>
-                            </ol>
-                            
-                            <p>To load a workflow:</p>
-                            <ol>
-                                <li>Click "Workflows" > "Load Workflow..."</li>
-                                <li>Select from your saved workflows</li>
-                            </ol>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <a href="#" class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
     </main>
     
     <footer id="footer-component"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load components
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-component').innerHTML = data;
+                });
+                
+            fetch('components/navigation.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-component').innerHTML = data;
+                });
+                
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-component').innerHTML = data;
+                });
+
+            // Enhanced sticky TOC functionality
+            const tocElement = document.querySelector('.sticky-toc');
+            const tocList = document.querySelector('.toc-list');
+            
+            if (tocElement) {
+                // Add progress bar to TOC
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                tocElement.prepend(progressBar);
+            }
+            
+            if (tocList) {
+                // Add indicator for current position
+                const tocIndicator = document.createElement('div');
+                tocIndicator.className = 'toc-indicator';
+                tocList.parentNode.appendChild(tocIndicator);
+            }
+            
+            // Smooth scrolling for TOC links
+            const tocLinks = document.querySelectorAll('.toc-list a');
+            
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL hash without jumping
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+            
+            // Highlight active section on scroll and update progress
+            const tutorialSections = document.querySelectorAll('.tutorial-section');
+            
+            function updateTocState() {
+                let currentActiveSection = '';
+                let activeTocItem = null;
+                
+                const scrollPosition = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                const scrollableHeight = document.documentElement.scrollHeight - viewportHeight;
+                const scrollProgress = (scrollPosition / scrollableHeight) * 100;
+                
+                if (progressBar) {
+                    progressBar.style.width = scrollProgress + '%';
+                }
+                
+                // Find current active section
+                tutorialSections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop - 100 && 
+                        scrollPosition < sectionTop + sectionHeight - 100) {
+                        currentActiveSection = '#' + section.id;
+                    }
+                });
+                
+                // Update TOC highlighting
+                tocLinks.forEach(link => {
+                    if (link.getAttribute('href') === currentActiveSection) {
+                        link.parentElement.classList.add('active');
+                        activeTocItem = link.parentElement;
+                    } else {
+                        link.parentElement.classList.remove('active');
+                    }
+                });
+                
+                // Update indicator position
+                if (activeTocItem && tocIndicator) {
+                    tocIndicator.classList.add('visible');
+                    tocIndicator.style.top = (activeTocItem.offsetTop + 4) + 'px';
+                    tocIndicator.style.height = (activeTocItem.offsetHeight - 8) + 'px';
+                } else if (tocIndicator) {
+                    tocIndicator.classList.remove('visible');
+                }
+            }
+            
+            window.addEventListener('scroll', updateTocState);
+            window.addEventListener('resize', updateTocState);
+            
+            // Back to top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            function toggleBackToTopButton() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            }
+            
+            window.addEventListener('scroll', toggleBackToTopButton);
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Initial call to setup TOC state
+            setTimeout(updateTocState, 500);
+        });
+    </script>
 </body>
 </html>

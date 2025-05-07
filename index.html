@@ -228,5 +228,27 @@
                 });
         }
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load components
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-component').innerHTML = data;
+                });
+                
+            fetch('components/navigation.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-component').innerHTML = data;
+                });
+                
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-component').innerHTML = data;
+                });
+        });
+    </script>
 </body>
 </html>

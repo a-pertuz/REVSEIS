@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELRecover - REV-SEIS</title>
+    <title>VelRecover - REV-SEIS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js"></script>
 </head>
-<body class="velrecover-page">
+<body class="VelRecover-page">
     <header id="header-component"></header>
     
     <nav id="nav-component"></nav>
@@ -18,7 +18,7 @@
             <div id="main-content">
                 <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Documentation Hub</a>
                 
-                <div class="program-section" id="velrecover" data-tool-type="velrecover">
+                <div class="program-section" id="VelRecover" data-tool-type="VelRecover">
                     <div class="section-header">
                         <h2>VelRecover</h2>
                     </div>
@@ -29,68 +29,535 @@
                                 <span class="badge badge-windows">Windows</span>
                             </div>
                             
-                            <p>A tool for interpolating 2D seismic velocity data from sparse velocity analysis found in seismic sections. VELRecover helps geophysicists and seismic interpreters to create complete velocity models from sparse velocity picks.</p>
+                            <p>A tool for interpolating 2D seismic velocity data from sparse velocity analysis found in seismic sections.</p>
                             
                             <div class="quick-links">
-                                <a href="https://github.com/a-pertuz/velrecover" target="_blank"><i class="fab fa-github"></i> GitHub Repository</a>
-                                <a href="#velrecover-features"><i class="fas fa-list-check"></i> Features</a>
-                                <a href="troubleshooting.html"><i class="fas fa-wrench"></i> Troubleshooting</a>
-                                <a href="integration.html"><i class="fas fa-project-diagram"></i> Integration Guide</a>
+                                <a href="https://github.com/a-pertuz/velrecover" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://zenodo.org/record/your-record-id" target="_blank"><i class="fas fa-database"></i> Zenodo</a>
                             </div>
                         </div>
                         
-                        <h3 id="velrecover-features">Features</h3>
-                        <ul class="feature-list">
-                            <li><strong>Velocity Data Interpolation</strong> - Create complete velocity models from sparse velocity picks</li>
-                            <li><strong>Interactive Visualization</strong> - View velocity distributions in real-time</li>
-                            <li><strong>Smoothing Tools</strong> - Apply Gaussian blur to create smoother velocity models</li>
-                            <li><strong>Multiple Export Formats</strong> - Save interpolated data in text or binary format</li>
-                            <li><strong>SEGY Integration</strong> - Load SEGY files to provide spatial context for interpolation</li>
-                            <li><strong>Customizable Workflows</strong> - Tweak interpolation parameters to match your data</li>
-                        </ul>
-                        
-                        <div class="installation-guide" id="velrecover-quickstart">
-                            <h3>Quick Start Guide</h3>
-                            
-                            <h4>Folder Structure</h4>
-                            <p>VELRecover organizes data in the following folder structure:</p>
-                            <ul>
-                                <li><strong>SEGY/</strong> - Store seismic SEGY files</li>
-                                <li><strong>VELS/RAW/</strong> - Store input velocity data files</li>
-                                <li><strong>VELS/2D/</strong> - Store interpolated velocity models</li>
-                            </ul>
-                            
-                            <h4>Step-by-Step Workflow</h4>
-                            <div class="step">
-                                <strong>Load Velocity Data</strong>: Click "Load Text File" and select a velocity text file with CDP, TWT, Velocity columns
+                        <div class="screenshot" style="max-width: 100%; margin: 1.5rem auto; padding: 10px;">
+                            <img src="images/web_velrecover_intro.png" alt="VelRecover Main Interface" style="max-width: 80%; height: auto; display: block; margin: 2rem auto;">
+                        </div>
+
+                        <div class="tutorial-layout">
+                            <!-- Table of Contents -->
+                            <div class="toc-container">
+                                <div class="sticky-toc">
+                                    <h3>Navigation</h3>
+                                    <ul class="toc-list">
+                                        <li><a href="#quickstart-guide">Quick Start Guide</a></li>
+                                        <li><a href="#first-run">First Run Setup</a></li>
+                                        <li><a href="#preparation">Preparation</a></li>
+                                        <li><a href="#step1-loading">Step 1: Loading Velocity Data</a></li>
+                                        <li><a href="#step2-editing">Step 2: Editing Velocity Data</a></li>
+                                        <li><a href="#step3-interpolation">Step 3: Interpolation</a></li>
+                                        <li><a href="#interpolation-methods">Interpolation Methods</a></li>
+                                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                                    </ul>
+                                </div>
                             </div>
+
+                            <!-- Main tutorial content -->
+                            <div class="tutorial-content">
+                                <!-- Integrated Quick Start Guide -->
+                                <div class="tutorial-section" id="quickstart-guide">
+                                    <h4><i class="fas fa-play-circle"></i> Quick Start Guide</h4>
+                                    
+                                        <h5>Key Features</h5>
+                                        <ul>
+                                            <li><strong>Velocity data interpolation</strong> - Create complete velocity models from sparse picks</li>
+                                            <li><strong>Multiple interpolation methods</strong> - Linear, logarithmic, RBF, and two-step approaches</li>
+                                            <li><strong>User-friendly GUI</strong> - Simple workflow with visual guidance</li>
+                                            <li><strong>Multiple export formats</strong> - Save as text or binary formats</li>
+                                        </ul>
+
+                                    <h5>Basic Workflow</h5>
+                                        <ol>
+                                            <li><strong>Load velocity data</strong>: Import from text files (Trace, TWT, Velocity)</li>
+                                            <li><strong>Load SEGY file</strong>: Provide spatial context</li>
+                                            <li><strong>Edit data</strong>: Remove outliers, edit velocity picks or add new ones</li>
+                                            <li><strong>Interpolate</strong>: Generate a complete velocity field</li>
+                                            <li><strong>Apply smoothing</strong>: Use Gaussian blur to eliminate artifacts (optional)</li>
+                                            <li><strong>Export results</strong>: Save in various formats for further use</li>
+                                        </ol>
+                                </div>
+                                    
+                                
+                                <div class="tutorial-section" id="first-run">
+                                    <h4><i class="fas fa-power-off"></i> First Run Setup</h4>
+                                    
+                                    <p>When you run VelRecover for the first time, you'll need to set up your data directory:</p>
+                                    
+                                        <ol>
+                                            <li>The First Run Dialog will appear asking you to select a location for your data</li>
+                                            <li>Choose a location with sufficient disk space for your project files</li>
+                                            <li>Click "OK" to confirm your selection</li>
+                                            <li>VelRecover will create the necessary folder structure and copy example files</li>
+                                        </ol>
+                                    
+                                    <div class="screenshot" style="max-width: 400px; margin: 1.5rem auto;">
+                                        <img src="images/vel_firstrun.png" alt="VelRecover First Run Setup Dialog" style="display: block; width: 100%; margin: 0 auto;">
+                                        <p class="caption">First Run Setup Dialog</p>
+                                    </div>
+                                    
+                                    <div class="info-box info-box--note">
+                                        <i class="fas fa-info-circle"></i> <strong>Note:</strong> The application will automatically create the necessary folder structure and example files in your selected data directory.
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="tutorial-section" id="preparation">
+                                    <h4><i class="fas fa-clipboard-list"></i> Preparation</h4>
+                                    
+                                    <p>Before beginning the interpolation process, organize your files and understand the data requirements:</p>
+                                    
+                                        <h5>1. Folder Structure</h5>
+                                        <p>VelRecover organizes your data in the following directories:</p>
+                                        <ul>
+                                            <li><code>SEGY/</code> - Store seismic SEGY files</li>
+                                            <li><code>VELS/RAW/</code> - Store input velocity data files</li>
+                                            <li><code>VELS/2D/</code> - Store interpolated velocity models (.txt or .bin)</li>
+                                        </ul>
+                                        
+                                        <h5>2. Input Data Format</h5>
+                                        <ul>
+                                            <li><strong>Velocity data files</strong>: Text files with 3 columns </li>
+                                            
+                                            <table style="border-spacing: 20px 0;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>CDP</th>
+                                                        <th>TWT</th>
+                                                        <th>Velocity</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>100</td>
+                                                        <td>500</td>
+                                                        <td>1500</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>200</td>
+                                                        <td>1000</td>
+                                                        <td>1800</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>300</td>
+                                                        <td>1500</td>
+                                                        <td>2100</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                                
+                                            </li>
+                                            <li><strong>SEGY files</strong>: Standard SEG-Y format (.segy) for the corresponding seismic line</li>
+                                        </ul>
+                                        
+                                        <div class="info-box info-box--tip">
+                                            <i class="fas fa-lightbulb"></i> <strong>Tip:</strong> You can create velocity data files manually from the information found in printed seismic sections. Make sure the trace numbers match your seismic line.
+                                        </div>
+                                </div>
+                                
+                                <div class="tutorial-section" id="step1-loading">
+                                    <h4><i class="fas fa-file-upload"></i> Step 1: Loading Velocity Data</h4>
+                                    
+                                        <ol>
+                                            <li>From the Welcome screen, click the <b>"New Velocity Field"</b> button</li>
+
+                                            <li>In the Load Data tab, click <b>"Load SEGY File"</b> to provide spatial context for the interpolation
+
+                                            <li>Click <b>"Load Text File"</b> to select your velocity data file</li> (formats: .dat, .txt, .tsv, .csv)</li>
+
+                                            <li>The velocity picks will be loaded and displayed over the SEG-Y file</li>
+                                            
+                                            <li>Click "Next" to proceed to the Edit tab</li>
+                                        </ol>
+                                    
+                                    <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
+                                        <img src="images/vel_load.png" alt="VelRecover Load Data Tab" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
+                                        <p class="caption">Window for loading velocity data and SEGY files</p>
+                                    </div>
+                                    
+                                    <div class="info-box info-box--note">
+                                        <i class="fas fa-info-circle"></i> <strong>Note:</strong> Click the <b>"Show Velocity Distribution</b> button to visualize the distribution of velocity values in your data. This can help identify outliers or trends in the data.
+                                    </div>
+
+                                    <div class="screenshot" style="max-width: 400px; margin: 1.5rem auto;">
+                                        <img src="images/vel_distribution.png" alt="VelRecover Distribution Plot" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
+                                        <p class="caption">Velocity distribution plot showing the velocity values vs two-way-time for each trace or CDP in the text file MISSING REGRESSIION</p>
+                                    </div>
+
+
+                                </div>
+                                
+                                <div class="tutorial-section" id="step2-editing">
+                                    <h4><i class="fas fa-edit"></i> Step 2: Editing Velocity Data</h4>
+                                    
+                                    <p>In this step, you'll review and edit your velocity data to remove outliers or incorrect velocity picks. You can also add new picks to improve the accuracy of the model:</p>
+                                    
+                                        <ol>
+                                            <li>Click <b>"Apply Time Shift"</b> to shift all your velocity picks along the time axis </li>
+                                            <li>Click <b>"Edit pick"</b> to select a pick and edit its velocity value</li>
+                                            <li>Click <b>"Add pick"</b> to add a new velocity pick at the selected Trace and TWT</li>
+                                            <li>Click <b>"Delete pick"</b> to remove a selected velocity pick</li>
+                                            <li>Click "Save edits" and select where you want to save the new velocity picks, then click "Next" to proceed to the Interpolate tab</li>
+                                            <li>Click "Continue without edits" and then "Next" if you don't want to make any edits</li>
+                                        </ol>
+                                    
+                                    <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
+                                        <img src="images/vel_edit.png" alt="VelRecover Edit Tab" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
+                                        <p class="caption">Data editing interface for cleaning velocity data. New picks has been added at the seismic section bottom.</p>
+                                    </div>
+                                    
                             
-                            <div class="step">
-                                <strong>Load SEGY File</strong>: Click "Load SEGY File" to provide spatial context for interpolation
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Run Interpolation</strong>: Click "Interpolate" to process the data and fill gaps between sparse velocity picks
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Apply Smoothing (Optional)</strong>: Enter a Gaussian blur value and click "Apply Gaussian Blur"
-                            </div>
-                            
-                            <div class="step">
-                                <strong>Export Results</strong>: Save your data in text or binary format using the export buttons
-                            </div>
-                            
-                            <div class="info-note">
-                                <p><strong>Tip:</strong> Binary format (.bin) is suitable for migration in Seismic Unix, making it compatible with InSeis workflows.</p>
+                                </div>
+                                
+                                <div class="tutorial-section" id="step3-interpolation">
+                                    <h4><i class="fas fa-th"></i> Step 3: Interpolation</h4>
+                                    
+                                    <p>Once your data is cleaned, you can perform the interpolation to generate a complete velocity field:</p>
+                                    
+                                        <ol>
+                                            <li>In the Interpolate tab, select the interpolation method from the dropdown menu:
+                                                <ul>
+                                                    <li><strong>Linear Best Fit</strong>: Simple linear based on the linear best fit for all velocity picks (V=V0+kt)</li>
+                                                    
+                                                    <li><strong>Linear Custom</strong>: Create a custom linear model by defininf the V0 and k coefficients (V=V0+kt)</li>
+
+                                                    <li><strong>Logarithmic Best Fit</strong>: Model based in the natural logarithmic best fit for all velocity picks</li>
+
+                                                    <li><strong>Logarithmic Custom</strong>: Create a custom logarithmic model by defining the V0 and k coefficients (V=V0+kln(t)</li>
+
+                                                    <li><strong>RBF</strong> (Radial Basis Function): Creates smooth transitions between points</li>
+
+                                                    <li><strong>Two-Step</strong>: First interpolates each trace with velocity picks using RBF interpolation and then fills missing traces with nearest neighbor interpolation</li>
+                                                </ul>
+                                            </li>
+ 
+                                            <li>Click "Run Interpolation" to process the data</li>
+
+                                            <li>The resulting velocity field will be displayed as a color-coded grid</li>
+
+                                            <li>For smoother results, enter a Gaussian blur value (1-100) and click "Run Interpolation" again</li>
+
+                                            <li>Click "Reset" to delete the current interpolation</li>
+                                        </ol>
+
+                                        
+
+                                    <div class="screenshot" style="max-width: 800px; margin: 1.5rem auto;">
+                                        <img src="images/vel_interpolation.png" alt="VelRecover Interpolation Tab" style="display: block; width: 100%; margin: 0 auto; border: 1px solid lightgrey; border-radius: 8px;">
+                                        <p class="caption">Interpolation interface showing the velocity field visualization</p>
+                                    </div>
+                                    
+                                    <p>After interpolation, you can export your velocity field in various formats:</p>
+
+                                    <ul>
+                                        <li><strong>Save Data as TXT</strong>: Exports as a text file with X, Y coordinates and CDP, TWT, Velocity values</li>
+                                        <li><strong>Save Data as BIN</strong>: Exports in binary format (float32) as a velocity grid (TWT, CDP)</li>
+                                    </ul>
+
+                                    <div class="info-box info-box--note">
+                                        <i class="fas fa-info-circle"></i> <strong>Note:</strong> Binary format (.bin) is suitable for direct import into Seismic Unix for migration processing. Text format (.txt) can be imported into most interpretation software.
+                                    </div>
+
+
+                                </div>
+
+                               
+                                
+                                <div class="tutorial-section" id="interpolation-methods">
+                                    <h4><i class="fas fa-magic"></i> Interpolation Methods</h4>
+                                    
+                                    
+                                    <h5>Linear Models</h5>
+                                    <ul>
+                                        <li><strong>Description</strong>: Simple linear based on the linear best fit for all velocity picks (V=V0+kt)</li>
+                                        <li><strong>Best for</strong>: Simple velocity fields with gradual changes</li>
+                                        <li><strong>Advantages</strong>: Fast computation, predictable results</li>
+                                        <li><strong>Limitations</strong>: May not accurately represent natural velocity trends with depth</li>
+                                    </ul>
+                                    
+                                    <h5>Logarithmic Models</h5>
+                                    <ul>
+                                        <li><strong>Description</strong>: Model based in the natural logarithmic best fit for all velocity picks</li>
+                                        <li><strong>Best for</strong>: Simple velocity fields with gradual changes but accounting for compactation</li>
+                                        <li><strong>Advantages</strong>: Better represents natural velocity behavior</li>
+                                        <li><strong>Limitations</strong>: May create unusual values at the surface, apply gaussian blur for a better result</li>
+                                    </ul>
+                                    
+                                    <h5>RBF (Radial Basis Function)</h5>
+                                    <ul>
+                                        <li><strong>Description</strong>: Uses radial basis functions to create smooth interpolation surfaces</li>
+                                        <li><strong>Best for</strong>: Complex velocity fields with irregular sampling</li>
+                                        <li><strong>Advantages</strong>: Creates natural-looking transitions between sparse points</li>
+                                        <li><strong>Limitations</strong>: Computationally intensive for large datasets. May create anomalous gradients if no picks are present. Suggest creating new picks to guide the interpolation at depth.</li>
+                                    </ul>
+                                    
+                                    <h5>Two-Step Interpolation</h5>
+                                    <ul>
+                                        <li><strong>Description</strong>: Combines horizontal and vertical interpolation approaches</li>
+                                        <li><strong>Best for</strong>: Areas with complex geology and lateral velocity variations</li>
+                                        <li><strong>Advantages</strong>: Handles both lateral and vertical trends effectively</li>
+                                        <li><strong>Limitations</strong>: Most computationally intensive method</li>
+                                    </ul>
+                                    
+                                    <h5>Gaussian Blur</h5>
+                                    <ul>
+                                        <li><strong>Description</strong>: Post-processing smoothing filter to reduce artifacts</li>
+                                        <li><strong>Best for</strong>: Smoothing results from any interpolation method</li>
+                                        <li><strong>Usage</strong>: Apply after interpolation with strength from 1 (minimal) to 100 (maximum)</li>
+                                        <li><strong>Caution</strong>: High values can over-smooth and remove legitimate velocity features</li>
+                                    </ul>
+                                </div>
+                                
+                           
+                                <div class="tutorial-section" id="troubleshooting">
+                                    <h4><i class="fas fa-exclamation-triangle"></i> Troubleshooting</h4>
+                                    
+                                    <p>Use this guide to resolve common issues when using VelRecover:</p>
+                                    
+                                    <div class="issues-container">
+                                        <div class="issue-item">
+                                            <h5>Data loading issues</h5>
+                                            <ul>
+                                                <li>Ensure your text file has 3 columns: CDP, TWT, Velocity</li>
+                                                <li>Leave just one line of comments or headers</li>
+                                                <li>Verify that all values are numeric with no text characters</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="issue-item">
+                                            <h5>Interpolation artifacts</h5>
+                                            <ul>
+                                                <li>Edit out any obvious outliers in your velocity data</li>
+                                                <li>Try a different interpolation method more suitable for your data</li>
+                                                <li>Apply Gaussian blur to smooth out small-scale artifacts</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    
+                                    <h5>Log Files</h5>
+                                    <p>VelRecover creates log files for each session in the data directory. These contain process details and error messages that can help diagnose issues.</p>
+                                </div>
+
+        
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <a href="#detailed-tutorial" class="back-to-top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
     </main>
     
     <footer id="footer-component"></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load components
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-component').innerHTML = data;
+                });
+                
+            fetch('components/navigation.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-component').innerHTML = data;
+                });
+                
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-component').innerHTML = data;
+                });
+                
+            // Toggle for mobile TOC
+            const tocHeading = document.querySelector('.toc-container h3');
+            const tocContainer = document.querySelector('.toc-container');
+            
+            if (tocHeading && window.innerWidth <= 1024) {
+                tocHeading.addEventListener('click', function() {
+                    tocContainer.classList.toggle('collapsed');
+                });
+            }
+            
+            // Enhanced sticky TOC functionality
+            const tocElement = document.querySelector('.sticky-toc');
+            const tocList = document.querySelector('.toc-list');
+            
+            if (tocElement) {
+                // Add progress bar to TOC
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                tocElement.prepend(progressBar);
+            }
+            
+            if (tocList) {
+                // Add indicator for current position
+                const tocIndicator = document.createElement('div');
+                tocIndicator.className = 'toc-indicator';
+                tocList.parentNode.appendChild(tocIndicator);
+            }
+            
+            // Smooth scrolling for TOC links
+            const tocLinks = document.querySelectorAll('.toc-list a');
+            
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL hash without jumping
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+            
+            // Highlight active section on scroll and update progress
+            const tutorialSections = document.querySelectorAll('.tutorial-section');
+            const tutorialContent = document.querySelector('.tutorial-content');
+            
+            function updateTocState() {
+                let currentActiveSection = '';
+                let activeTocItem = null;
+                
+                const scrollPosition = window.scrollY;
+                const viewportHeight = window.innerHeight;
+                const scrollBottom = scrollPosition + viewportHeight;
+                
+                // Calculate scroll progress for progress bar
+                const scrollableHeight = document.documentElement.scrollHeight - viewportHeight;
+                const scrollProgress = (scrollPosition / scrollableHeight) * 100;
+                if (progressBar) {
+                    progressBar.style.width = scrollProgress + '%';
+                }
+                
+                // Find current active section
+                tutorialSections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop - 100 && 
+                        scrollPosition < sectionTop + sectionHeight - 100) {
+                        currentActiveSection = '#' + section.id;
+                    }
+                });
+                
+                // Update TOC highlighting
+                tocLinks.forEach(link => {
+                    if (link.getAttribute('href') === currentActiveSection) {
+                        link.parentElement.classList.add('active');
+                        activeTocItem = link.parentElement;
+                    } else {
+                        link.parentElement.classList.remove('active');
+                    }
+                });
+                
+                // Update indicator position
+                if (activeTocItem && tocIndicator) {
+                    tocIndicator.classList.add('visible');
+                    tocIndicator.style.top = (activeTocItem.offsetTop + 4) + 'px';
+                    tocIndicator.style.height = (activeTocItem.offsetHeight - 8) + 'px';
+                } else if (tocIndicator) {
+                    tocIndicator.classList.remove('visible');
+                }
+            }
+            
+            window.addEventListener('scroll', updateTocState);
+            window.addEventListener('resize', updateTocState);
+            
+            // Back to top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            function toggleBackToTopButton() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            }
+            
+            window.addEventListener('scroll', toggleBackToTopButton);
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Initial call to setup TOC state
+            setTimeout(updateTocState, 500);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add collapsible functionality to tutorial sections
+            const sections = document.querySelectorAll('.tutorial-section');
+            
+            sections.forEach(section => {
+                const heading = section.querySelector('h4');
+                const content = document.createElement('div');
+                
+                // Move all content after the heading into the content div
+                let nextElement = heading.nextElementSibling;
+                while (nextElement) {
+                    const current = nextElement;
+                    nextElement = nextElement.nextElementSibling;
+                    content.appendChild(current);
+                }
+                
+                // Add content div to the section
+                content.className = 'tutorial-content-collapsible';
+                section.appendChild(content);
+                
+                // Add expand/collapse indicator to heading
+                heading.classList.add('collapsible-heading');
+                heading.innerHTML += '<span class="collapse-indicator"><i class="fas fa-chevron-down"></i></span>';
+                
+                // Add click event to heading
+                heading.addEventListener('click', function() {
+                    this.classList.toggle('collapsed');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                    
+                    // Toggle indicator
+                    const indicator = this.querySelector('.collapse-indicator i');
+                    indicator.classList.toggle('fa-chevron-down');
+                    indicator.classList.toggle('fa-chevron-right');
+                });
+                
+                // Start expanded by default
+                content.style.maxHeight = content.scrollHeight + "px";
+            });
+        });
+    </script>
 </body>
 </html>
