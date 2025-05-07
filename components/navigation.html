@@ -7,11 +7,11 @@
 
         <li><a href="installation.html"><i class="fas fa-download"></i>Installation</a></li>
         
-        <li> <a href="segyrecover.html"> <i class="fas fa-chart-line"></i>SEGYRecover </a> </i></li>
+        <li> <a href="segyrecover.html"> <i class="fas fa-chart-line"></i>SEGYRecover </a></li>
 
-        <li><a href="velrecover.html"> <i class="fas fa-tachometer-alt"></i>VELRecover </a> </li>
+        <li><a href="velrecover.html"> <i class="fas fa-tachometer-alt"></i>VELRecover </a></li>
 
-        <li><a href="inseis.html"> <i class="fas fa-layer-group"></i>InSeis</i></a></li>
+        <li><a href="inseis.html"> <i class="fas fa-layer-group"></i>InSeis</a></li>
         
         <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
 
@@ -50,3 +50,26 @@
         }
     });
 </script>
+
+<style>
+    /* Additional mobile navigation styles */
+    @media (max-width: 768px) {
+        nav ul.nav-menu {
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--primary-dark);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            z-index: 100;
+        }
+        
+        nav ul.nav-menu.active {
+            max-height: 500px;
+            box-shadow: var(--shadow-md);
+        }
+    }
+</style>

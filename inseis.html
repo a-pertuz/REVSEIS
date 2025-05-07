@@ -182,35 +182,66 @@
                                 </div>
                                 
                                 <div class="tutorial-section" id="faq">
-                                    <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
-                                    
-                                    <div class="faq-container">
-                                        <div class="faq-item">
-                                            <h5>Is InSeis compatible with all versions of Seismic Unix?</h5>
-                                            <p>InSeis works with Seismic Unix versions 43 and newer. The installer script automatically installs the latest compatible version. If you have an existing installation of Seismic Unix, InSeis will attempt to use it if the path is correctly set in your <code>.bashrc</code> file.</p>
-                                        </div>
-                                        
-
-                                        
-                                        <div class="faq-item">
-                                            <h5>How do I integrate results from SEGYRecover and VELRecover?</h5>
-                                            <p>To use data from other REV-SEIS tools:</p>
-                                            <ol>
-                                                <li>SEGY files from SEGYRecover can be directly loaded using the "SEGYREAD" process</li>
-                                                <li>Velocity models from VELRecover should be exported in binary format and can be loaded using the "Load Velocity Model" where necessary, for example during migration</li>
-                                                <li>Use the workspace data directory structure to keep your project organized</li>
-                                            </ol>
-                                        </div>
-                                        
-                                        <div class="faq-item">
-                                            <h5>Does InSeis work on macOS or Linux?</h5>
-                                            <p>InSeis is designed specifically for Windows with WSL. On macOS or Linux, you can install Seismic Unix directly and use its native command-line interface or GUI alternatives like OpenSeaSeis or BotoSeis.</p>
-                                        </div>
-                                        
-
-                                    
-                                    </div>
-                                </div>
+  <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
+  
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>Is InSeis compatible with all versions of Seismic Unix?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-answer">
+      <div class="info-box">
+        <p>InSeis works with Seismic Unix versions 43 and newer. The installer script automatically installs the latest compatible version. If you have an existing installation of Seismic Unix, InSeis will attempt to use it if the path is correctly set in your <code>.bashrc</code> file.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>How do I integrate results from SEGYRecover and VELRecover?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-answer">
+      <div class="info-box">
+        <p>To use data from other REV-SEIS tools:</p>
+        <ol>
+          <li>SEGY files from SEGYRecover can be directly loaded using the "SEGYREAD" process</li>
+          <li>Velocity models from VELRecover should be exported in binary format and can be loaded using the "Load Velocity Model" where necessary, for example during migration</li>
+          <li>Use the workspace data directory structure to keep your project organized</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>Does InSeis work on macOS or Linux?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-answer">
+      <div class="info-box">
+        <p>InSeis is designed specifically for Windows with WSL. On macOS or Linux, you can install Seismic Unix directly and use its native command-line interface or GUI alternatives like OpenSeaSeis or BotoSeis.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>What is the difference between SU files and SEG-Y files?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-answer">
+      <div class="info-box">
+        <p>SU (Seismic Unix) files and SEG-Y files are both formats for storing seismic data, but with key differences:</p>
+        <ul>
+          <li><strong>SU files</strong> are the native format for Seismic Unix, with a simpler header structure and no EBCDIC header</li>
+          <li><strong>SEG-Y files</strong> are the industry standard with more extensive headers, including text headers with acquisition information</li>
+          <li>InSeis can convert between these formats using the "SEGYREAD" and "SEGYWRITE" processes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
                             </div>
                         </div>
                     </div>

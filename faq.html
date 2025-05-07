@@ -6,7 +6,7 @@
     <title>FAQ - REV-SEIS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header id="header-component"></header>
@@ -19,133 +19,248 @@
                 <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Documentation Hub</a>
                 
                 <section id="faq">
-                    <h2>Frequently Asked Questions</h2>
+                    <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                    
+                    <div class="quick-links-box">
+                        <h4>Jump to Category:</h4>
+                        <div class="quick-nav-links">
+                            <a href="#general" class="quick-nav-link"><i class="fas fa-info-circle"></i> General Questions</a>
+                            <a href="#technical" class="quick-nav-link"><i class="fas fa-cogs"></i> Technical Questions</a>
+                            <a href="#workflow" class="quick-nav-link"><i class="fas fa-project-diagram"></i> Workflow Questions</a>
+                        </div>
+                    </div>
+                    
+                    <h3 id="general"><i class="fas fa-info-circle"></i> General Questions</h3>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            Which tool should I use for my project?
-                            <span class="faq-toggle">▼</span>
+                            <h4>Which tool should I use for my project?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <p>Choose based on your specific need:</p>
-                            <ul>
-                                <li><strong>SEGYRecover</strong>: For converting paper/raster seismic sections into digital SEGY format</li>
-                                <li><strong>VELRecover</strong>: For creating a complete velocity model from sparse velocity picks</li>
-                                <li><strong>InSeis</strong>: For processing seismic data using Seismic Unix algorithms</li>
-                            </ul>
-                            <p>For complete workflows involving legacy data, you might need to use all three tools in sequence.</p>
+                            <div class="info-box">
+                                <p>Choose based on your specific need:</p>
+                                <ul>
+                                    <li><strong>SEGYRecover</strong>: For converting paper/raster seismic sections into digital SEGY format</li>
+                                    <li><strong>VELRecover</strong>: For creating a complete velocity model from sparse velocity picks</li>
+                                    <li><strong>InSeis</strong>: For processing seismic data using Seismic Unix algorithms in Windows</li>
+                                </ul>
+                                <p>For complete workflows involving legacy data, you might need to use all three tools in sequence.</p>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            Do I need programming experience to use these tools?
-                            <span class="faq-toggle">▼</span>
+                            <h4>Do I need programming experience to use these tools?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <p>No, all three tools provide graphical user interfaces (GUI) that don't require programming knowledge. However:</p>
-                            <ul>
-                                <li>Basic understanding of seismic data processing concepts is helpful</li>
-                                <li>Familiarity with command-line operations can be useful for advanced usage</li>
-                                <li>Knowledge of Seismic Unix commands will help you get the most out of InSeis</li>
-                            </ul>
+                            <div class="info-box">
+                                <p>No, all three tools provide graphical user interfaces (GUI) that don't require programming knowledge. However:</p>
+                                <ul>
+                                    <li>Basic understanding of seismic data processing concepts is helpful</li>
+                                    <li>Knowledge of Seismic Unix commands will help you get the most out of InSeis</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            What file formats are supported?
-                            <span class="faq-toggle">▼</span>
+                            <h4>Are these tools free to use?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <p><strong>SEGYRecover:</strong></p>
-                            <ul>
-                                <li>Input: TIF, JPG, PNG image formats</li>
-                                <li>Output: SEGY format (SEG-Y Rev 1)</li>
-                            </ul>
-                            
-                            <p><strong>VELRecover:</strong></p>
-                            <ul>
-                                <li>Input: Text files (CSV, TSV, TXT) with velocity data (CDP, TWT, Velocity)</li>
-                                <li>Output: Text files or binary velocity files</li>
-                            </ul>
-                            
-                            <p><strong>InSeis:</strong></p>
-                            <ul>
-                                <li>Input: SU (Seismic Unix), SEGY files, Velocity models</li>
-                                <li>Output: SU, SEGY files, and various visualization formats</li>
-                            </ul>
+                            <div class="info-box">
+                                <p>Yes, all three tools are released under the GNU General Public License v3.0 (GPL-3.0), which means:</p>
+                                <ul>
+                                    <li>They are free to use, modify, and distribute</li>
+                                    <li>Modified versions must also be open-source under the same license</li>
+                                    <li>There are no warranty provisions</li>
+                                </ul>
+                                <p>If using the tools for research purposes, please cite them appropriately as noted in their respective documentation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 id="technical"><i class="fas fa-cogs"></i> Technical Questions</h3>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What are the system requirements?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="info-box">
+                                <p>All three tools have similar basic requirements:</p>
+                                <ul>
+                                    <li><strong>Operating System</strong>: Windows 10 or 11 (64-bit)</li>
+                                    <li><strong>Python</strong>: Python 3.8 or newer (automatically installed with the tools)</li>
+                                    <li><strong>RAM</strong>: Minimum 8 GB recommended (16+ GB for large datasets)</li>
+                                    <li><strong>Disk Space</strong>: 500 MB for installation, plus space for your data</li>
+                                    <li><strong>Additional for InSeis</strong>: Windows Subsystem for Linux (WSL) with Ubuntu</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            Can I run these tools on Mac or Linux?
-                            <span class="faq-toggle">▼</span>
+                            <h4>What file formats are supported?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <p>The tools are primarily designed for Windows, but:</p>
-                            <ul>
-                                <li><strong>SEGYRecover</strong> and <strong>VELRecover</strong> should run on macOS and Linux with Python 3.8+ and the required dependencies installed</li>
-                                <li><strong>InSeis</strong> is specifically designed for Windows with WSL, but you can use Seismic Unix directly on Linux without needing InSeis</li>
-                            </ul>
-                            <p>For Mac or Linux users, some modifications might be needed for optimal performance.</p>
+                            <div class="info-box">
+                                <p>Each tool supports different file formats:</p>
+                                <ul>
+                                    <li><strong>SEGYRecover</strong>:
+                                        <ul>
+                                            <li><strong>Input</strong>: TIF, JPG, PNG (seismic section images)</li>
+                                            <li><strong>Output</strong>: Standard SEG-Y format</li>
+                                            <li><strong>Geometry</strong>: Text files (.geometry) with CDP, X, Y coordinates</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>VELRecover</strong>:
+                                        <ul>
+                                            <li><strong>Input</strong>: Text files (.txt, .dat, .csv) with CDP, TWT, Velocity values</li>
+                                            <li><strong>Seismic</strong>: SEG-Y files (.sgy, .segy) for visual context</li>
+                                            <li><strong>Output</strong>: Text files (.txt) or binary velocity files (.bin)</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>InSeis</strong>:
+                                        <ul>
+                                            <li><strong>Input</strong>: Seismic Unix files (.su) and SEG-Y files (.sgy, .segy)</li>
+                                            <li><strong>Output</strong>: Seismic Unix files (.su), convertible to SEG-Y</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            How accurate is the digitization in SEGYRecover?
-                            <span class="faq-toggle">▼</span>
+                            <h4>Can I run these tools on Mac or Linux?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <p>SEGYRecover's accuracy depends on several factors:</p>
-                            <ul>
-                                <li>The resolution and quality of the input image (higher DPI = better results)</li>
-                                <li>The clarity of trace lines and time markers</li>
-                                <li>Proper parameter settings for detection</li>
-                                <li>Correct selection of ROI points</li>
-                            </ul>
-                            <p>With high-quality scans and proper settings, the digitization can achieve excellent fidelity to the original section, including preserving relative amplitude relationships.</p>
-                            <p>Frequency content will be limited by the scan resolution and original section quality, typically up to 60-80 Hz for vintage paper sections.</p>
+                            <div class="info-box">
+                                <p>The tools are primarily designed for Windows, but:</p>
+                                <ul>
+                                    <li><strong>SEGYRecover</strong> and <strong>VELRecover</strong> should run on macOS and Linux with Python 3.12+ and the required dependencies installed</li>
+                                    <li><strong>InSeis</strong> is specifically designed for Windows with WSL, but you can use Seismic Unix directly on Linux without needing InSeis or you can use alternative software like OpenSeaSeis or BotoSeis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    <h3 id="workflow"><i class="fas fa-project-diagram"></i> Tools Questions</h3>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What is the recommended workflow for processing legacy seismic data?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="info-box">
+                                <p>For a complete workflow with paper seismic sections:</p>
+                                <ol>
+                                    <li><strong>Digitize paper sections</strong>: Use SEGYRecover to convert scanned images to SEG-Y files</li>
+                                    <li><strong>Create velocity model</strong>: Use VELRecover to build velocity fields from sparse picks</li>
+                                    <li><strong>Process the data</strong>: Use InSeis to apply processing steps like filtering and migration</li>
+                                </ol>
+                                <p>Each tool can also be used independently for specific tasks within your existing workflow.</p>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            How do I ensure velocity models are properly georeferenced?
-                            <span class="faq-toggle">▼</span>
+                            <h4>How accurate is the digitization in SEGYRecover?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <p>For proper georeferencing across tools:</p>
-                            <ol>
-                                <li>In SEGYRecover, provide a geometry file with accurate CDP to X,Y coordinate mappings</li>
-                                <li>When creating velocity pick files for VELRecover, use the same CDP numbers as in your seismic data</li>
-                                <li>In InSeis, ensure the CDP ranges in your velocity model match those in your seismic data</li>
-                            </ol>
-                            <p>Consistency in CDP numbering across all files is key to maintaining proper spatial relationships.</p>
+                            <div class="info-box">
+                                <p>SEGYRecover's accuracy depends on several factors:</p>
+                                <ul>
+                                    <li>The resolution and quality of the input image (higher DPI = better results)</li>
+                                    <li>Proper parameter settings for detection</li>
+                                    <li>Correct selection of ROI points</li>
+                                </ul>
+                                <p>With high-quality scans and proper settings, the digitization can achieve excellent fidelity to the original section, including preserving relative amplitude relationships.</p>
+                                <p>Frequency content will be limited by the scan resolution and original section quality.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How do I ensure velocity models are properly georeferenced?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="info-box">
+                                <p>For proper georeferencing across tools:</p>
+                                <ol>
+                                    <li>In SEGYRecover, provide a geometry file with accurate CDP to X,Y coordinate mappings</li>
+                                    <li>When creating velocity pick files for VELRecover, use the same CDP numbers as in your seismic data</li>
+                                </ol>
+                                <p>Consistency in CDP numbering across all files is key to maintaining proper spatial relationships.</p>
+                            </div>
                         </div>
                     </div>
                     
+                    
+                    
+                    
                     <div class="faq-item">
                         <div class="faq-question">
-                            Are these tools free to use?
-                            <span class="faq-toggle">▼</span>
+                            <h4>How can I troubleshoot common issues?</h4>
+                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes, all three tools are released under the GNU General Public License v3.0 (GPL-3.0), which means:</p>
-                            <ul>
-                                <li>They are free to use, modify, and distribute</li>
-                                <li>Modified versions must also be open-source under the same license</li>
-                                <li>There are no warranty provisions</li>
-                            </ul>
-                            <p>If using the tools for research purposes, please cite them appropriately as noted in their respective documentation.</p>
+                            <div class="info-box">
+                                <p>For issues with specific tools:</p>
+                                <ul>
+                                    <li><strong>SEGYRecover</strong>:
+                                        <ul>
+                                            <li>Poor timeline detection: Increase HE parameter</li>
+                                            <li>Missing baselines: Adjust TLT and BFT parameters</li>
+                                            <li>Noisy output: Adjust frequency filter parameters</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>VELRecover</strong>:
+                                        <ul>
+                                            <li>Artifacts in velocity model: Use Gaussian blur or try different interpolation method</li>
+                                            <li>Unrealistic velocities: Clean input data by removing outliers</li>
+                                            <li>Poor surface representation: Add more velocity picks at shallow depths</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>InSeis</strong>:
+                                        <ul>
+                                            <li>WSL connection issues: Reinstall WSL or check system compatibility</li>
+                                            <li>Processing errors: Check parameter values and input file format</li>
+                                            <li>Module not found: Verify Seismic Unix installation in WSL</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p>Each tool also generates log files that can help diagnose specific issues.</p>
+                            </div>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
     </main>
+    
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
     
     <footer id="footer-component"></footer>
     
@@ -170,33 +285,174 @@
                     document.getElementById('footer-component').innerHTML = data;
                 });
             
+            // Enhanced FAQ toggle functionality with animation
             setTimeout(function() {
-                // Initialize FAQ toggles
-                const faqQuestions = document.querySelectorAll('.faq-question');
+                const faqItems = document.querySelectorAll('.faq-item');
                 
-                faqQuestions.forEach(question => {
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    const answer = item.querySelector('.faq-answer');
+                    const toggle = item.querySelector('.faq-toggle i');
+                    
+                    // Initialize state
+                    if (toggle) {
+                        toggle.classList.remove('fa-chevron-up', 'fa-chevron-down');
+                        toggle.classList.add('fa-chevron-down');
+                    }
+                    
+                    // Add click event
                     question.addEventListener('click', function() {
-                        const faqItem = this.parentElement;
-                        faqItem.classList.toggle('active');
+                        // Toggle active class on the faq-item
+                        item.classList.toggle('active');
                         
-                        // Close other FAQ items when one is opened
-                        if (faqItem.classList.contains('active')) {
-                            const siblings = Array.from(faqItem.parentElement.children);
-                            siblings.forEach(sibling => {
-                                if (sibling !== faqItem) {
-                                    sibling.classList.remove('active');
-                                }
-                            });
+                        // Update the toggle icon
+                        if (toggle) {
+                            if (item.classList.contains('active')) {
+                                toggle.classList.remove('fa-chevron-down');
+                                toggle.classList.add('fa-chevron-up');
+                                answer.style.maxHeight = answer.scrollHeight + "px";
+                            } else {
+                                toggle.classList.remove('fa-chevron-up');
+                                toggle.classList.add('fa-chevron-down');
+                                answer.style.maxHeight = null;
+                            }
                         }
                     });
                 });
                 
                 // Open the first FAQ item by default
-                if (document.querySelector('.faq-item')) {
-                    document.querySelector('.faq-item').classList.add('active');
+                if (faqItems.length > 0) {
+                    const firstItem = faqItems[0];
+                    const firstAnswer = firstItem.querySelector('.faq-answer');
+                    const firstToggle = firstItem.querySelector('.faq-toggle i');
+                    
+                    firstItem.classList.add('active');
+                    if (firstToggle) {
+                        firstToggle.classList.remove('fa-chevron-down');
+                        firstToggle.classList.add('fa-chevron-up');
+                    }
+                    if (firstAnswer) {
+                        firstAnswer.style.maxHeight = firstAnswer.scrollHeight + "px";
+                    }
                 }
-            }, 500);
+            }, 300);
+            
+            // Smooth scrolling for anchor links
+            const anchors = document.querySelectorAll('a[href^="#"]');
+            
+            anchors.forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').length > 1) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 20,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update URL hash without jumping
+                            history.pushState(null, null, targetId);
+                        }
+                    }
+                });
+            });
+
+            // Back to top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            function toggleBackToTopButton() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            }
+            
+            window.addEventListener('scroll', toggleBackToTopButton);
+            
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
         });
     </script>
+    
+    <style>
+        /* FAQ specific styles */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #f8fafc;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f1f5f9;
+        }
+        
+        .faq-question h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .faq-toggle {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+        
+        .faq-answer .info-box {
+            margin-top: 0;
+        }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 2rem;
+        }
+        
+        /* Category headers */
+        #faq h3 {
+            margin-top: 2.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--primary-color);
+        }
+        
+        #faq h3 i {
+            margin-right: 0.5rem;
+        }
+    </style>
 </body>
 </html>

@@ -485,30 +485,56 @@
 <div class="tutorial-section" id="faq">
   <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
 
-  <div class="faq-container">
-    <div class="faq-item">
-      <h5>How can I improve the quality of my results?</h5>
-      <ul>
-        <li>Start with the highest resolution scan possible</li>
-        <li>Experiment with different frequency filter settings</li>
-        <li>Ensure time lines are properly detected and removed</li>
-        <li>Make your ROI selection precise</li>
-      </ul>
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>How can I improve the quality of my results?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
     </div>
-    
-    <div class="faq-item">
-      <h5>Can I process multiple images in batch mode?</h5>
-      <p>Currently, SEGYRecover processes one image at a time. Process them sequentially using "Start New Line" after each completion. Save parameters for similar images to speed up your workflow.</p>
+    <div class="faq-answer">
+      <div class="info-box">
+        <ul>
+          <li>Start with the highest resolution scan possible</li>
+          <li>Experiment with different frequency filter settings</li>
+          <li>Ensure time lines are properly detected and removed</li>
+          <li>Make your ROI selection precise</li>
+        </ul>
+      </div>
     </div>
-    
-    <div class="faq-item">
-      <h5>What if I don't have geometry data?</h5>
-      <p>You can still digitize the image, but the SEG-Y will not have real-world coordinates. You can create a placeholder file with first and last CDP numbers and arbitrary coordinates.</p>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>Can I process multiple images in batch mode?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
     </div>
-    
-    <div class="faq-item">
-      <h5>Can I use color seismic images?</h5>
-      <p>SEGYRecover works best with black and white images. Convert color seismic images to grayscale or black/white before processing for optimal results.</p>
+    <div class="faq-answer">
+      <div class="info-box">
+        <p>Currently, SEGYRecover processes one image at a time. Process them sequentially using "Start New Line" after each completion. Save parameters for similar images to speed up your workflow.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>What if I don't have geometry data?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-answer">
+      <div class="info-box">
+        <p>You can still digitize the image, but the SEG-Y will not have real-world coordinates. You can create a placeholder file with first and last CDP numbers and arbitrary coordinates.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-question">
+      <h4>Can I use color seismic images?</h4>
+      <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+    </div>
+    <div class="faq-answer">
+      <div class="info-box">
+        <p>SEGYRecover works best with black and white images. Convert color seismic images to grayscale or black/white before processing for optimal results.</p>
+      </div>
     </div>
   </div>
 </div>

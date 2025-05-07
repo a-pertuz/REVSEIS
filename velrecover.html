@@ -346,6 +346,82 @@
                                     <p>VelRecover creates log files for each session in the data directory. These contain process details and error messages that can help diagnose issues.</p>
                                 </div>
 
+                                <div class="tutorial-section" id="faq">
+                                    <h4><i class="fas fa-question-circle"></i> Frequently Asked Questions</h4>
+                                    
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <h4>What's the best interpolation method for typical seismic velocity data?</h4>
+                                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            <div class="info-box">
+                                                <p>The best method depends on your specific data characteristics:</p>
+                                                <ul>
+                                                    <li><strong>For simple geology</strong>: Logarithmic Best Fit often provides good results as it mimics natural velocity increase with depth</li>
+                                                    <li><strong>For complex geology</strong>: The Two-Step method usually provides the most realistic results as it honors both vertical and lateral variations</li>
+                                                    <li><strong>For sparse data</strong>: RBF can work well but may need smoothing with Gaussian blur</li>
+                                                </ul>
+                                                <p>We recommend trying multiple methods and comparing the results to determine which best represents your geological understanding of the area.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <h4>How many velocity picks do I need for a good model?</h4>
+                                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            <div class="info-box">
+                                                <p>For a typical 2D seismic section:</p>
+                                                <ul>
+                                                    <li>Minimum: At least 3-5 velocity picks per trace at different depths</li>
+                                                    <li>Recommended: One velocity pick every 10-20 CDPs horizontally, with 5-10 picks vertically distributed through the time range</li>
+                                                    <li>For areas with complex velocity variations, increase pick density accordingly</li>
+                                                </ul>
+                                                <p>It's more important to have good coverage at depth intervals where velocity changes significantly than to have a large number of picks.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <h4>What Gaussian blur value should I use?</h4>
+                                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            <div class="info-box">
+                                                <p>Gaussian blur smoothing guidelines:</p>
+                                                <ul>
+                                                    <li><strong>Minimal smoothing (1-10)</strong>: Use for well-sampled data with minimal artifacts</li>
+                                                    <li><strong>Moderate smoothing (10-30)</strong>: Recommended for most datasets to remove small inconsistencies</li>
+                                                    <li><strong>High smoothing (30-70)</strong>: Use when interpolation results show significant artifacts</li>
+                                                    <li><strong>Maximum smoothing (70-100)</strong>: For very sparse data with severe interpolation artifacts</li>
+                                                </ul>
+                                                <p>Start with a value around 20 and adjust based on visual inspection of the velocity field. Higher values may remove legitimate velocity features, so use with caution.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="faq-item">
+                                        <div class="faq-question">
+                                            <h4>Can I export my velocity model for use in other software?</h4>
+                                            <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                                        </div>
+                                        <div class="faq-answer">
+                                            <div class="info-box">
+                                                <p>Yes, VelRecover offers multiple export options compatible with various software:</p>
+                                                <ul>
+                                                    <li><strong>Text format (.txt)</strong>: CSV-style format with CDP, TWT, and Velocity values that can be imported into most interpretation software including Petrel, Kingdom, and OpendTect</li>
+                                                    <li><strong>Binary format (.bin)</strong>: Direct binary grid of velocity values (float32) organized by TWT and CDP, primarily for use with Seismic Unix processing tools</li>
+                                                </ul>
+                                                <p>For other formats, you can use the text export and convert it using Python or other tools to match your specific software requirements.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
         
                                 </div>
                             </div>
@@ -511,6 +587,56 @@
             
             // Initial call to setup TOC state
             setTimeout(updateTocState, 500);
+
+            // Enhanced FAQ toggle functionality with animation
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const toggle = item.querySelector('.faq-toggle i');
+                
+                // Initialize state
+                if (toggle) {
+                    toggle.classList.remove('fa-chevron-up', 'fa-chevron-down');
+                    toggle.classList.add('fa-chevron-down');
+                }
+                
+                // Add click event
+                question.addEventListener('click', function() {
+                    // Toggle active class on the faq-item
+                    item.classList.toggle('active');
+                    
+                    // Update the toggle icon
+                    if (toggle) {
+                        if (item.classList.contains('active')) {
+                            toggle.classList.remove('fa-chevron-down');
+                            toggle.classList.add('fa-chevron-up');
+                            answer.style.maxHeight = answer.scrollHeight + "px";
+                        } else {
+                            toggle.classList.remove('fa-chevron-up');
+                            toggle.classList.add('fa-chevron-down');
+                            answer.style.maxHeight = null;
+                        }
+                    }
+                });
+            });
+            
+            // Open the first FAQ item by default
+            if (faqItems.length > 0) {
+                const firstItem = faqItems[0];
+                const firstAnswer = firstItem.querySelector('.faq-answer');
+                const firstToggle = firstItem.querySelector('.faq-toggle i');
+                
+                firstItem.classList.add('active');
+                if (firstToggle) {
+                    firstToggle.classList.remove('fa-chevron-down');
+                    firstToggle.classList.add('fa-chevron-up');
+                }
+                if (firstAnswer) {
+                    firstAnswer.style.maxHeight = firstAnswer.scrollHeight + "px";
+                }
+            }
         });
     </script>
     <script>
