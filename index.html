@@ -19,22 +19,25 @@
             <div id="main-content">
                 <!-- Introduction Section -->
                 <section id="introduction" class="intro-section">
+
                     <h2>Welcome to REV-SEIS</h2>
-                    <p>REV-SEIS helps geologists and geophysicists breathe new life into old seismic data originally recorded on paper. With <strong>SEGYRecover</strong> you can digitize seismic sections into SEG-Y format, <strong>VelRecover</strong> allows you to interpolate sparse velocity picks, and <strong>InSeis</strong> helps enhance vintage seismic data through Seismic Unix processes, making it all accessible for modern interpretation.</p>
+
+                    <p>REV-SEIS helps geologists and geophysicists breathe new life into old seismic data originally recorded on paper. </p>
+                        
+                    <p>With <strong>SEGYRecover</strong> you can digitize seismic sections into SEG-Y format, <strong>VelRecover</strong> allows you to interpolate sparse velocity picks, and <strong>InSeis</strong> helps enhance vintage seismic data through Seismic Unix processes, making it all accessible for modern interpretation.</p>
                     
-                    <div class="intro-image-container" style="text-align: center; margin: 30px 0;">
-                        <img src="images/web_intro.png" alt="REV-SEIS workflow overview" class="intro-image" style="max-width: 100%; height: auto;">
-                    </div>
+                    <section class="quick-links">
+                        <div class="action-card">
+                            <div class="action-card-header">
+                                <h3><i class="fas fa-download"></i> Ready to Get Started?</h3>
+                            </div>
+                            <div class="action-card-body">
+                                <p>Follow our step-by-step installation guide to set up all REV-SEIS tools on your computer.</p>
+                                <a href="installation.html" class="btn-primary">Installation Guide </a>
+                            </div>
+                        </div>
+                    </section>
 
-                </section>
-
-
-                
-                <!-- Tool Showcase Section -->
-                <section id="tool-showcase">
-                    <h2>REV-SEIS Tools</h2>
-                    <p>Each tool in the REV-SEIS suite addresses a specific challenge in the vintage seismic data recovery process:</p>
-                    
                     <div class="project-cards-container">
                         <div class="project-card">
                             <div class="project-header">
@@ -80,134 +83,14 @@
                         </div>
                     </div>
 
-                    <div class="implementation-guide-box" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                        <h3><i class="fas fa-map"></i> Learn How to Start Here</h3>
-                        <p>See how to implement REV-SEIS in your seismic data recovery workflow:</p>
-                        <ul class="guide-highlights" style="display: inline-block; text-align: left;"></ul>
-                            <li>Complete data recovery workflows from paper to interpretation</li>
-                            <li>Step-by-step process demonstrations</li>
-                            <li>Integration between all three tools</li>
-                            <li>Real-world examples and applications</li>
-                        </ul>
-                        <a href="workflow-guide.html" class="button-primary">Workflow Implementation Guide <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                
-                
-                <!-- Installation Section -->
-                <section>
-                    <h2>Installation Guide</h2>
-                    <div class="beginner-note">
-                        <i class="fas fa-info-circle"></i> <strong>New to command line?</strong> <br> Don't worry! We'll explain each step. The command line is just a text interface where you type commands instead of clicking buttons.
-                    </div>
-                    
-                    <div class="installation-steps">
-                        <div class="step-box">
-                            <h3><i class="fab fa-python"></i> Step 1: Install Python</h3>
-                            <p>Python is the programming language that powers our tools. You need to install it first:</p>
-                            <ol>
-                                <li>Go to <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a> and click the "Download Python" button</li>
-                                <li>Run the downloaded file</li>
-                                <li>Make sure to check the box that says <b>"Add Python to PATH"</b> during installation</li>
-                            </ol>
-                            <div class="important-note">
-                                <strong>What does "Add Python to PATH" do?</strong><br>
-                                It allows you to run Python commands from any folder on your computer. This is essential for our tools to work properly.
-                            </div>
-                        </div>
-                        
-                        <div class="step-box">
-                            <h3><i class="fas fa-download"></i> Step 2: Installing REVSEIS</h3>
-                            <p>Open <strong>Command Prompt</strong> (search "cmd" in Windows Start menu) and run each command to install the tools:</p>
-                            <div class="install-tools-grid" style="max-width: 400px; margin-left: 0;">
-                                <div class="code-snippet compact" style="max-width: 350px; margin: 0 0 8px 0;">
-                                    <code>pip install segyrecover</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                                <div class="code-snippet compact" style="max-width: 350px; margin: 0 0 8px 0;">
-                                    <code>pip install velrecover</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                                <div class="code-snippet compact" style="max-width: 350px; margin: 0 0 8px 0;">
-                                    <code>pip install inseis</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                            </div>
+                    <br>
 
-                                <h4><i class="fab fa-github"></i> Alternative: Install from GitHub</h4>
-                                <p>For the latest development version:</p>
-                                <div class="code-snippet compact" style="max-width: 550px; margin: 0 8px 8px 0;">
-                                    <code>pip install git+https://github.com/a-pertuz/segyrecover.git</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                                <div class="code-snippet compact" style="max-width: 550px; margin: 0 8px 8px 0;">
-                                    <code>pip install git+https://github.com/a-pertuz/velrecover.git</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                                <div class="code-snippet compact" style="max-width: 550px; margin: 0 8px 8px 0;">
-                                    <code>pip install git+https://github.com/a-pertuz/inseis.git</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                                <div class="note">
-                                    <i class="fas fa-info-circle"></i> The <code>git+</code> prefix instructs pip to install directly from the GitHub repository's latest version.
-                                </div>
-                        </div>
-
-                        <div class="step-box">
-                            <h3><i class="fas fa-play"></i> Step 3: Launch the Tools</h3>
-                            <p>Open Command Prompt and run any of these commands:</p>
-                            <div class="launch-commands" style="max-width: 200px; margin-left: 0;">
-                                <div class="code-snippet compact" style="max-width: 300px; display: inline-block; margin: 0 8px 8px 0;">
-                                    <code>segyrecover</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                                <div class="code-snippet compact" style="max-width: 300px; display: inline-block; margin: 0 8px 8px 0;">
-                                    <code>velrecover</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                                <div class="code-snippet compact" style="max-width: 300px; display: inline-block; margin: 0 8px 8px 0;">
-                                    <code>inseis</code>
-                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
-                                </div>
-                            </div>
-                            <p>On first run, each tool will guide you through selecting a data directory.</p>
-                        </div>
-                        
-                        <div class="step-box">
-                            <h3><i class="fab fa-windows"></i> Step 4: Install WSL (for InSeis only)</h3>
-                            <p>If you plan to use InSeis, you need to set up Windows Subsystem for Linux:</p>
-                            <ol class="numbered-steps">
-                                <li>Open Command Prompt <strong>as Administrator</strong> (right-click, select "Run as administrator")</li>
-                                <li>Run the following command:</li>
-                            </ol>
-                            <div class="code-snippet compact" style="max-width: 300px; margin: 0 8px 8px 0;">
-                                <code>wsl --install</code>
-                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                            </div>
-                            <p>After installation completes, <strong>restart your computer</strong>.</p>
-                        </div>
-                        
-                        <div class="step-box">
-                            <h3><i class="fas fa-terminal"></i> Step 5: Install Seismic Unix (for InSeis only)</h3>
-                            <p>After restarting and if WSL is properly installed:</p>
-                            <ol class="numbered-steps">
-                                <li>Open WSL (search for "wsl" or "ubuntu" in Windows Start menu)</li>
-                                <li>Copy and paste this entire command:</li>
-                            </ol>
-                            <div class="code-snippet compact" style="margin: 0 8px 8px 0;">
-                                <code>bash -c "$(wget -qO- https://gist.githubusercontent.com/a-pertuz/2b341bc8af2a37cde820d829f2789d99/raw/install_seismic_unix.sh)"</code>
-                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                            </div>
-                            <p>This script will automatically install Seismic Unix. The process may take several minutes.</p>
-                            <div class="important-note">
-                                <strong>Important:</strong> During installation <b>accept Seismic Unix license</b> agreement when prompted. <br>
-                                If you don't accept, the installation will fail and you won't be able to use InSeis.
-                            </div>
-                        </div>
+                    <div class="intro-image-container" style="text-align: center; margin: 30px 0;">
+                        <img src="images/web_intro.png" alt="REV-SEIS workflow overview" class="intro-image" style="max-width: 100%; height: auto;">
                     </div>
+
+                    
                 </section>
-                
-               
 
             </div>
         </div>

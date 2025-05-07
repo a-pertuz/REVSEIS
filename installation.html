@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Guide - REV-SEIS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header id="header-component"></header>
+    
+    <nav id="nav-component"></nav>
+    
+    <main>
+        <div class="main-container">
+            <!-- Main Content -->
+            <div id="main-content">
+                <!-- Installation Section -->
+                <section>
+                    <h2><i class="fas fa-download"></i> Installation Guide</h2>
+                    <div class="info-box info-box--note">
+                        <i class="fas fa-info-circle"></i> <strong>New to command line?</strong> <br> 
+                        Don't worry! We'll explain each step. The command line is just a text interface where you type commands instead of clicking buttons.
+                    </div>
+                    
+                    <div class="installation-steps">
+                        <div class="step-box">
+                            <div class="step-number">Step 1</div>
+                            <h3><i class="fab fa-python"></i> Install Python</h3>
+                            <p>Python is the programming language that powers our tools. You need to install it first:</p>
+                            <ol>
+                                <li>Go to <a href="https://www.python.org/downloads/windows/" target="_blank">python.org</a> and click the "Download Python" button</li>
+                                <li>Run the downloaded file</li>
+                                <li>Make sure to check the box that says <b>"Add Python to PATH"</b> during installation</li>
+                            </ol>
+                            <div class="info-box info-box--tip">
+                                <strong><i class="fas fa-lightbulb"></i> What does "Add Python to PATH" do?</strong><br>
+                                It allows you to run Python commands from any folder on your computer. This is essential for our tools to work properly.
+                            </div>
+                        </div>
+                        
+                        <div class="step-divider"><i class="fas fa-angle-down"></i></div>
+                        
+                        <div class="step-box">
+                            <div class="step-number">Step 2</div>
+                            <h3><i class="fas fa-download"></i> Installing REVSEIS</h3>
+                            <p>Open <strong>Command Prompt</strong> (search "cmd" in Windows Start menu) and run each command to install the tools:</p>
+                            <div class="install-tools-grid" style="max-width: 400px; margin-left: 0;">
+                                <div class="code-snippet compact" style="max-width: 350px; margin: 0 0 8px 0;">
+                                    <code>pip install segyrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-snippet compact" style="max-width: 350px; margin: 0 0 8px 0;">
+                                    <code>pip install velrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-snippet compact" style="max-width: 350px; margin: 0 0 8px 0;">
+                                    <code>pip install inseis</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                            </div>
+
+                            <h4><i class="fab fa-github"></i> Alternative: Install from GitHub</h4>
+                            <p>For the latest development version:</p>
+                            <div class="code-snippet compact" style="max-width: 550px; margin: 0 8px 8px 0;">
+                                <code>pip install git+https://github.com/a-pertuz/segyrecover.git</code>
+                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-snippet compact" style="max-width: 550px; margin: 0 8px 8px 0;">
+                                <code>pip install git+https://github.com/a-pertuz/velrecover.git</code>
+                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="code-snippet compact" style="max-width: 550px; margin: 0 8px 8px 0;">
+                                <code>pip install git+https://github.com/a-pertuz/inseis.git</code>
+                                <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="info-box info-box--note">
+                                <i class="fas fa-info-circle"></i> The <code>git+</code> prefix instructs pip to install directly from the GitHub repository's latest version.
+                            </div>
+                        </div>
+
+                        <div class="step-divider"><i class="fas fa-angle-down"></i></div>
+                        
+                        <div class="step-box">
+                            <div class="step-number">Step 3</div>
+                            <h3><i class="fas fa-play"></i> Launch the Tools</h3>
+                            <p>Open Command Prompt and run any of these commands:</p>
+                            <div class="launch-commands">
+                                <div class="code-snippet compact" style="max-width: 180px;">
+                                    <code>segyrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-snippet compact" style="max-width: 180px;">
+                                    <code>velrecover</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                                <div class="code-snippet compact" style="max-width: 180px;">
+                                    <code>inseis</code>
+                                    <button class="copy-btn small" onclick="copyToClipboard(this)">Copy</button>
+                                </div>
+                            </div>
+                            <div class="info-box info-box--tip">
+                                <i class="fas fa-lightbulb"></i> <strong>First run tip:</strong> Each tool will guide you through selecting a data directory when first launched.
+                            </div>
+                        </div>
+                        
+                        <div class="step-divider"><i class="fas fa-angle-down"></i></div>
+                        
+                        <div class="step-box">
+                            <div class="step-number">Step 4</div>
+                            <h3><i class="fab fa-windows"></i> Step 4: Install WSL (for InSeis only)</h3>
+                            <p>If you plan to use InSeis, you need to set up Windows Subsystem for Linux:</p>
+                            <ol class="numbered-steps">
+                                <li>Open Command Prompt <strong>as Administrator</strong> (right-click, select "Run as administrator")</li>
+                                <li>Run the following command:</li>
+                            </ol>
+                            <div class="code-snippet compact" style="max-width: 200px; margin: 0 8px 8px 0;">
+                                <code>wsl --install</code>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <div class="info-box info-box--warning">
+                                <i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> After installation completes, <strong>restart your computer</strong>.
+                            </div>
+                        </div>
+                        
+                        <div class="step-divider"><i class="fas fa-angle-down"></i></div>
+                        
+                        <div class="step-box">
+                            <div class="step-number">Step 5</div>
+                            <h3><i class="fas fa-terminal"></i> Step 5: Install Seismic Unix (for InSeis only)</h3>
+                            <p>After restarting and if WSL is properly installed:</p>
+                            <ol class "numbered-steps">
+                                <li>Open WSL (search for "wsl" or "ubuntu" in Windows Start menu)</li>
+                                <li>Copy and paste this entire command:</li>
+                            </ol>
+                            <div class="code-snippet compact" style=" margin: 0 8px 8px 0;">
+                                <code>bash -c "$(wget -qO- https://gist.githubusercontent.com/a-pertuz/2b341bc8af2a37cde820d829f2789d99/raw/install_seismic_unix.sh)"</code>
+                                <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                            </div>
+                            <p>This script will automatically install Seismic Unix. The process may take several minutes.</p>
+                            <div class="info-box info-box--warning">
+                                <i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> During installation <b>accept Seismic Unix license</b> agreement when prompted. <br>
+                                If you don't accept, the installation will fail and you won't be able to use InSeis.
+                            </div>
+                            <div class="info-box info-box--success">
+                                <i class="fas fa-check-circle"></i> <strong>All done?</strong> You're ready to get started with REVSEIS tools! Check out our tutorials section for next steps.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <footer id="footer-component"></footer>
+    
+    <script>
+        function copyToClipboard(button) {
+            const code = button.previousElementSibling.textContent;
+            navigator.clipboard.writeText(code)
+                .then(() => {
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 1500);
+                });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load components
+            fetch('components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-component').innerHTML = data;
+                });
+                
+            fetch('components/navigation.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-component').innerHTML = data;
+                });
+                
+            fetch('components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-component').innerHTML = data;
+                });
+        });
+    </script>
+</body>
+</html>
